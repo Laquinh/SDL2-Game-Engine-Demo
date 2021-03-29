@@ -159,11 +159,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="destroyers.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="destroyers.hpp" />
     <ClInclude Include="Game.hpp" />
+    <ClInclude Include="TextureManager.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\scientist.png" />
