@@ -2,6 +2,7 @@
 #define GAME_HPP
 
 #include "SDL.h"
+#include "SDL_image.h"
 #include <iostream>
 #include <memory>
 
@@ -30,6 +31,10 @@ private:
 		void operator()(SDL_Renderer* r) const;
 	};
 	std::unique_ptr<SDL_Renderer, SDL_Renderer_Destroyer> renderer;
+
+	struct SDL_Surface_Destroyer {
+		void operator()(SDL_Surface* s) const;
+	};
 };
 
 #endif
