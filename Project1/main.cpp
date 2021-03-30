@@ -11,7 +11,7 @@ int main() {
 	int frameStart;
 	int frameTime;
 
-	Game game("Title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, false);
+	Game game("Title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false);
 
 	while (game.is_running())
 	{

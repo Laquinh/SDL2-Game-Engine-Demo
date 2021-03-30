@@ -5,12 +5,15 @@
 
 #include "TextureManager.hpp"
 #include "GameObject.hpp"
+#include "Map.hpp"
 
 #include <iostream>
 #include <memory>
 
 unique_SDL_Renderer Game::renderer = nullptr;
 unique_SDL_Window Game::window = nullptr;
+
+std::unique_ptr<Map> map;
 std::unique_ptr<GameObject> scientist;
 
 Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
@@ -39,6 +42,7 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 		}
 
 		scientist = std::make_unique<GameObject>("assets/scientist.png", 80, 300);
+		map = std::make_unique<Map>();
 		isRunning = true;
 	}
 	else
@@ -70,6 +74,7 @@ void Game::update()
 void Game::render()
 {
 	SDL_RenderClear(renderer.get());
+	map->draw_map();
 	scientist->render();
 	SDL_RenderPresent(renderer.get());
 }
