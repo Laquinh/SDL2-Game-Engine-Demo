@@ -4,12 +4,12 @@
 #include "SDL_image.h"
 
 #include "TextureManager.hpp"
+#include "GameObject.hpp"
 
 #include <iostream>
 #include <memory>
 
-unique_SDL_Texture tex;
-SDL_Rect src, dest;
+std::unique_ptr<GameObject> scientist;
 
 Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 {
@@ -36,11 +36,7 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 			std::cout << "Renderer created\n";
 		}
 
-		tex = TextureManager::load_texture("assets/scientist.png", *renderer);
-
-		dest.w = 64;
-		dest.h = 64;
-		dest.x = 0;
+		scientist = std::make_unique<GameObject>("assets/scientist.png", *renderer, 80, 300);
 		isRunning = true;
 	}
 	else
@@ -66,13 +62,13 @@ void Game::handle_events()
 
 void Game::update()
 {
-	++dest.x;
+	scientist->update();
 }
 
 void Game::render()
 {
 	SDL_RenderClear(renderer.get());
-	SDL_RenderCopy(renderer.get(), tex.get(), nullptr, &dest);
+	scientist->render();
 	SDL_RenderPresent(renderer.get());
 }
 
