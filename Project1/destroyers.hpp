@@ -5,9 +5,11 @@
 #include <memory>
 
 template <auto delete_function>
-struct TypeDestroyer {
+struct TypeDestroyer
+{
 	template <class T>
-	void operator()(T* ptr){
+	void operator()(T* ptr)
+	{
 		delete_function(ptr);
 	}
 };
