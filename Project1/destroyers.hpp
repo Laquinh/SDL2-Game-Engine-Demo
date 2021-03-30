@@ -4,28 +4,17 @@
 #include "SDL.h"
 #include <memory>
 
-struct SDL_Window_Destroyer
-{
-	void operator()(SDL_Window* w) const;
+template <auto delete_function>
+struct TypeDestroyer {
+	template <class T>
+	void operator()(T* ptr){
+		delete_function(ptr);
+	}
 };
-typedef std::unique_ptr<SDL_Window, SDL_Window_Destroyer> unique_SDL_Window;
 
-struct SDL_Renderer_Destroyer
-{
-	void operator()(SDL_Renderer* r) const;
-};
-typedef std::unique_ptr<SDL_Renderer, SDL_Renderer_Destroyer> unique_SDL_Renderer;
-
-struct SDL_Surface_Destroyer
-{
-	void operator()(SDL_Surface* s) const;
-};
-typedef std::unique_ptr<SDL_Surface, SDL_Surface_Destroyer> unique_SDL_Surface;
-
-struct SDL_Texture_Destroyer
-{
-	void operator()(SDL_Texture* s) const;
-};
-typedef std::unique_ptr<SDL_Texture, SDL_Texture_Destroyer> unique_SDL_Texture;
+using unique_SDL_Window = std::unique_ptr<SDL_Window, TypeDestroyer<SDL_DestroyWindow>>;
+using unique_SDL_Renderer = std::unique_ptr<SDL_Renderer, TypeDestroyer<SDL_DestroyRenderer>>;
+using unique_SDL_Surface = std::unique_ptr<SDL_Surface, TypeDestroyer<SDL_FreeSurface>>;
+using unique_SDL_Texture = std::unique_ptr<SDL_Texture, TypeDestroyer<SDL_DestroyTexture>>;
 
 #endif
