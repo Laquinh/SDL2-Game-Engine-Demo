@@ -9,6 +9,8 @@
 #include <iostream>
 #include <memory>
 
+unique_SDL_Renderer Game::renderer = nullptr;
+unique_SDL_Window Game::window = nullptr;
 std::unique_ptr<GameObject> scientist;
 
 Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
@@ -36,7 +38,7 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 			std::cout << "Renderer created\n";
 		}
 
-		scientist = std::make_unique<GameObject>("assets/scientist.png", *renderer, 80, 300);
+		scientist = std::make_unique<GameObject>("assets/scientist.png", 80, 300);
 		isRunning = true;
 	}
 	else

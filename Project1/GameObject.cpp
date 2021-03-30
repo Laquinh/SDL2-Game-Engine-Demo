@@ -1,8 +1,8 @@
 #include "GameObject.hpp"
+#include "Game.hpp"
 
-GameObject::GameObject(std::string file, SDL_Renderer& renderer, int x, int y) :
-	renderer((unique_SDL_Renderer)&renderer),
-	texture(TextureManager::load_texture(file, renderer)),
+GameObject::GameObject(std::string file, int x, int y) :
+	texture(TextureManager::load_texture(file)),
 	x(x), y(y),
 	srcRect({ 0, 0, 0, 0 }),
 	destRect({ 0, 0, 0, 0 })
@@ -31,5 +31,5 @@ void GameObject::update()
 
 void GameObject::render()
 {
-	SDL_RenderCopy(renderer.get(), texture.get(), &srcRect, &destRect);
+	SDL_RenderCopy(Game::renderer.get(), texture.get(), &srcRect, &destRect);
 }

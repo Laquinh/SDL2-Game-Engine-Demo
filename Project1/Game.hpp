@@ -19,11 +19,11 @@ public:
 
 	bool is_running();
 
+	static unique_SDL_Renderer renderer;
+	static unique_SDL_Window window;
+
 private:
 	bool isRunning;
-
-	unique_SDL_Window window;
-	unique_SDL_Renderer renderer;
 };
 
 #endif

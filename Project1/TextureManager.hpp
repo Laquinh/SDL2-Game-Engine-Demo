@@ -9,7 +9,7 @@
 class TextureManager
 {
 public:
-	static unique_SDL_Texture load_texture(std::string file, SDL_Renderer& renderer);
+	static unique_SDL_Texture load_texture(std::string file);
 };
 
 #endif

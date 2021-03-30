@@ -9,7 +9,7 @@
 class GameObject
 {
 public:
-	GameObject(std::string file, SDL_Renderer& renderer, int x, int y);
+	GameObject(std::string file, int x, int y);
 	~GameObject();
 
 	void update();
@@ -19,7 +19,6 @@ private:
 	int y;
 
 	unique_SDL_Texture texture;
-	unique_SDL_Renderer renderer;
 	SDL_Rect srcRect, destRect;
 };
 
