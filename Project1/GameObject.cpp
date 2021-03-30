@@ -31,5 +31,5 @@ void GameObject::update()
 
 void GameObject::render()
 {
-	SDL_RenderCopy(Game::renderer.get(), texture.get(), &srcRect, &destRect);
+	TextureManager::draw(*texture, srcRect, destRect);
 }
