@@ -7,6 +7,9 @@
 #include "GameObject.hpp"
 #include "Map.hpp"
 
+#include "ComponentManager.hpp"
+#include "PositionComponent.hpp"
+
 #include <iostream>
 #include <memory>
 
@@ -15,6 +18,9 @@ unique_SDL_Window Game::window = nullptr;
 
 std::unique_ptr<Map> map;
 std::unique_ptr<GameObject> scientist;
+
+ComponentManager manager;
+auto& otherScientist(manager.add_entity());
 
 Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 {
@@ -43,6 +49,8 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 
 		scientist = std::make_unique<GameObject>("assets/scientist.png", 80, 300);
 		map = std::make_unique<Map>();
+
+		otherScientist.add_component<PositionComponent>();
 		isRunning = true;
 	}
 	else
@@ -69,6 +77,8 @@ void Game::handle_events()
 void Game::update()
 {
 	scientist->update();
+	manager.update();
+	std::cout << otherScientist.get_component<PositionComponent>().get_x() << ", " << otherScientist.get_component<PositionComponent>().get_y() << "\n";
 }
 
 void Game::render()
