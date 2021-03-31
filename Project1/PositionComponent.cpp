@@ -1,5 +1,19 @@
 #include "PositionComponent.hpp"
 
+PositionComponent::PositionComponent() :
+    x(0), y(0)
+{
+    std::cout << this << "\n";
+    std::cout << "PositionComponent constructed\n";
+}
+
+PositionComponent::PositionComponent(int x, int y):
+    x(x), y(y)
+{
+    std::cout << this << "\n";
+    std::cout << "PositionComponent constructed\n";
+}
+
 PositionComponent::~PositionComponent()
 {
     std::cout << "PositionComponent destroyed\n";
@@ -17,8 +31,6 @@ int PositionComponent::get_y()
 
 void PositionComponent::init()
 {
-    x = 0;
-    y = 0;
 }
 
 void PositionComponent::update()
@@ -35,4 +47,9 @@ void PositionComponent::setPos(int x, int y)
 {
     this->x = x;
     this->y = y;
+}
+
+std::shared_ptr<PositionComponent> PositionComponent::get_ptr()
+{
+    return shared_from_this();
 }

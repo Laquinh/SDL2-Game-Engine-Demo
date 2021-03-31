@@ -3,10 +3,12 @@
 
 #include "ComponentManager.hpp"
 
-class PositionComponent : public Component
+class PositionComponent : public Component, public std::enable_shared_from_this<PositionComponent>
 {
 public:
-	~PositionComponent();
+	PositionComponent();
+	PositionComponent(int, int);
+	~PositionComponent() override;
 	int get_x();
 	int get_y();
 
@@ -14,6 +16,8 @@ public:
 	void update() override;
 	void draw() override;
 	void setPos(int, int);
+
+	std::shared_ptr<PositionComponent> get_ptr();
 private:
 	int x, y;
 };

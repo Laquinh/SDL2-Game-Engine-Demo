@@ -13,7 +13,10 @@ Entity::~Entity()
 
 void Entity::update()
 {
-	for (auto& c : components) c->update();
+	for (auto& c : components)
+	{
+		c->update();
+	}
 }
 
 void Entity::draw()

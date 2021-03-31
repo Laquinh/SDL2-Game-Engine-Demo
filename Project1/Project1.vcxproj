@@ -171,6 +171,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="PositionComponent.cpp" />
+    <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +183,7 @@
     <ClInclude Include="GameObject.hpp" />
     <ClInclude Include="Map.hpp" />
     <ClInclude Include="PositionComponent.hpp" />
+    <ClInclude Include="SpriteComponent.hpp" />
     <ClInclude Include="TextureManager.hpp" />
   </ItemGroup>
   <ItemGroup>

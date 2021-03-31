@@ -9,6 +9,7 @@
 
 #include "ComponentManager.hpp"
 #include "PositionComponent.hpp"
+#include "SpriteComponent.hpp"
 
 #include <iostream>
 #include <memory>
@@ -17,10 +18,9 @@ unique_SDL_Renderer Game::renderer = nullptr;
 unique_SDL_Window Game::window = nullptr;
 
 std::unique_ptr<Map> map;
-std::unique_ptr<GameObject> scientist;
 
 ComponentManager manager;
-auto& otherScientist(manager.add_entity());
+auto& scientist(manager.add_entity());
 
 Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 {
@@ -47,10 +47,10 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 			std::cout << "Renderer created\n";
 		}
 
-		scientist = std::make_unique<GameObject>("assets/scientist.png", 80, 300);
 		map = std::make_unique<Map>();
 
-		otherScientist.add_component<PositionComponent>();
+		scientist.add_component<PositionComponent>(50, 50);
+		scientist.add_component<SpriteComponent>("assets/scientist.png");
 		isRunning = true;
 	}
 	else
@@ -76,16 +76,14 @@ void Game::handle_events()
 
 void Game::update()
 {
-	scientist->update();
 	manager.update();
-	std::cout << otherScientist.get_component<PositionComponent>().get_x() << ", " << otherScientist.get_component<PositionComponent>().get_y() << "\n";
 }
 
 void Game::render()
 {
 	SDL_RenderClear(renderer.get());
 	map->draw_map();
-	scientist->render();
+	manager.draw();
 	SDL_RenderPresent(renderer.get());
 }
 

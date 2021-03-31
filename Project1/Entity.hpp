@@ -15,7 +15,7 @@ constexpr size_t maxComponents = 32;
 
 using ComponentBitset = std::bitset<maxComponents>;
 //using ComponentArray = std::array<std::unique_ptr<Component>, maxComponents>;
-using ComponentVector = std::vector<std::unique_ptr<Component>>;
+using ComponentVector = std::vector<std::shared_ptr<Component>>;
 
 class Entity : public std::enable_shared_from_this<Entity>
 {
