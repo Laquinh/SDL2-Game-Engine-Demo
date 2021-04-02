@@ -7,16 +7,14 @@
 #include "GameObject.hpp"
 #include "Map.hpp"
 
-#include "ComponentManager.hpp"
-#include "TransformComponent.hpp"
-#include "SpriteComponent.hpp"
+#include "ECS.hpp"
 
 #include <iostream>
 #include <memory>
 
 unique_SDL_Renderer Game::renderer = nullptr;
 unique_SDL_Window Game::window = nullptr;
-
+SDL_Event Game::event;
 std::unique_ptr<Map> map;
 
 ComponentManager manager;
@@ -51,6 +49,7 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 
 		scientist.add_component<TransformComponent>(50, 50);
 		scientist.add_component<SpriteComponent>("assets/scientist.png");
+		scientist.add_component<KeyboardController>();
 		isRunning = true;
 	}
 	else
@@ -61,7 +60,6 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 
 void Game::handle_events()
 {
-	SDL_Event event;
 	SDL_PollEvent(&event);
 
 	switch (event.type)

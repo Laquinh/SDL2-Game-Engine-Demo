@@ -21,6 +21,7 @@ public:
 
 	static unique_SDL_Renderer renderer;
 	static unique_SDL_Window window;
+	static SDL_Event event;
 
 private:
 	bool isRunning;

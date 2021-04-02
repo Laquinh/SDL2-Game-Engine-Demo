@@ -7,6 +7,9 @@
 struct TransformComponent : public Component, public std::enable_shared_from_this<TransformComponent>
 {
 	Vector2D position;
+	Vector2D velocity;
+
+	int speed;
 
 	TransformComponent();
 	TransformComponent(int, int);

@@ -168,6 +168,7 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="KeyboardController.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
@@ -178,10 +179,12 @@
   <ItemGroup>
     <ClInclude Include="Component.hpp" />
     <ClInclude Include="ComponentManager.hpp" />
+    <ClInclude Include="ECS.hpp" />
     <ClInclude Include="destroyers.hpp" />
     <ClInclude Include="Entity.hpp" />
     <ClInclude Include="Game.hpp" />
     <ClInclude Include="GameObject.hpp" />
+    <ClInclude Include="KeyboardController.hpp" />
     <ClInclude Include="Map.hpp" />
     <ClInclude Include="TransformComponent.hpp" />
     <ClInclude Include="SpriteComponent.hpp" />
