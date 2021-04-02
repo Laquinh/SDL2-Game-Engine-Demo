@@ -16,9 +16,9 @@ public:
 	Component();
 	virtual ~Component();
 
-	virtual void init();
-	virtual void update();
-	virtual void draw();
+	virtual Component& init();
+	virtual Component& update();
+	virtual Component& draw();
 };
 
 #endif

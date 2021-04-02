@@ -8,8 +8,8 @@
 class KeyboardController : public Component
 {
 public:
-	void init() override;
-	void update() override;
+	KeyboardController& init() override;
+	KeyboardController& update() override;
 private:
 	std::shared_ptr<TransformComponent> transform;
 };

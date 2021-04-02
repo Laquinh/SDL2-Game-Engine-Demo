@@ -11,13 +11,14 @@ class SpriteComponent : public Component
 {
 public:
 	SpriteComponent();
-	SpriteComponent(std::string);
+	SpriteComponent(const std::string&);
+	SpriteComponent(const std::string&, const SDL_Rect&);
 
-	void set_texture(std::string);
+	SpriteComponent& set_texture(std::string);
 
-	void init() override;
-	void update() override;
-	void draw() override;
+	SpriteComponent& init() override;
+	SpriteComponent& update() override;
+	SpriteComponent& draw() override;
 private:
 	std::shared_ptr<TransformComponent> transform;
 	unique_SDL_Texture texture;

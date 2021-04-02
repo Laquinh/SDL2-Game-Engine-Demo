@@ -49,8 +49,8 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 
 		map = std::make_unique<Map>();
 
-		scientist.add_component<TransformComponent>(50, 50);
-		scientist.add_component<SpriteComponent>("assets/scientist.png");
+		scientist.add_component<TransformComponent>(50, 50).set_rect({ 3, 0, 10, 16 }).set_scale(2).reset_scale();
+		scientist.add_component<SpriteComponent>("assets/scientist.png", SDL_Rect{ 3, 0, 10, 16 });
 		scientist.add_component<KeyboardController>();
 		scientist.add_component<ColliderComponent>();
 
@@ -82,16 +82,13 @@ void Game::handle_events()
 
 void Game::update()
 {
+	SDL_Rect scientistPos = scientist.get_component<TransformComponent>().get_rect();
 	manager.update();
 	//std::cout << scientist.get_component<TransformComponent>().get_position() << "\n";
 	if (Collision::AABB(scientist.get_component<ColliderComponent>().collider, wall.get_component<ColliderComponent>().collider))
 	{
 		std::cout << "Collision!\n";
-		scientist.get_component<TransformComponent>().set_scale(2);
-	}
-	else
-	{
-		scientist.get_component<TransformComponent>().set_scale(1);
+		scientist.get_component<TransformComponent>().rect = scientistPos;
 	}
 }
 

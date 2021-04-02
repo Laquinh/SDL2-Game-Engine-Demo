@@ -64,6 +64,11 @@ Vector2D& Vector2D::operator/=(const Vector2D& v)
 	return divide(v);
 }
 
+Vector2D& Vector2D::operator*=(int)
+{
+	return (*this = (*this * 1));
+}
+
 Vector2D& operator+(Vector2D v1, const Vector2D& v2)
 {
 	v1.add(v2);

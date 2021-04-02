@@ -4,16 +4,19 @@ Component::Component() {
 	std::cout << "Component created\n";
 }
 
-void Component::init()
+Component& Component::init()
 {
+	return *this;
 }
 
-void Component::update()
+Component& Component::update()
 {
+	return *this;
 }
 
-void Component::draw()
+Component& Component::draw()
 {
+	return *this;
 }
 
 Component::~Component()

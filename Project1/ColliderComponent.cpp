@@ -1,11 +1,15 @@
 #include "ColliderComponent.hpp"
 
-void ColliderComponent::init()
+ColliderComponent& ColliderComponent::init()
 {
 	transform = entity.lock()->get_component<TransformComponent>().get_ptr();
+
+	return *this;
 }
 
-void ColliderComponent::update()
+ColliderComponent& ColliderComponent::update()
 {
 	collider = transform->rect;
+
+	return *this;
 }

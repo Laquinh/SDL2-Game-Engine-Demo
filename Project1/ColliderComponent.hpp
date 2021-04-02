@@ -11,8 +11,8 @@ struct ColliderComponent : public Component
 
 	std::shared_ptr<TransformComponent> transform;
 
-	void init() override;
-	void update() override;
+	ColliderComponent& init() override;
+	ColliderComponent& update() override;
 };
 
 #endif

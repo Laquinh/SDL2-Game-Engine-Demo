@@ -1,11 +1,13 @@
 #include "KeyboardController.hpp"
 
-void KeyboardController::init()
+KeyboardController& KeyboardController::init()
 {
 	transform = entity.lock()->get_component<TransformComponent>().get_ptr();
+
+	return *this;
 }
 
-void KeyboardController::update()
+KeyboardController& KeyboardController::update()
 {
 	if (Game::event.type == SDL_KEYDOWN)
 	{
@@ -39,4 +41,6 @@ void KeyboardController::update()
 			break;
 		}
 	}
+
+	return *this;
 }

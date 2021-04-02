@@ -29,6 +29,8 @@ struct Vector2D
 	Vector2D& operator*=(const Vector2D&);
 	Vector2D& operator/=(const Vector2D&);
 
+	Vector2D& operator*=(int);
+
 	friend std::ostream& operator<<(std::ostream& stream, const Vector2D& v);
 };
 

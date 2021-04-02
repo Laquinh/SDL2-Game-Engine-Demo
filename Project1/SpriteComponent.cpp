@@ -7,29 +7,43 @@ SpriteComponent::SpriteComponent():
 {
 }
 
-SpriteComponent::SpriteComponent(std::string file) :
+SpriteComponent::SpriteComponent(const std::string& file) :
 	texture(TextureManager::load_texture(file)),
 	srcRect({ 0,0,32,32 })
 {
 }
 
-void SpriteComponent::set_texture(std::string file)
+SpriteComponent::SpriteComponent(const std::string& file, const SDL_Rect& srcRect) :
+	texture(TextureManager::load_texture(file)),
+	srcRect(srcRect)
 {
-	texture = TextureManager::load_texture(file);
 }
 
-void SpriteComponent::init()
+SpriteComponent& SpriteComponent::set_texture(std::string file)
+{
+	texture = TextureManager::load_texture(file);
+
+	return *this;
+}
+
+SpriteComponent& SpriteComponent::init()
 {
 	transform = entity.lock()->get_component<TransformComponent>().get_ptr();
 	std::cout << transform.get() << "\n";
+
+	return *this;
 }
 
-void SpriteComponent::update()
+SpriteComponent& SpriteComponent::update()
 {
 	destRect = transform->rect;
+
+	return *this;
 }
 
-void SpriteComponent::draw()
+SpriteComponent& SpriteComponent::draw()
 {
 	TextureManager::draw(*texture, srcRect, destRect);
+
+	return *this;
 }

@@ -17,12 +17,13 @@ public:
 	TransformComponent(int, int);
 	~TransformComponent() override;
 
-	void init() override;
-	void update() override;
-	void draw() override;
-	void set_position(int, int);
+	TransformComponent& update() override;
+	TransformComponent& set_position(int, int);
+	TransformComponent& set_rect(const SDL_Rect&);
+	TransformComponent& reset_scale(int s = 1);
 	Vector2D get_position();
-	void set_scale(float);
+	SDL_Rect get_rect();
+	TransformComponent& set_scale(float);
 
 	std::shared_ptr<TransformComponent> get_ptr();
 
