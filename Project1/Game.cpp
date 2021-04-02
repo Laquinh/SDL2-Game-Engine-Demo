@@ -8,7 +8,7 @@
 #include "Map.hpp"
 
 #include "ComponentManager.hpp"
-#include "PositionComponent.hpp"
+#include "TransformComponent.hpp"
 #include "SpriteComponent.hpp"
 
 #include <iostream>
@@ -49,7 +49,7 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 
 		map = std::make_unique<Map>();
 
-		scientist.add_component<PositionComponent>(50, 50);
+		scientist.add_component<TransformComponent>(50, 50);
 		scientist.add_component<SpriteComponent>("assets/scientist.png");
 		isRunning = true;
 	}
@@ -77,6 +77,7 @@ void Game::handle_events()
 void Game::update()
 {
 	manager.update();
+	//std::cout << scientist.get_component<TransformComponent>().position << "\n";
 }
 
 void Game::render()

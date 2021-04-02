@@ -5,7 +5,7 @@
 
 #include "destroyers.hpp"
 #include "ComponentManager.hpp"
-#include "PositionComponent.hpp"
+#include "TransformComponent.hpp"
 
 class SpriteComponent : public Component
 {
@@ -19,7 +19,7 @@ public:
 	void update() override;
 	void draw() override;
 private:
-	std::shared_ptr<PositionComponent> position;
+	std::shared_ptr<TransformComponent> transform;
 	unique_SDL_Texture texture;
 	SDL_Rect srcRect, destRect;
 };

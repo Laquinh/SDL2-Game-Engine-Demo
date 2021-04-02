@@ -1,5 +1,6 @@
 #include "SpriteComponent.hpp"
 #include "TextureManager.hpp"
+#include <iostream>
 
 SpriteComponent::SpriteComponent():
 	srcRect({0,0,32,32})
@@ -19,15 +20,15 @@ void SpriteComponent::set_texture(std::string file)
 
 void SpriteComponent::init()
 {
-	position = entity.lock()->get_component<PositionComponent>().get_ptr();
-	std::cout << position.get() << "\n";
-	destRect = { position->get_x(), position->get_y(), 32, 32 };
+	transform = entity.lock()->get_component<TransformComponent>().get_ptr();
+	std::cout << transform.get() << "\n";
+	destRect = { transform->x, transform->y, 32, 32 };
 }
 
 void SpriteComponent::update()
 {
-	destRect.x = position->get_x();
-	destRect.y = position->get_y();
+	destRect.x = transform->x;
+	destRect.y = transform->y;
 }
 
 void SpriteComponent::draw()

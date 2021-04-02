@@ -1,0 +1,91 @@
+#include "Vector2D.hpp"
+
+Vector2D::Vector2D():
+	x(0),
+	y(0)
+{
+}
+
+Vector2D::Vector2D(float x, float y):
+	x(x),
+	y(y)
+{
+}
+
+Vector2D& Vector2D::add(const Vector2D& v)
+{
+	x += v.x;
+	y += v.y;
+	return *this;
+}
+
+Vector2D& Vector2D::substract(const Vector2D& v)
+{
+	x -= v.x;
+	y -= v.y;
+	return *this;
+}
+
+Vector2D& Vector2D::multiply(const Vector2D& v)
+{
+	x *= v.x;
+	y *= v.y;
+	return *this;
+}
+
+Vector2D& Vector2D::divide(const Vector2D& v)
+{
+	x /= v.x;
+	y /= v.y;
+	return *this;
+}
+
+Vector2D& Vector2D::operator+=(const Vector2D& v)
+{
+	return add(v);
+}
+
+Vector2D& Vector2D::operator-=(const Vector2D& v)
+{
+	return substract(v);
+}
+
+Vector2D& Vector2D::operator*=(const Vector2D& v)
+{
+	return multiply(v);
+}
+
+Vector2D& Vector2D::operator/=(const Vector2D& v)
+{
+	return divide(v);
+}
+
+Vector2D& operator+(Vector2D v1, const Vector2D& v2)
+{
+	v1.add(v2);
+	return v1;
+}
+
+Vector2D& operator-(Vector2D v1, const Vector2D& v2)
+{
+	v1.substract(v2);
+	return v1;
+}
+
+Vector2D& operator*(Vector2D v1, const Vector2D& v2)
+{
+	v1.multiply(v2);
+	return v1;
+}
+
+Vector2D& operator/(Vector2D v1, const Vector2D& v2)
+{
+	v1.divide(v2);
+	return v1;
+}
+
+std::ostream& operator<<(std::ostream& stream, const Vector2D& v)
+{
+	stream << "(" << v.x << ", " << v.y << ")";
+	return stream;
+}
