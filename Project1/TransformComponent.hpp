@@ -1,16 +1,18 @@
 #ifndef TRANSFORMCOMPONENT_HPP
 #define TRANSFORMCOMPONENT_HPP
 
-#include "ComponentManager.hpp"
+#include <memory>
+
+#include "SDL.h"
+#include "Component.hpp"
 #include "Vector2D.hpp"
 
-struct TransformComponent : public Component, public std::enable_shared_from_this<TransformComponent>
+class TransformComponent : public Component, public std::enable_shared_from_this<TransformComponent>
 {
-	Vector2D position;
-	Vector2D velocity;
-
-	int speed;
-
+	friend class SpriteComponent;
+	friend class KeyboardController;
+	friend struct ColliderComponent;
+public:
 	TransformComponent();
 	TransformComponent(int, int);
 	~TransformComponent() override;
@@ -19,8 +21,15 @@ struct TransformComponent : public Component, public std::enable_shared_from_thi
 	void update() override;
 	void draw() override;
 	void set_position(int, int);
+	Vector2D get_position();
+	void set_scale(float);
 
 	std::shared_ptr<TransformComponent> get_ptr();
+
+	SDL_Rect rect;
+	Vector2D velocity;
+	const int speed = 3;
+	float scale = 1;
 };
 
 #endif

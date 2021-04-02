@@ -6,20 +6,6 @@
 #include <iostream>
 #include <memory>
 
-using ComponentID = size_t;
-
-inline ComponentID get_component_type_ID() {
-	static ComponentID currentID = 0;
-	return currentID++;
-}
-
-template <typename T>
-ComponentID get_component_type_ID()
-{
-	static ComponentID typeID = get_component_type_ID();
-	return typeID;
-}
-
 class Entity;
 
 class Component

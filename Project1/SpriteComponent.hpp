@@ -4,7 +4,8 @@
 #include <iostream>
 
 #include "destroyers.hpp"
-#include "ECS.hpp"
+#include "Component.hpp"
+#include "TransformComponent.hpp"
 
 class SpriteComponent : public Component
 {

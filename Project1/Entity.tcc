@@ -3,9 +3,19 @@
 
 #include <iostream>
 
-inline size_t get_component_type_ID();
+using ComponentID = size_t;
+
+inline ComponentID get_component_type_ID() {
+	static ComponentID currentID = 0;
+	return currentID++;
+}
+
 template <typename T>
-size_t get_component_type_ID();
+ComponentID get_component_type_ID()
+{
+	static ComponentID typeID = get_component_type_ID();
+	return typeID;
+}
 
 template <typename T>
 bool Entity::has_component() const
@@ -18,14 +28,14 @@ T& Entity::add_component(TArgs && ...mArgs)
 {
 	//T* c = new T(std::forward<TArgs>(mArgs)...);
 
-	std::unique_ptr<T> unique_c(std::make_unique<T>(std::forward<TArgs>(mArgs)...));
-	unique_c->entity = weak_from_this();
-	//componentArray[get_component_type_ID<T>()] = std::unique_ptr<T>(c);
+	std::shared_ptr<T> c(std::make_shared<T>(std::forward<TArgs>(mArgs)...));
+	c->entity = weak_from_this();
+	componentArray[get_component_type_ID<T>()] = c;
 	componentBitset[get_component_type_ID<T>()] = true;
 
-	unique_c->init();
+	c->init();
 
-	components.emplace_back(std::move(unique_c));
+	components.emplace_back(std::move(c));
 
 	return dynamic_cast<T&>(*(components.back()));
 }
@@ -33,7 +43,7 @@ T& Entity::add_component(TArgs && ...mArgs)
 template<typename T>
 T& Entity::get_component() const
 {
-	return dynamic_cast<T&>(*(components[get_component_type_ID<T>()]));
+	return dynamic_cast<T&>(*(componentArray[get_component_type_ID<T>()].lock()));
 }
 
 #endif

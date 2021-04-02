@@ -10,6 +10,7 @@ struct Vector2D
 
 	Vector2D();
 	Vector2D(float, float);
+	~Vector2D();
 
 	Vector2D& add(const Vector2D&);
 	Vector2D& substract(const Vector2D&);

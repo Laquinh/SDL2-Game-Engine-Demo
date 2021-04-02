@@ -163,6 +163,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ColliderComponent.cpp" />
+    <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ComponentManager.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -177,6 +179,8 @@
     <ClCompile Include="Vector2D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ColliderComponent.hpp" />
+    <ClInclude Include="Collision.hpp" />
     <ClInclude Include="Component.hpp" />
     <ClInclude Include="ComponentManager.hpp" />
     <ClInclude Include="ECS.hpp" />

@@ -3,6 +3,7 @@
 
 #include "SDL.h"
 #include <memory>
+#include <iostream>
 
 template <auto delete_function>
 struct TypeDestroyer
@@ -10,6 +11,7 @@ struct TypeDestroyer
 	template <class T>
 	void operator()(T* ptr)
 	{
+		std::cout << ptr << " destroyed\n";
 		delete_function(ptr);
 	}
 };

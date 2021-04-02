@@ -2,6 +2,7 @@
 #define KEYBOARDCONTROLLER_HPP
 
 #include "Game.hpp"
+#include "Component.hpp"
 #include "ECS.hpp"
 
 class KeyboardController : public Component
