@@ -6,7 +6,7 @@
 
 struct TransformComponent : public Component, public std::enable_shared_from_this<TransformComponent>
 {
-	int x, y;
+	Vector2D position;
 
 	TransformComponent();
 	TransformComponent(int, int);

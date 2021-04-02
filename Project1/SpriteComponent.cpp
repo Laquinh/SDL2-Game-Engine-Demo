@@ -22,13 +22,13 @@ void SpriteComponent::init()
 {
 	transform = entity.lock()->get_component<TransformComponent>().get_ptr();
 	std::cout << transform.get() << "\n";
-	destRect = { transform->x, transform->y, 32, 32 };
+	destRect = { static_cast<int>(transform->position.x), static_cast<int>(transform->position.y), 32, 32 };
 }
 
 void SpriteComponent::update()
 {
-	destRect.x = transform->x;
-	destRect.y = transform->y;
+	destRect.x = static_cast<int>(transform->position.x);
+	destRect.y = static_cast<int>(transform->position.y);
 }
 
 void SpriteComponent::draw()

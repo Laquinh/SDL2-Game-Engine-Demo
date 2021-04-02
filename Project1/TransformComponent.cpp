@@ -2,7 +2,7 @@
 
 TransformComponent::TransformComponent() :
     //position({0, 0})
-    x(0), y(0)
+    position({ 0, 0 })
 {
     std::cout << this << "\n";
     std::cout << "TransformComponent constructed\n";
@@ -10,7 +10,7 @@ TransformComponent::TransformComponent() :
 
 TransformComponent::TransformComponent(int x, int y):
     //position({ static_cast<float>(x), static_cast<float>(y) })
-    x(x), y(y)
+    position({static_cast<float>(x), static_cast<float>(y)})
 {
     std::cout << this << "\n";
     std::cout << "TransformComponent constructed\n";
@@ -27,8 +27,8 @@ void TransformComponent::init()
 
 void TransformComponent::update()
 {
-    ++x;
-    ++y;
+    ++position.x;
+    ++position.y;
 }
 
 void TransformComponent::draw()
@@ -38,8 +38,7 @@ void TransformComponent::draw()
 void TransformComponent::set_position(int x, int y)
 {
     //position = { static_cast<float>(x), static_cast<float>(y) };
-    this->x = x;
-    this->y = y;
+    position = { static_cast<float>(x), static_cast<float>(y) };
 }
 
 std::shared_ptr<TransformComponent> TransformComponent::get_ptr()
