@@ -26,7 +26,7 @@ private:
 	std::shared_ptr<TransformComponent> transform;
 	std::shared_ptr<SpriteComponent> sprite;
 	
-	SDL_Rect rect;
+	SDL_Rect srcRect, destRect;
 	int id;
 	std::string file;
 };

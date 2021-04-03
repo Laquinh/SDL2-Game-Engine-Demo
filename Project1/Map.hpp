@@ -12,13 +12,12 @@ public:
 	Map();
 	~Map();
 
-	template<size_t cols, size_t rows>
-	void load_map(const std::array<std::array<int, cols>, rows>&);
+	static void load_map(const std::string& file, int sizeX, int sizeY);
 
-	void draw_map();
+	//void draw_map();
 
 private:
-	enum Type {
+	/*enum Type {
 		GRASS,
 		DIRT,
 		WATER
@@ -30,7 +29,7 @@ private:
 	unique_SDL_Texture dirt; 
 	unique_SDL_Texture water;
 
-	std::array<std::array<int, 25>, 20> map;
+	std::array<std::array<int, 25>, 20> map;*/
 };
 
 #endif

@@ -1,9 +1,11 @@
 #include "Map.hpp"
 #include "TextureManager.hpp"
+#include "Game.hpp"
 
+#include <fstream>
 #include <array>
 
-std::array<std::array<int, 25>, 20> level1 =
+/*std::array<std::array<int, 25>, 20> level1 =
 {{
 	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -25,14 +27,14 @@ std::array<std::array<int, 25>, 20> level1 =
 	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 	{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-}};
+}};*/
 
-Map::Map() :
-	grass(TextureManager::load_texture("assets/grass.png")),
+Map::Map()// :
+	/*grass(TextureManager::load_texture("assets/grass.png")),
 	dirt(TextureManager::load_texture("assets/dirt.png")),
-	water(TextureManager::load_texture("assets/water.png"))
+	water(TextureManager::load_texture("assets/water.png"))*/
 {
-	load_map(level1);
+	/*load_map(level1);
 
 	srcRect.x = 0;
 	srcRect.y = 0;
@@ -42,20 +44,30 @@ Map::Map() :
 	destRect.x = 0;
 	destRect.y = 0;
 	destRect.w = 32;
-	destRect.h = 32;
+	destRect.h = 32;*/
 }
 
 Map::~Map()
 {
 }
 
-template<size_t cols, size_t rows>
-void Map::load_map(const std::array<std::array<int, cols>, rows>& arr)
+void Map::load_map(const std::string& file, int sizeX, int sizeY)
 {
-	map = arr;
+	int tile;
+	std::fstream mapFile(file, std::ios_base::in);
+
+	for (int y = 0; y < sizeY; ++y)
+	{
+		for (int x = 0; x < sizeX; ++x)
+		{
+			mapFile >> tile;
+			Game::add_tile(x, y, tile);
+			mapFile.ignore();
+		}
+	}
 }
 
-void Map::draw_map()
+/*void Map::draw_map()
 {
 	Type type;
 	for (int r = 0; r < map.size(); ++r)
@@ -81,3 +93,4 @@ void Map::draw_map()
 		}
 	}
 }
+*/

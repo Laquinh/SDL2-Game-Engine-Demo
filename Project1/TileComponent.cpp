@@ -1,29 +1,29 @@
 #include "TileComponent.hpp"
+#include "ColliderComponent.hpp"
 
 TileComponent::TileComponent(const SDL_Rect& rect, int id):
-	rect(rect),
-	id(id)
+	destRect(rect),
+	id(id-1)
 {
-	switch (id)
+	if (this->id <= 20)
 	{
-	case GRASS:
-		file = "assets/grass.png";
-		break;
-	case DIRT:
-		file = "assets/dirt.png";
-		break;
-	case WATER:
-		file = "assets/water.png";
-		break;
-	case WALL:
+		file = "assets/tileset.png";
+		std::cout << this->id << "%3 = " << (this->id % 3) << "\n";
+		this->srcRect = { (this->id % 3) * 16, this->id / 3 * 16, 16, 16 };
+	}
+	else
+	{
 		file = "assets/wall.png";
+		this->srcRect = { 0, 0, 16, 16 };
 	}
 }
 
 TileComponent& TileComponent::init()
 {
-	transform = (entity.lock()->add_component<TransformComponent>(rect)).shared_from_this();
-	sprite = (entity.lock()->add_component<SpriteComponent>(file)).shared_from_this();
+	transform = (entity.lock()->add_component<TransformComponent>(destRect)).shared_from_this();
+	sprite = (entity.lock()->add_component<SpriteComponent>(file)).set_srcRect(srcRect).shared_from_this();
+	if(id == 16) entity.lock()->add_component<ColliderComponent>("water");
+	if(id == 21) entity.lock()->add_component<ColliderComponent>("wall");
 
 	return *this;
 }

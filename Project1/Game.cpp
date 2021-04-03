@@ -18,13 +18,11 @@
 unique_SDL_Renderer Game::renderer = nullptr;
 unique_SDL_Window Game::window = nullptr;
 SDL_Event Game::event;
-std::unique_ptr<Map> map;
 std::vector<std::shared_ptr<ColliderComponent>> Game::colliders = {};
 
 ComponentManager manager;
-auto& wall(manager.add_entity());
-auto& wall2(manager.add_entity());
 auto& scientist(manager.add_entity());
+std::unique_ptr<Map> map;
 
 Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 {
@@ -51,17 +49,12 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 			std::cout << "Renderer created\n";
 		}
 
-		map = std::make_unique<Map>();
+		Map::load_map("assets/level1.map", 20, 20);
 
 		scientist.add_component<TransformComponent>(50, 50).set_rect({ 3, 0, 10, 16 }).set_scale(2).reset_scale();
 		scientist.add_component<SpriteComponent>("assets/scientist.png", SDL_Rect{ 3, 0, 10, 16 });
 		scientist.add_component<KeyboardController>();
 		scientist.add_component<ColliderComponent>("scientist");
-
-		wall.add_component<TileComponent>(SDL_Rect{ 256, 256, 32, 32 }, TileComponent::Type::WALL);
-		wall.add_component<ColliderComponent>("wall");
-		wall2.add_component<TileComponent>(SDL_Rect{ 512, 256, 32, 32 }, TileComponent::Type::DIRT);
-		wall2.add_component<ColliderComponent>("dirt");
 
 		isRunning = true;
 	}
@@ -103,8 +96,8 @@ void Game::update()
 void Game::render()
 {
 	SDL_RenderClear(renderer.get());
-	map->draw_map();
 	manager.draw();
+	scientist.draw();
 	SDL_RenderPresent(renderer.get());
 }
 
@@ -113,6 +106,12 @@ Game::~Game()
 	SDL_Quit();
 
 	std::cout << "Game cleaned\n";
+}
+
+void Game::add_tile(int x, int y, int id)
+{
+	auto& tile(manager.add_entity());
+	tile.add_component<TileComponent>(SDL_Rect{ x * 32, y * 32, 32, 32 }, id);
 }
 
 bool Game::is_running()

@@ -15,6 +15,7 @@ public:
 	SpriteComponent(const std::string&, const SDL_Rect&);
 
 	SpriteComponent& set_texture(std::string);
+	SpriteComponent& set_srcRect(const SDL_Rect& rect);
 
 	SpriteComponent& init() override;
 	SpriteComponent& update() override;

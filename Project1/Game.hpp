@@ -19,6 +19,7 @@ public:
 	void update();
 	void render();
 
+	static void add_tile(int x, int y, int id);
 	bool is_running();
 
 	static unique_SDL_Renderer renderer;

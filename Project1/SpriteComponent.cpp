@@ -26,6 +26,13 @@ SpriteComponent& SpriteComponent::set_texture(std::string file)
 	return *this;
 }
 
+SpriteComponent& SpriteComponent::set_srcRect(const SDL_Rect& rect)
+{
+	srcRect = rect;
+
+	return *this;
+}
+
 SpriteComponent& SpriteComponent::init()
 {
 	transform = entity.lock()->get_component<TransformComponent>().shared_from_this();
