@@ -2,7 +2,7 @@
 
 KeyboardController& KeyboardController::init()
 {
-	transform = entity.lock()->get_component<TransformComponent>().get_ptr();
+	transform = entity.lock()->get_component<TransformComponent>().shared_from_this();
 
 	return *this;
 }

@@ -28,7 +28,7 @@ SpriteComponent& SpriteComponent::set_texture(std::string file)
 
 SpriteComponent& SpriteComponent::init()
 {
-	transform = entity.lock()->get_component<TransformComponent>().get_ptr();
+	transform = entity.lock()->get_component<TransformComponent>().shared_from_this();
 	std::cout << transform.get() << "\n";
 
 	return *this;

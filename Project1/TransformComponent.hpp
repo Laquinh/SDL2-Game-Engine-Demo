@@ -15,17 +15,16 @@ class TransformComponent : public Component, public std::enable_shared_from_this
 public:
 	TransformComponent();
 	TransformComponent(int, int);
-	~TransformComponent() override;
+	TransformComponent(const SDL_Rect&);
+	~TransformComponent();
 
 	TransformComponent& update() override;
 	TransformComponent& set_position(int, int);
 	TransformComponent& set_rect(const SDL_Rect&);
-	TransformComponent& reset_scale(int s = 1);
+	TransformComponent& reset_scale(float s = 1);
 	Vector2D get_position();
 	SDL_Rect get_rect();
 	TransformComponent& set_scale(float);
-
-	std::shared_ptr<TransformComponent> get_ptr();
 
 	SDL_Rect rect;
 	Vector2D velocity;

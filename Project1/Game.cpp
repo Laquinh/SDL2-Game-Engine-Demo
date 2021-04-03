@@ -6,9 +6,11 @@
 #include "TextureManager.hpp"
 #include "GameObject.hpp"
 #include "Map.hpp"
+#include "ColliderComponent.hpp"
 
 #include "ECS.hpp"
 #include "Collision.hpp"
+#include "TileComponent.hpp"
 
 #include <iostream>
 #include <memory>
@@ -17,9 +19,11 @@ unique_SDL_Renderer Game::renderer = nullptr;
 unique_SDL_Window Game::window = nullptr;
 SDL_Event Game::event;
 std::unique_ptr<Map> map;
+std::vector<std::shared_ptr<ColliderComponent>> Game::colliders = {};
 
 ComponentManager manager;
 auto& wall(manager.add_entity());
+auto& wall2(manager.add_entity());
 auto& scientist(manager.add_entity());
 
 Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
@@ -52,12 +56,13 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 		scientist.add_component<TransformComponent>(50, 50).set_rect({ 3, 0, 10, 16 }).set_scale(2).reset_scale();
 		scientist.add_component<SpriteComponent>("assets/scientist.png", SDL_Rect{ 3, 0, 10, 16 });
 		scientist.add_component<KeyboardController>();
-		scientist.add_component<ColliderComponent>();
+		scientist.add_component<ColliderComponent>("scientist");
 
-		wall.add_component<TransformComponent>(256, 256);
-		wall.add_component<SpriteComponent>("assets/wall.png");
-		wall.add_component<ColliderComponent>();
-		
+		wall.add_component<TileComponent>(SDL_Rect{ 256, 256, 32, 32 }, TileComponent::Type::WALL);
+		wall.add_component<ColliderComponent>("wall");
+		wall2.add_component<TileComponent>(SDL_Rect{ 512, 256, 32, 32 }, TileComponent::Type::DIRT);
+		wall2.add_component<ColliderComponent>("dirt");
+
 		isRunning = true;
 	}
 	else
@@ -84,11 +89,14 @@ void Game::update()
 {
 	SDL_Rect scientistPos = scientist.get_component<TransformComponent>().get_rect();
 	manager.update();
-	//std::cout << scientist.get_component<TransformComponent>().get_position() << "\n";
-	if (Collision::AABB(scientist.get_component<ColliderComponent>().collider, wall.get_component<ColliderComponent>().collider))
+	
+	for (const auto& c : colliders)
 	{
-		std::cout << "Collision!\n";
-		scientist.get_component<TransformComponent>().rect = scientistPos;
+		auto& s = scientist.get_component<ColliderComponent>();
+		if (s.tag != c->tag && (Collision::AABB(s, *c)))
+		{
+			scientist.get_component<TransformComponent>().rect = scientistPos;
+		}
 	}
 }
 

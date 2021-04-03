@@ -5,6 +5,8 @@
 #include "SDL_image.h"
 #include "destroyers.hpp"
 
+#include "ColliderComponent.hpp"
+
 #include <iostream>
 #include <memory>
 
@@ -21,6 +23,7 @@ public:
 
 	static unique_SDL_Renderer renderer;
 	static unique_SDL_Window window;
+	static std::vector<std::shared_ptr<ColliderComponent>> colliders;
 	static SDL_Event event;
 
 private:

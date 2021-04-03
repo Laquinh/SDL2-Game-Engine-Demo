@@ -7,7 +7,7 @@
 #include "Component.hpp"
 #include "TransformComponent.hpp"
 
-class SpriteComponent : public Component
+class SpriteComponent : public Component, public std::enable_shared_from_this<SpriteComponent>
 {
 public:
 	SpriteComponent();
