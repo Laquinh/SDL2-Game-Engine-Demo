@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -82,8 +82,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\ander\Desktop\Dev\C++\SDL\SDL2_image-devel-2.0.5-VC\SDL2_image-2.0.5\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\ander\Desktop\Dev\C++\SDL\SDL2_image-devel-2.0.5-VC\SDL2_image-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\Desktop\Ander-Laquinf\Dev\Programming\C-C++\SDL2_image-2.0.5\lib\x64;C:\Users\ander\Desktop\Dev\C++\SDL\SDL2_image-devel-2.0.5-VC\SDL2_image-2.0.5\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\ander\Desktop\Dev\C++\SDL\SDL2_image-devel-2.0.5-VC\SDL2_image-2.0.5\lib\x64;E:\Desktop\Ander-Laquinf\Dev\Programming\C-C++\SDL2_image-2.0.5\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -132,13 +132,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\ander\Desktop\Dev\C++\SDL\SDL2_image-devel-2.0.5-VC\SDL2_image-2.0.5\include;C:\Users\ander\Desktop\Dev\C++\SDL\SDL2-2.0.14\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\Desktop\Ander-Laquinf\Dev\Programming\C-C++\SDL2-2.0.14\include;E:\Desktop\Ander-Laquinf\Dev\Programming\C-C++\SDL2_image-2.0.5\include;C:\Users\ander\Desktop\Dev\C++\SDL\SDL2_image-devel-2.0.5-VC\SDL2_image-2.0.5\include;C:\Users\ander\Desktop\Dev\C++\SDL\SDL2-2.0.14\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\ander\Desktop\Dev\C++\SDL\SDL2_image-devel-2.0.5-VC\SDL2_image-2.0.5\lib\x64;C:\Users\ander\Desktop\Dev\C++\SDL\SDL2-2.0.14\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>E:\Desktop\Ander-Laquinf\Dev\Programming\C-C++\SDL2_image-2.0.5\lib\x64;E:\Desktop\Ander-Laquinf\Dev\Programming\C-C++\SDL2-2.0.14\lib\x64;C:\Users\ander\Desktop\Dev\C++\SDL\SDL2_image-devel-2.0.5-VC\SDL2_image-2.0.5\lib\x64;C:\Users\ander\Desktop\Dev\C++\SDL\SDL2-2.0.14\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -162,23 +162,6 @@
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="ColliderComponent.cpp" />
-    <ClCompile Include="Collision.cpp" />
-    <ClCompile Include="Component.cpp" />
-    <ClCompile Include="ComponentManager.cpp" />
-    <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="KeyboardController.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Map.cpp" />
-    <ClCompile Include="TileComponent.cpp" />
-    <ClCompile Include="TransformComponent.cpp" />
-    <ClCompile Include="SpriteComponent.cpp" />
-    <ClCompile Include="TextureManager.cpp" />
-    <ClCompile Include="Vector2D.cpp" />
-  </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ColliderComponent.hpp" />
     <ClInclude Include="Collision.hpp" />
@@ -206,7 +189,7 @@
     <Image Include="assets\water.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Entity.tcc" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
