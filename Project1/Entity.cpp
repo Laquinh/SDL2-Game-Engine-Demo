@@ -1,7 +1,8 @@
 #include "Entity.hpp"
 #include <memory>
 
-Entity::Entity()
+Entity::Entity(const std::weak_ptr<ComponentManager>& manager) :
+	manager(manager)
 {
 	std::cout << "Entity created\n";
 }
@@ -32,4 +33,20 @@ bool Entity::is_active() const
 void Entity::destroy()
 {
 	active = false;
+}
+
+bool Entity::has_group(Group group)
+{
+	return groupBitset[group];
+}
+
+void Entity::add_group(Group group)
+{
+	groupBitset[group] = true;
+	manager.lock()->add_to_group(shared_from_this(), group);
+}
+
+void Entity::remove_group(Group group)
+{
+	groupBitset[group] = false;
 }

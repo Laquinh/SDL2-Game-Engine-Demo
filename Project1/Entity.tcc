@@ -43,7 +43,7 @@ T& Entity::add_component(TArgs && ...mArgs)
 template<typename T>
 T& Entity::get_component() const
 {
-	return dynamic_cast<T&>(*(componentArray[get_component_type_ID<T>()].lock()));
+	return dynamic_cast<T&>(*(componentArray[get_component_type_ID<T>()].lock().get()));
 }
 
 #endif

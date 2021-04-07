@@ -20,9 +20,17 @@ unique_SDL_Window Game::window = nullptr;
 SDL_Event Game::event;
 std::vector<std::shared_ptr<ColliderComponent>> Game::colliders = {};
 
-ComponentManager manager;
-auto& scientist(manager.add_entity());
+std::shared_ptr<ComponentManager> manager = std::make_shared<ComponentManager>();
+auto& scientist(manager->add_entity());
 std::unique_ptr<Map> map;
+
+enum GroupLabels : std::size_t
+{
+	groupMap,
+	groupPlayers,
+	groupEnemies,
+	groupColliders
+};
 
 Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 {
@@ -55,6 +63,7 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 		scientist.add_component<SpriteComponent>("assets/scientist.png", SDL_Rect{ 3, 0, 10, 16 });
 		scientist.add_component<KeyboardController>();
 		scientist.add_component<ColliderComponent>("scientist");
+		scientist.add_group(groupPlayers);
 
 		isRunning = true;
 	}
@@ -81,7 +90,7 @@ void Game::handle_events()
 void Game::update()
 {
 	SDL_Rect scientistPos = scientist.get_component<TransformComponent>().get_rect();
-	manager.update();
+	manager->update();
 	
 	for (const auto& c : colliders)
 	{
@@ -96,8 +105,11 @@ void Game::update()
 void Game::render()
 {
 	SDL_RenderClear(renderer.get());
-	manager.draw();
-	scientist.draw();
+	/*manager.draw();
+	scientist.draw();*/
+	manager->draw_group(groupMap);
+	manager->draw_group(groupPlayers);
+	manager->draw_group(groupEnemies);
 	SDL_RenderPresent(renderer.get());
 }
 
@@ -110,8 +122,9 @@ Game::~Game()
 
 void Game::add_tile(int x, int y, int id)
 {
-	auto& tile(manager.add_entity());
+	auto& tile(manager->add_entity());
 	tile.add_component<TileComponent>(SDL_Rect{ x * 32, y * 32, 32, 32 }, id);
+	tile.add_group(groupMap);
 }
 
 bool Game::is_running()
