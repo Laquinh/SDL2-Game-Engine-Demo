@@ -22,6 +22,7 @@ std::vector<std::shared_ptr<ColliderComponent>> Game::colliders = {};
 
 std::shared_ptr<ComponentManager> manager = std::make_shared<ComponentManager>();
 auto& scientist(manager->add_entity());
+auto& sign(manager->add_entity());
 std::unique_ptr<Map> map;
 
 enum GroupLabels : std::size_t
@@ -64,6 +65,9 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 		scientist.add_component<KeyboardController>();
 		scientist.add_component<ColliderComponent>("scientist");
 		scientist.add_group(groupPlayers);
+
+		sign.add_component<TileComponent>(13, 5, 32, 32, 23);
+		sign.add_group(groupMap);
 
 		isRunning = true;
 	}
@@ -120,10 +124,10 @@ Game::~Game()
 	std::cout << "Game cleaned\n";
 }
 
-void Game::add_tile(int x, int y, int id)
+void Game::add_tile(int row, int column, int id)
 {
 	auto& tile(manager->add_entity());
-	tile.add_component<TileComponent>(SDL_Rect{ x * 32, y * 32, 32, 32 }, id);
+	tile.add_component<TileComponent>(row, column, 32, 32, id);
 	tile.add_group(groupMap);
 }
 

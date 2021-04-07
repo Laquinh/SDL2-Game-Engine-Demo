@@ -12,7 +12,7 @@ class TileComponent : public Component
 public:
 	TileComponent() = default;
 	TileComponent(const SDL_Rect& rect, int id);
-
+	TileComponent(int row, int column, int width, int height, int id);
 	TileComponent& init() override;
 
 	static enum Type {
@@ -22,6 +22,7 @@ public:
 		WALL
 	};
 private:
+	void construct();
 
 	std::shared_ptr<TransformComponent> transform;
 	std::shared_ptr<SpriteComponent> sprite;

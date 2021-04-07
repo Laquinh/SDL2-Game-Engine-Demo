@@ -5,15 +5,32 @@ TileComponent::TileComponent(const SDL_Rect& rect, int id):
 	destRect(rect),
 	id(id-1)
 {
+	construct();
+}
+
+TileComponent::TileComponent(int row, int column, int width, int height, int id):
+	destRect({column*width, row*height, width, height}),
+	id(id-1)
+{
+	construct();
+}
+
+void TileComponent::construct()
+{
 	if (this->id <= 20)
 	{
 		file = "assets/tileset.png";
 		this->srcRect = { (this->id % 3) * 16, this->id / 3 * 16, 16, 16 };
 	}
-	else
+	else if(this->id == 21)
 	{
 		file = "assets/wall.png";
 		this->srcRect = { 0, 0, 16, 16 };
+	}
+	else
+	{
+		file = "assets/sign.png";
+		this->srcRect = { 0, 0, 32, 32 };
 	}
 }
 
