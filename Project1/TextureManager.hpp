@@ -3,14 +3,15 @@
 
 #include "SDL.h"
 #include "destroyers.hpp"
-#include <iostream>
+#include <map>
 #include <memory>
+#include <string>
 
-class TextureManager
+struct TextureManager
 {
-public:
-	static unique_SDL_Texture load_texture(const std::string& file);
+	static std::shared_ptr<SDL_Texture> load_texture(std::string file);
 	static void draw(SDL_Texture&, const SDL_Rect& src, const SDL_Rect& dest);
+	static std::map<std::string, std::shared_ptr<SDL_Texture>> textures;
 };
 
 #endif

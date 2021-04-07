@@ -1,7 +1,6 @@
 #include "Component.hpp"
 
 Component::Component() {
-	std::cout << "Component created\n";
 }
 
 Component& Component::init()
@@ -21,5 +20,4 @@ Component& Component::draw()
 
 Component::~Component()
 {
-	std::cout << "Component destroyed\n";
 }

@@ -1,7 +1,7 @@
 #ifndef GAMEOBJECT_HPP
 #define GAMEOBJECT_HPP
 
-#include "SDL.h"
+/*#include "SDL.h"
 #include "destroyers.hpp"
 #include "TextureManager.hpp"
 #include <iostream>
@@ -20,6 +20,6 @@ private:
 
 	unique_SDL_Texture texture;
 	SDL_Rect srcRect, destRect;
-};
+};*/
 
 #endif

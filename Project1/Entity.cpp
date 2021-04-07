@@ -4,12 +4,10 @@
 Entity::Entity(const std::weak_ptr<ComponentManager>& manager) :
 	manager(manager)
 {
-	std::cout << "Entity created\n";
 }
 
 Entity::~Entity()
 {
-	std::cout << "Entity destroyed\n";
 }
 
 void Entity::update()

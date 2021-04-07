@@ -36,7 +36,6 @@ SpriteComponent& SpriteComponent::set_srcRect(const SDL_Rect& rect)
 SpriteComponent& SpriteComponent::init()
 {
 	transform = entity.lock()->get_component<TransformComponent>().shared_from_this();
-	std::cout << transform.get() << "\n";
 
 	return *this;
 }

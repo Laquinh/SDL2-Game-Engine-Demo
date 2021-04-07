@@ -5,8 +5,6 @@ TransformComponent::TransformComponent() :
     rect({ 0, 0, 32, 32 }),
     velocity({ 0, 0 })
 {
-    std::cout << this << "\n";
-    std::cout << "TransformComponent constructed\n";
 }
 
 TransformComponent::TransformComponent(int x, int y):
@@ -14,8 +12,6 @@ TransformComponent::TransformComponent(int x, int y):
     rect({x, y, 32, 32}),
     velocity({ 0, 0 })
 {
-    std::cout << this << "\n";
-    std::cout << "TransformComponent constructed\n";
 }
 
 TransformComponent::TransformComponent(const SDL_Rect& rect) :
@@ -23,13 +19,10 @@ TransformComponent::TransformComponent(const SDL_Rect& rect) :
     rect(rect),
     velocity({ 0, 0 })
 {
-    std::cout << this << "\n";
-    std::cout << "TransformComponent constructed\n";
 }
 
 TransformComponent::~TransformComponent()
 {
-    std::cout << "TransformComponent destroyed\n";
 }
 
 TransformComponent& TransformComponent::update()

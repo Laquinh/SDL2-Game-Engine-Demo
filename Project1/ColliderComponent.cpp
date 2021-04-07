@@ -4,7 +4,6 @@
 
 ColliderComponent::ColliderComponent()
 {
-	std::cout << "ColliderComponent created\n";
 }
 
 ColliderComponent::ColliderComponent(const std::string& tag):

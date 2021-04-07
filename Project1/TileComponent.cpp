@@ -8,7 +8,6 @@ TileComponent::TileComponent(const SDL_Rect& rect, int id):
 	if (this->id <= 20)
 	{
 		file = "assets/tileset.png";
-		std::cout << this->id << "%3 = " << (this->id % 3) << "\n";
 		this->srcRect = { (this->id % 3) * 16, this->id / 3 * 16, 16, 16 };
 	}
 	else

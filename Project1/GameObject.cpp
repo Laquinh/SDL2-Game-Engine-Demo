@@ -1,4 +1,4 @@
-#include "GameObject.hpp"
+/*#include "GameObject.hpp"
 #include "Game.hpp"
 
 GameObject::GameObject(std::string file, int x, int y) :
@@ -33,3 +33,4 @@ void GameObject::render()
 {
 	TextureManager::draw(*texture, srcRect, destRect);
 }
+*/

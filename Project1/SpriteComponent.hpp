@@ -22,7 +22,7 @@ public:
 	SpriteComponent& draw() override;
 private:
 	std::shared_ptr<TransformComponent> transform;
-	unique_SDL_Texture texture;
+	std::shared_ptr<SDL_Texture> texture;
 	SDL_Rect srcRect, destRect;
 };
 
