@@ -4,7 +4,8 @@
 
 #undef main
 
-int main() {
+int main()
+{
 	const int fps = 60;
 	const int frameDelay = 1000 / fps;
 

@@ -9,13 +9,31 @@ SpriteComponent::SpriteComponent():
 
 SpriteComponent::SpriteComponent(const std::string& file) :
 	texture(TextureManager::load_texture(file)),
-	srcRect({ 0,0,32,32 })
+	srcRect({ 0,0,16,16 })
+{
+}
+
+SpriteComponent::SpriteComponent(const std::string& file, int frames, int speed) :
+	texture(TextureManager::load_texture(file)),
+	srcRect({ 0,0,24,24 }),
+	frames(frames),
+	speed(speed),
+	animated(true)
 {
 }
 
 SpriteComponent::SpriteComponent(const std::string& file, const SDL_Rect& srcRect) :
 	texture(TextureManager::load_texture(file)),
 	srcRect(srcRect)
+{
+}
+
+SpriteComponent::SpriteComponent(const std::string& file, const SDL_Rect&, int frames, int speed):
+	texture(TextureManager::load_texture(file)),
+	srcRect(srcRect),
+	frames(frames),
+	speed(speed),
+	animated(true)
 {
 }
 
@@ -42,6 +60,10 @@ SpriteComponent& SpriteComponent::init()
 
 SpriteComponent& SpriteComponent::update()
 {
+	if (animated)
+	{
+		srcRect.x = srcRect.w * static_cast<int>((SDL_GetTicks() / speed) % frames);
+	}
 	destRect = transform->rect;
 
 	return *this;

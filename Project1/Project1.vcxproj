@@ -133,7 +133,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>E:\Desktop\Ander-Laquinf\Dev\Programming\C-C++\SDL2-2.0.14\include;E:\Desktop\Ander-Laquinf\Dev\Programming\C-C++\SDL2_image-2.0.5\include;C:\Users\ander\Desktop\Dev\C++\SDL\SDL2_image-devel-2.0.5-VC\SDL2_image-2.0.5\include;C:\Users\ander\Desktop\Dev\C++\SDL\SDL2-2.0.14\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

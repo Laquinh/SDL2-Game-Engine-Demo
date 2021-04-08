@@ -45,7 +45,7 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 	{
 		std::cout << "Subsystem initialised...\n";
 
-		window = (unique_SDL_Window)SDL_CreateWindow(title.c_str(), x, y, w, h, fullscreen);
+		window = (unique_SDL_Window)SDL_CreateWindow(title.c_str(), x, y, w, h, flags);
 		if (window)
 		{
 			std::cout << "Window created\n";
@@ -60,8 +60,8 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 
 		Map::load_map("assets/level1.map", 20, 20);
 
-		scientist.add_component<TransformComponent>(50, 50).set_rect({ 3, 0, 10, 16 }).set_scale(2).reset_scale();
-		scientist.add_component<SpriteComponent>("assets/scientist.png", SDL_Rect{ 3, 0, 10, 16 });
+		scientist.add_component<TransformComponent>(SDL_Rect{ 50, 50, 48, 48 });
+		scientist.add_component<SpriteComponent>("assets/alien-idle.png", 4, 110);
 		scientist.add_component<KeyboardController>();
 		scientist.add_component<ColliderComponent>("scientist");
 		scientist.add_group(groupPlayers);

@@ -24,7 +24,7 @@ bool Entity::has_component() const
 }
 
 template<typename T, typename ...TArgs>
-T& Entity::add_component(TArgs && ...mArgs)
+T& Entity::add_component(TArgs&& ...mArgs)
 {
 	//T* c = new T(std::forward<TArgs>(mArgs)...);
 

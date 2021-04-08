@@ -30,7 +30,7 @@ void TileComponent::construct()
 	else
 	{
 		file = "assets/sign.png";
-		this->srcRect = { 0, 0, 32, 32 };
+		this->srcRect = { 0, 0, 16, 16 };
 	}
 }
 
