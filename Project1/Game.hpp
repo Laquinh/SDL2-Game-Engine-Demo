@@ -22,10 +22,10 @@ public:
 	static void add_tile(int x, int y, int id);
 	bool is_running();
 
-	static unique_SDL_Renderer renderer;
-	static unique_SDL_Window window;
-	static std::vector<std::shared_ptr<ColliderComponent>> colliders;
-	static SDL_Event event;
+	static inline unique_SDL_Renderer renderer = nullptr;
+	static inline unique_SDL_Window window = nullptr;
+	static inline std::vector<std::shared_ptr<ColliderComponent>> colliders = {};
+	static inline SDL_Event event;
 
 private:
 	bool isRunning;

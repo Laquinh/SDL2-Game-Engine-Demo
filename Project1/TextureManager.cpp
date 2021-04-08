@@ -9,8 +9,6 @@
 #include <memory>
 #include <map>
 
-std::map<std::string, std::shared_ptr<SDL_Texture>> TextureManager::textures;
-
 /*void del(SDL_Texture* t)
 {
     SDL_DestroyTexture(t);

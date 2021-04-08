@@ -15,10 +15,10 @@
 #include <iostream>
 #include <memory>
 
-unique_SDL_Renderer Game::renderer = nullptr;
+/*unique_SDL_Renderer Game::renderer = nullptr;
 unique_SDL_Window Game::window = nullptr;
 SDL_Event Game::event;
-std::vector<std::shared_ptr<ColliderComponent>> Game::colliders = {};
+std::vector<std::shared_ptr<ColliderComponent>> Game::colliders = {};*/
 
 std::shared_ptr<ComponentManager> manager = std::make_shared<ComponentManager>();
 auto& scientist(manager->add_entity());
