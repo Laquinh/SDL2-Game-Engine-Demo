@@ -173,6 +173,7 @@
     <ClInclude Include="ECS.hpp" />
     <ClInclude Include="destroyers.hpp" />
     <ClInclude Include="EnablePolymorphicShared.hpp" />
+    <ClInclude Include="Engine.hpp" />
     <ClInclude Include="Entity.hpp" />
     <ClInclude Include="Game.hpp" />
     <ClInclude Include="GameObject.hpp" />
@@ -204,6 +205,7 @@
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ComponentManager.cpp" />
+    <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />

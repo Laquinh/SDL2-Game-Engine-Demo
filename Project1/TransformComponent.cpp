@@ -1,4 +1,5 @@
 #include "TransformComponent.hpp"
+#include "Game.hpp"
 
 TransformComponent::TransformComponent() :
     //position({0, 0})
@@ -27,9 +28,12 @@ TransformComponent::~TransformComponent()
 
 TransformComponent& TransformComponent::update()
 {
-    Vector2D product = (velocity * speed);
-    rect.x += static_cast<int>(product.x);
-    rect.y += static_cast<int>(product.y);
+    Vector2D product = (velocity * (speed * Game::deltaTime));
+
+    rect.x += round(product.x);
+    rect.y += round(product.y);
+
+    //std::cout << velocity << " " << Game::deltaTime << " " << product << "\n";
 
     return *this;
 }

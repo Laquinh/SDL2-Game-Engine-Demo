@@ -100,6 +100,13 @@ Vector2D& operator*(Vector2D v, int n)
 	return v;
 }
 
+Vector2D& operator*(Vector2D v, double n)
+{
+	v.x *= n;
+	v.y *= n;
+	return v;
+}
+
 std::ostream& operator<<(std::ostream& stream, const Vector2D& v)
 {
 	stream << "(" << v.x << ", " << v.y << ")";

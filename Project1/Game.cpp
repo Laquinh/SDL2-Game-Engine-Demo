@@ -92,20 +92,12 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 
 void Game::handle_events()
 {
-	SDL_PollEvent(&event);
-
-	switch (event.type)
-	{
-		case SDL_QUIT:
-			isRunning = false;
-			break;
-		default:
-			break;
-	}
+	player.get_component<KeyboardController>().handle();
 }
 
-void Game::update()
+void Game::update(double pDeltaTime)
 {
+	deltaTime = pDeltaTime;
 	SDL_Rect alienPos = player.get_component<TransformComponent>().get_rect();
 	manager->update();
 

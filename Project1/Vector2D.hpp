@@ -23,6 +23,7 @@ struct Vector2D
 	friend Vector2D& operator/(Vector2D, const Vector2D&);
 
 	friend Vector2D& operator*(Vector2D, int);
+	friend Vector2D& operator*(Vector2D, double);
 
 	Vector2D& operator+=(const Vector2D&);
 	Vector2D& operator-=(const Vector2D&);
