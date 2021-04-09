@@ -6,13 +6,13 @@
 
 int main()
 {
-	const int fps = 60;
+	const int fps = 100;
 	const int frameDelay = 1000 / fps;
 
 	int frameStart;
 	int frameTime;
 
-	Game game("Title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 640, false);
+	Game game("Title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 960, 768, false);
 
 	while (game.is_running())
 	{

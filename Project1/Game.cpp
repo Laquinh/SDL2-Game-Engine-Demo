@@ -21,9 +21,11 @@ SDL_Event Game::event;
 std::vector<std::shared_ptr<ColliderComponent>> Game::colliders = {};*/
 
 std::shared_ptr<ComponentManager> manager = std::make_shared<ComponentManager>();
-auto& scientist(manager->add_entity());
+auto& player(manager->add_entity());
 auto& sign(manager->add_entity());
 std::unique_ptr<Map> map;
+
+constexpr int wi = 1280;
 
 enum GroupLabels : std::size_t
 {
@@ -60,14 +62,16 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 
 		Map::load_map("assets/level1.map", 20, 20);
 
-		scientist.add_component<TransformComponent>(SDL_Rect{ 50, 50, 48, 48 });
-		scientist.add_component<SpriteComponent>("assets/alien-anim.png", SDL_Rect{ 0, 0, 24, 24 }, true);
-		scientist.add_component<KeyboardController>();
-		scientist.add_component<ColliderComponent>("scientist");
-		scientist.add_group(groupPlayers);
+		player.add_component<TransformComponent>(SDL_Rect{ 50, 50, 96, 96 });
+		player.add_component<SpriteComponent>("assets/alien-anim.png", SDL_Rect{ 0, 0, 24, 24 }, true);
+		player.add_component<KeyboardController>();
+		player.add_component<ColliderComponent>("scientist");
+		player.add_group(groupPlayers);
 
-		sign.add_component<TileComponent>(13, 5, 32, 32, 23);
+		sign.add_component<TileComponent>(13, 5, 64, 64, 23);
 		sign.add_group(groupMap);
+
+		camera = { 0,0,w, h };
 
 		isRunning = true;
 	}
@@ -93,15 +97,35 @@ void Game::handle_events()
 
 void Game::update()
 {
-	SDL_Rect scientistPos = scientist.get_component<TransformComponent>().get_rect();
+	SDL_Rect scientistPos = player.get_component<TransformComponent>().get_rect();
 	manager->update();
 	
+	camera.x = player.get_component<TransformComponent>().rect.x - camera.w/2 + 48;
+	camera.y = player.get_component<TransformComponent>().rect.y - camera.h/2 + 48;
+
+	if (camera.x < 0)
+	{
+		camera.x = 0;
+	}
+	else if (camera.x + camera.w > wi)
+	{
+		camera.x = wi - camera.w;
+	}
+	if (camera.y < 0)
+	{
+		camera.y = 0;
+	}
+	else if (camera.y + camera.h > wi)
+	{
+		camera.y = wi - camera.h;
+	}
+
 	for (const auto& c : colliders)
 	{
-		auto& s = scientist.get_component<ColliderComponent>();
+		auto& s = player.get_component<ColliderComponent>();
 		if (s.tag != c->tag && (Collision::AABB(s, *c)))
 		{
-			scientist.get_component<TransformComponent>().rect = scientistPos;
+			player.get_component<TransformComponent>().rect = scientistPos;
 		}
 	}
 }
@@ -127,7 +151,7 @@ Game::~Game()
 void Game::add_tile(int row, int column, int id)
 {
 	auto& tile(manager->add_entity());
-	tile.add_component<TileComponent>(row, column, 32, 32, id);
+	tile.add_component<TileComponent>(row, column, 64, 64, id);
 	tile.add_group(groupMap);
 }
 
