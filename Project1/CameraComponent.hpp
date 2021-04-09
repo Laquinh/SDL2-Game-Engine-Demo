@@ -20,9 +20,9 @@ public:
 	CameraComponent& update() override;
 
 	SDL_Rect rect;
+	int wi = 1280;
 private:
 	std::shared_ptr<TransformComponent> target;
-	int wi = 1280;
 };
 
 #endif

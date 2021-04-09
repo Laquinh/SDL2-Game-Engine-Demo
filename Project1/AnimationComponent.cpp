@@ -5,14 +5,6 @@ AnimationComponent::AnimationComponent(const std::string& path, const SDL_Rect& 
 {
 	texture = TextureManager::load_texture(path);
 	srcRect = pSrcRect;
-
-	Animation idle = Animation(0, 4, 225);
-	Animation walk = Animation(1, 4, 100);
-
-	animations.emplace("Idle", idle);
-	animations.emplace("Walk", walk);
-
-	play("Idle");
 }
 
 AnimationComponent& AnimationComponent::update()
@@ -30,6 +22,13 @@ AnimationComponent& AnimationComponent::play(const std::string& str)
 	frames = animations[str].frames;
 	animationIndex = animations[str].index;
 	speed = animations[str].speed;
+
+	return *this;
+}
+
+AnimationComponent& AnimationComponent::add_animation(const std::string& str, const Animation& anim)
+{
+	animations.emplace(str, anim);
 
 	return *this;
 }

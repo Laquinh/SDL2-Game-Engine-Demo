@@ -66,14 +66,17 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 		player.add_component<TransformComponent>(SDL_Rect{ 50, 50, 96, 96 });
 		//camera.add_component<CameraComponent>(player);
 		//TextureManager::init(camera.get_component<CameraComponent>().shared_from_this());
-		camera.add_component<CameraComponent>(player.get_component<TransformComponent>().shared_from_this(), SDL_Rect{ 0,0,960,768 });
+		camera.add_component<CameraComponent>(player.get_component<TransformComponent>().shared_from_this(), SDL_Rect{ 0,0,w,h });
 		TextureManager::init(camera.get_component<CameraComponent>().shared_from_this());
 
 		Map::load_map("assets/level1.map", 20, 20);
 
-		player.add_component<AnimationComponent>("assets/alien-anim.png", SDL_Rect{ 0, 0, 24, 24 });
+		player.add_component<AnimationComponent>("assets/alien-anim.png", SDL_Rect{ 0, 0, 24, 24 })
+			.add_animation("idle", { 0, 4, 225 })
+			.add_animation("walk", { 1, 4, 100 })
+			.play("idle");
 		player.add_component<KeyboardController>();
-		player.add_component<ColliderComponent>("scientist");
+		player.add_component<ColliderComponent>("alien");
 		player.add_group(groupPlayers);
 
 		sign.add_component<TileComponent>(13, 5, 64, 64, 23);
@@ -103,7 +106,7 @@ void Game::handle_events()
 
 void Game::update()
 {
-	SDL_Rect scientistPos = player.get_component<TransformComponent>().get_rect();
+	SDL_Rect alienPos = player.get_component<TransformComponent>().get_rect();
 	manager->update();
 
 	for (const auto& c : colliders)
@@ -111,7 +114,7 @@ void Game::update()
 		auto& s = player.get_component<ColliderComponent>();
 		if (s.tag != c->tag && (Collision::AABB(s, *c)))
 		{
-			player.get_component<TransformComponent>().rect = scientistPos;
+			player.get_component<TransformComponent>().rect = alienPos;
 		}
 	}
 }

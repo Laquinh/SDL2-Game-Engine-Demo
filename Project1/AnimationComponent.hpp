@@ -20,6 +20,7 @@ public:
 
 	AnimationComponent& update() override;
 	AnimationComponent& play(const std::string& str) override;
+	AnimationComponent& add_animation(const std::string& str, const Animation& anim);
 
 private:
 	int animationIndex;

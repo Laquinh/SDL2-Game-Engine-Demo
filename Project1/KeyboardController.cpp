@@ -16,19 +16,19 @@ KeyboardController& KeyboardController::update()
 		{
 		case SDLK_w:
 			transform->velocity.y = -1;
-			visible->play("Walk");
+			visible->play("walk");
 			break;
 		case SDLK_a:
 			transform->velocity.x = -1;
-			visible->play("Walk");
+			visible->play("walk");
 			break;
 		case SDLK_s:
 			transform->velocity.y = 1;
-			visible->play("Walk");
+			visible->play("walk");
 			break;
 		case SDLK_d:
 			transform->velocity.x = 1;
-			visible->play("Walk");
+			visible->play("walk");
 			break;
 		}
 	}
@@ -39,12 +39,12 @@ KeyboardController& KeyboardController::update()
 		case SDLK_w:
 		case SDLK_s:
 			transform->velocity.y = 0;
-			visible->play("Idle");
+			visible->play("idle");
 			break;
 		case SDLK_a:
 		case SDLK_d:
 			transform->velocity.x = 0;
-			visible->play("Idle");
+			visible->play("idle");
 			break;
 		}
 	}
