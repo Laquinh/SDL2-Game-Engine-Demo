@@ -164,6 +164,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Animation.hpp" />
+    <ClInclude Include="AnimationComponent.hpp" />
     <ClInclude Include="CameraComponent.hpp" />
     <ClInclude Include="ColliderComponent.hpp" />
     <ClInclude Include="Collision.hpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="SpriteComponent.hpp" />
     <ClInclude Include="TextureManager.hpp" />
     <ClInclude Include="Vector2D.hpp" />
+    <ClInclude Include="VisibleComponent.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\dirt.png" />
@@ -196,6 +198,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AnimationComponent.cpp" />
     <ClCompile Include="CameraComponent.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="Collision.cpp" />
@@ -212,6 +215,7 @@
     <ClCompile Include="TileComponent.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
     <ClCompile Include="Vector2D.cpp" />
+    <ClCompile Include="VisibleComponent.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

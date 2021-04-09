@@ -11,6 +11,7 @@
 #include "ECS.hpp"
 #include "Collision.hpp"
 #include "TileComponent.hpp"
+#include "AnimationComponent.hpp"
 
 #include <iostream>
 #include <memory>
@@ -70,7 +71,7 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 
 		Map::load_map("assets/level1.map", 20, 20);
 
-		player.add_component<SpriteComponent>("assets/alien-anim.png", SDL_Rect{ 0, 0, 24, 24 }, true);
+		player.add_component<AnimationComponent>("assets/alien-anim.png", SDL_Rect{ 0, 0, 24, 24 });
 		player.add_component<KeyboardController>();
 		player.add_component<ColliderComponent>("scientist");
 		player.add_group(groupPlayers);

@@ -6,6 +6,7 @@
 #include "Component.hpp"
 #include "TransformComponent.hpp"
 #include "SpriteComponent.hpp"
+#include "VisibleComponent.hpp"
 
 class TileComponent : public Component
 {
@@ -25,7 +26,7 @@ private:
 	void construct();
 
 	std::shared_ptr<TransformComponent> transform;
-	std::shared_ptr<SpriteComponent> sprite;
+	std::shared_ptr<VisibleComponent> visible;
 	
 	SDL_Rect srcRect, destRect;
 	int id;

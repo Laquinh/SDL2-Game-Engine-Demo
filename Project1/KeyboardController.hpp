@@ -4,6 +4,7 @@
 #include "Game.hpp"
 #include "Component.hpp"
 #include "ECS.hpp"
+#include "VisibleComponent.hpp"
 
 class KeyboardController : public Component
 {
@@ -12,7 +13,7 @@ public:
 	KeyboardController& update() override;
 private:
 	std::shared_ptr<TransformComponent> transform;
-	std::shared_ptr<SpriteComponent> sprite;
+	std::shared_ptr<VisibleComponent> visible;
 };
 
 #endif
