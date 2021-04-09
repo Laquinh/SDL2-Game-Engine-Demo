@@ -12,6 +12,7 @@ public:
 	KeyboardController& update() override;
 private:
 	std::shared_ptr<TransformComponent> transform;
+	std::shared_ptr<SpriteComponent> sprite;
 };
 
 #endif

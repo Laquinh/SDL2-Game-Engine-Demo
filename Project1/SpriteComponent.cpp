@@ -13,13 +13,21 @@ SpriteComponent::SpriteComponent(const std::string& file) :
 {
 }
 
-SpriteComponent::SpriteComponent(const std::string& file, int frames, int speed) :
+SpriteComponent::SpriteComponent(const std::string& file, bool animated) :
 	texture(TextureManager::load_texture(file)),
-	srcRect({ 0,0,24,24 }),
-	frames(frames),
-	speed(speed),
-	animated(true)
+	srcRect({ 0,0,16,16 }),
+	animated(animated)
 {
+	if (animated)
+	{
+		Animation idle = Animation(0, 3, 100);
+		Animation walk = Animation(1, 8, 100);
+
+		animations.emplace("Idle", idle);
+		animations.emplace("Walk", walk);
+
+		play("Idle");
+	}
 }
 
 SpriteComponent::SpriteComponent(const std::string& file, const SDL_Rect& srcRect) :
@@ -28,13 +36,18 @@ SpriteComponent::SpriteComponent(const std::string& file, const SDL_Rect& srcRec
 {
 }
 
-SpriteComponent::SpriteComponent(const std::string& file, const SDL_Rect&, int frames, int speed):
+SpriteComponent::SpriteComponent(const std::string& file, const SDL_Rect& srcRect, bool animated):
 	texture(TextureManager::load_texture(file)),
 	srcRect(srcRect),
-	frames(frames),
-	speed(speed),
-	animated(true)
+	animated(animated)
 {
+	Animation idle = Animation(0, 4, 225);
+	Animation walk = Animation(1, 4, 100);
+
+	animations.emplace("Idle", idle);
+	animations.emplace("Walk", walk);
+
+	play("Idle");
 }
 
 SpriteComponent& SpriteComponent::set_texture(std::string file)
@@ -63,7 +76,9 @@ SpriteComponent& SpriteComponent::update()
 	if (animated)
 	{
 		srcRect.x = srcRect.w * static_cast<int>((SDL_GetTicks() / speed) % frames);
+		srcRect.y = animIndex * srcRect.h;
 	}
+
 	destRect = transform->rect;
 
 	return *this;
@@ -72,6 +87,15 @@ SpriteComponent& SpriteComponent::update()
 SpriteComponent& SpriteComponent::draw()
 {
 	TextureManager::draw(*texture, srcRect, destRect);
+
+	return *this;
+}
+
+SpriteComponent& SpriteComponent::play(const std::string str)
+{
+	frames = animations[str].frames;
+	animIndex = animations[str].index;
+	speed = animations[str].speed;
 
 	return *this;
 }

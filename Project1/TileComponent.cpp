@@ -37,7 +37,7 @@ void TileComponent::construct()
 TileComponent& TileComponent::init()
 {
 	transform = (entity.lock()->add_component<TransformComponent>(destRect)).shared_from_this();
-	sprite = (entity.lock()->add_component<SpriteComponent>(file)).set_srcRect(srcRect).shared_from_this();
+	sprite = (entity.lock()->add_component<SpriteComponent>(file, false)).set_srcRect(srcRect).shared_from_this();
 	if(id == 16) entity.lock()->add_component<ColliderComponent>("water");
 	if(id == 21) entity.lock()->add_component<ColliderComponent>("wall");
 

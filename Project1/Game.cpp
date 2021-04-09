@@ -61,7 +61,7 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 		Map::load_map("assets/level1.map", 20, 20);
 
 		scientist.add_component<TransformComponent>(SDL_Rect{ 50, 50, 48, 48 });
-		scientist.add_component<SpriteComponent>("assets/alien-idle.png", 4, 110);
+		scientist.add_component<SpriteComponent>("assets/alien-anim.png", SDL_Rect{ 0, 0, 24, 24 }, true);
 		scientist.add_component<KeyboardController>();
 		scientist.add_component<ColliderComponent>("scientist");
 		scientist.add_group(groupPlayers);
