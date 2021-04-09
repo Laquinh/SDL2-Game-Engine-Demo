@@ -1,14 +1,12 @@
 #include "ComponentManager.hpp"
 
 ComponentManager::ComponentManager() {
-	std::cout << "ComponentManager created\n";
 }
 
 ComponentManager::~ComponentManager()
 {
 	for (auto& e : entities) e->destroy();
 	refresh();
-	std::cout << "ComponentManager destroyed\n";
 }
 
 void ComponentManager::update()

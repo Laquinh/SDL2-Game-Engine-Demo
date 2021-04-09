@@ -26,7 +26,6 @@ public:
 	static inline unique_SDL_Window window = nullptr;
 	static inline std::vector<std::shared_ptr<ColliderComponent>> colliders = {};
 	static inline SDL_Event event;
-	static inline SDL_Rect camera;
 private:
 	bool isRunning;
 };

@@ -9,11 +9,10 @@
 #include <memory>
 #include <map>
 
-/*void del(SDL_Texture* t)
+void TextureManager::init(const std::shared_ptr<CameraComponent>& pCamera)
 {
-    SDL_DestroyTexture(t);
-    std::cout << t << " texture deleted\n";
-}*/
+    camera = pCamera;
+}
 
 std::shared_ptr<SDL_Texture> TextureManager::load_texture(std::string file)
 {
@@ -25,19 +24,17 @@ std::shared_ptr<SDL_Texture> TextureManager::load_texture(std::string file)
 
         textures.insert(std::pair<std::string, std::shared_ptr<SDL_Texture>>(file, tex));
 
-        //std::cout << "Making texture (" << tex.get() << ") of \"" << file << "\" with count of " << tex.use_count() << "\n";
-
         return tex;
     }
     else
     {
-        //std::cout << "Using texture (" << it->second.get() << ") of \"" << file << "\" with count of " << (it->second).use_count() << "\n";
         return it->second;
     }
 }
 
 void TextureManager::draw(SDL_Texture& tex, const SDL_Rect& src, const SDL_Rect& dest)
 {
-    SDL_RenderCopy(Game::renderer.get(), &tex, &src, &dest);
+    SDL_Rect destination = {dest.x-camera->rect.x, dest.y-camera->rect.y, dest.w, dest.h};
+    SDL_RenderCopy(Game::renderer.get(), &tex, &src, &destination);
 }
 

@@ -1,6 +1,5 @@
 #include "SpriteComponent.hpp"
 #include "TextureManager.hpp"
-#include "Game.hpp"
 #include <iostream>
 
 SpriteComponent::SpriteComponent():
@@ -80,10 +79,7 @@ SpriteComponent& SpriteComponent::update()
 		srcRect.y = animIndex * srcRect.h;
 	}
 
-	destRect.x = transform->rect.x - Game::camera.x;
-	destRect.y = transform->rect.y - Game::camera.y;
-	destRect.w = transform->rect.w;
-	destRect.h = transform->rect.h;
+	destRect = transform->rect;
 
 	return *this;
 }
