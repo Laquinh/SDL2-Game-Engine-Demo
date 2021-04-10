@@ -8,7 +8,7 @@ ComponentManager::ComponentManager() {
 ComponentManager::~ComponentManager()
 {
 	for (auto& e : entities) e->destroy();
-	refresh();
+	//refresh();
 }
 
 void ComponentManager::update()
@@ -36,7 +36,13 @@ void ComponentManager::refresh()
 		v.erase(std::remove_if(std::begin(v), std::end(v),
 			[i](const std::shared_ptr<Entity>& e)
 			{
-				return !(e->is_active()) || !(e->has_group(i));
+				if (!(e->is_active()) || !(e->has_group(i))) {
+					return true;
+				}
+				else
+				{
+					return false;
+				}
 			}),
 			std::end(v));	
 	}
@@ -44,15 +50,22 @@ void ComponentManager::refresh()
 	entities.erase(std::remove_if(std::begin(entities), std::end(entities),
 		[](const std::shared_ptr<Entity>& entity)
 		{
-			return !(entity->is_active());
+			if (!(entity->is_active()))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}),
 		std::end(entities));
 }
 
-Entity& ComponentManager::add_entity()
+Entity& ComponentManager::add_entity(const std::string& tag)
 {
 	//std::shared_ptr<Entity> entity = std::make_shared<Entity>();
-	entities.emplace_back(std::move(std::make_shared<Entity>(weak_from_this())));
+	entities.emplace_back(std::move(std::make_shared<Entity>(weak_from_this())))->tag = tag;
 	return *entities.back();
 }
 

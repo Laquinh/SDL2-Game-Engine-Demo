@@ -3,7 +3,6 @@
 
 #include "SDL.h"
 #include "Component.hpp"
-#include "Entity.hpp"
 #include "TransformComponent.hpp"
 #include <memory>
 

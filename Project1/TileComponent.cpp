@@ -38,8 +38,20 @@ TileComponent& TileComponent::init()
 {
 	transform = (entity.lock()->add_component<TransformComponent>(destRect)).shared_from_this();
 	visible = (entity.lock()->add_component<SpriteComponent>(file, srcRect)).shared_from_this();
-	if(id == 16) entity.lock()->add_component<ColliderComponent>("water");
-	if(id == 21) entity.lock()->add_component<ColliderComponent>("wall");
+	if (id == 16)
+	{
+		entity.lock()->tag = "water";
+		entity.lock()->add_component<ColliderComponent>();
+	}
+	else if (id == 21)
+	{
+		entity.lock()->add_component<ColliderComponent>();
+		entity.lock()->tag = "wall";
+	}
+	else
+	{
+		entity.lock()->tag = "tile";
+	}
 
 	return *this;
 }

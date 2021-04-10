@@ -8,6 +8,7 @@
 #include <array>
 #include <vector>
 #include <memory>
+#include <string>
 
 class Entity;
 
@@ -20,7 +21,7 @@ public:
 	void draw();
 	void handle_events();
 	void refresh();
-	Entity& add_entity();
+	Entity& add_entity(const std::string& tag = "");
 
 	void add_to_group(const std::shared_ptr<Entity>& e, Group g);
 	std::vector<std::shared_ptr<Entity>>& get_group(Group g);

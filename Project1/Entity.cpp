@@ -8,6 +8,7 @@ Entity::Entity(const std::weak_ptr<ComponentManager>& manager) :
 
 Entity::~Entity()
 {
+	std::cout << "entity destroyed";
 }
 
 void Entity::update()
@@ -36,6 +37,7 @@ bool Entity::is_active() const
 void Entity::destroy()
 {
 	active = false;
+	for (auto& c : components) c->destroy();
 }
 
 bool Entity::has_group(Group group)

@@ -23,6 +23,11 @@ Component& Component::handle_events()
 	return *this;
 }
 
+Component& Component::destroy()
+{
+	return *this;
+}
+
 Component::~Component()
 {
 }

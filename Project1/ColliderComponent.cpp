@@ -2,12 +2,13 @@
 
 #include "Game.hpp"
 
+#include <algorithm>
+
 ColliderComponent::ColliderComponent()
 {
 }
 
-ColliderComponent::ColliderComponent(const std::string& tag):
-	tag(tag)
+ColliderComponent::~ColliderComponent()
 {
 }
 
@@ -25,5 +26,11 @@ ColliderComponent& ColliderComponent::update()
 {
 	collider = transform->rect;
 
+	return *this;
+}
+
+ColliderComponent& ColliderComponent::destroy()
+{
+	Game::colliders.erase(std::find(Game::colliders.begin(), Game::colliders.end(), shared_from_this()));
 	return *this;
 }

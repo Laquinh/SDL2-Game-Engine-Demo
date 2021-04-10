@@ -7,7 +7,6 @@
 #include "SDL.h"
 
 #include "VisibleComponent.hpp"
-#include "TransformComponent.hpp"
 #include "Animation.hpp"
 #include <memory>
 #include <string>

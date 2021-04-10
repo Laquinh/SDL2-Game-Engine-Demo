@@ -24,6 +24,7 @@ public:
 	void draw();
 	void handle_events();
 	bool is_active() const;
+	void set_tag();
 	void destroy();
 	
 	template <typename T>
@@ -38,6 +39,8 @@ public:
 	bool has_group(Group group);
 	void add_group(Group group);
 	void remove_group(Group group);
+
+	std::string tag = "";
 
 private:
 	std::weak_ptr<ComponentManager> manager;

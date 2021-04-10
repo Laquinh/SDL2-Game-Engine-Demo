@@ -16,14 +16,15 @@ void Engine::run()
 
 	TimeManager::init();
 
+	TimeManager::update_deltaTime();
+
 	while (game.is_running())
 	{
-		TimeManager::update_deltaTime();
-
 		game.handle_events();
 		game.update();
 		game.render();
 
+		TimeManager::update_deltaTime();
 		TimeManager::limit_fps(fps);
 	}
 }
