@@ -28,6 +28,11 @@ Component& Component::destroy()
 	return *this;
 }
 
+Component& Component::onCollision(Entity& e)
+{
+	return *this;
+}
+
 Component::~Component()
 {
 }

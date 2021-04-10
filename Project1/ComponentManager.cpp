@@ -1,6 +1,7 @@
 #include "ComponentManager.hpp"
 #include "SDL.h"
 #include "Game.hpp"
+#include "Collision.hpp"
 
 ComponentManager::ComponentManager() {
 }
@@ -13,6 +14,27 @@ ComponentManager::~ComponentManager()
 
 void ComponentManager::update()
 {
+	for (int i = 0; i < Game::colliders.size(); ++i)
+	{
+		for (int j = i; j < Game::colliders.size(); ++j)
+		{
+			if (Collision::AABB(*Game::colliders[i], *Game::colliders[j]) && i != j)
+			{
+				int first = Game::colliders.size();
+				Game::colliders[i]->entity.lock()->onCollision(*Game::colliders[j]->entity.lock());
+				if (first != Game::colliders.size())
+				{
+					--j;
+					continue;
+				}
+				Game::colliders[j]->entity.lock()->onCollision(*Game::colliders[i]->entity.lock());
+				if (first != Game::colliders.size())
+				{
+					--i;
+				}
+			}
+		}
+	}
 	for (auto& e : entities) e->update();
 }
 
@@ -36,7 +58,8 @@ void ComponentManager::refresh()
 		v.erase(std::remove_if(std::begin(v), std::end(v),
 			[i](const std::shared_ptr<Entity>& e)
 			{
-				if (!(e->is_active()) || !(e->has_group(i))) {
+				if (!(e->is_active()) || !(e->has_group(i)))
+				{
 					return true;
 				}
 				else

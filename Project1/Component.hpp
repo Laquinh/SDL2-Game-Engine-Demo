@@ -21,6 +21,7 @@ public:
 	virtual Component& draw();
 	virtual Component& handle_events();
 	virtual Component& destroy();
+	virtual Component& onCollision(Entity& e);
 };
 
 #endif

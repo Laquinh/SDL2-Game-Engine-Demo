@@ -7,8 +7,8 @@
 class Collision
 {
 public:
-	static bool AABB(const SDL_Rect& a, const SDL_Rect& b);
-	static bool AABB(const ColliderComponent& a, const ColliderComponent& b);
+	static int AABB(const SDL_Rect& a, const SDL_Rect& b);
+	static int AABB(const ColliderComponent& a, const ColliderComponent& b);
 };
 
 #endif COLLISION_HPP

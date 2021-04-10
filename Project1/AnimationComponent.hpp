@@ -14,7 +14,7 @@
 class AnimationComponent : public VisibleComponent, public std::enable_shared_from_this<AnimationComponent>
 {
 public:
-	AnimationComponent();
+	AnimationComponent() = default;
 	AnimationComponent(const std::string& path, const SDL_Rect& rect);
 
 	AnimationComponent& update() override;

@@ -19,6 +19,8 @@ struct ColliderComponent : public Component, public std::enable_shared_from_this
 	ColliderComponent& init() override;
 	ColliderComponent& update() override;
 	ColliderComponent& destroy() override;
+
+	bool isRigid = false;
 };
 
 #endif

@@ -38,6 +38,15 @@ void Entity::destroy()
 {
 	active = false;
 	for (auto& c : components) c->destroy();
+	if (auto m = manager.lock())
+	{
+		m->refresh();
+	}
+}
+
+void Entity::onCollision(Entity& e)
+{
+	for (auto& c : components) c->onCollision(e);
 }
 
 bool Entity::has_group(Group group)

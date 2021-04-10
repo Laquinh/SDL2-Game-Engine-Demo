@@ -24,8 +24,8 @@ public:
 	void draw();
 	void handle_events();
 	bool is_active() const;
-	void set_tag();
 	void destroy();
+	void onCollision(Entity& e);
 	
 	template <typename T>
 	bool has_component() const;

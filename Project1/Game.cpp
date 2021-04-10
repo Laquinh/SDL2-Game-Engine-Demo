@@ -83,7 +83,7 @@ void Game::update()
 {
 	manager->update();
 
-	auto& pC = player.get_component<ColliderComponent>();
+	/*auto& pC = player.get_component<ColliderComponent>();
 
 	for (int i = 0; i < colliders.size();)
 	{
@@ -96,7 +96,7 @@ void Game::update()
 		{
 			++i;
 		}
-	}
+	}*/
 
 	/*colliders.erase(std::remove_if(colliders.begin(), colliders.end(),
 		[](const std::shared_ptr<ColliderComponent>& c)

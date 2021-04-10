@@ -1,5 +1,7 @@
 #include "TransformComponent.hpp"
 #include "TimeManager.hpp"
+#include "Game.hpp"
+#include "Collision.hpp"
 
 TransformComponent::TransformComponent() :
     //position({0, 0})
@@ -29,7 +31,13 @@ TransformComponent::~TransformComponent()
 TransformComponent& TransformComponent::update()
 {
     Vector2D product = (velocity * (speed * TimeManager::get_deltaTime()));
-
+    for (auto& c : Game::colliders)
+    {
+        if (c->isRigid && Collision::AABB(c->collider, {rect.x+static_cast<int>(product.x), rect.y+ static_cast<int>(product.y), rect.w, rect.h}))
+        {
+            product = { 0,0 };
+        }
+    }
     rect.x += round(product.x);
     rect.y += round(product.y);
 
