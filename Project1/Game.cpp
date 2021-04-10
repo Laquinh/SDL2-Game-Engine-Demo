@@ -95,9 +95,8 @@ void Game::handle_events()
 	manager->handle_events();
 }
 
-void Game::update(double pDeltaTime)
+void Game::update()
 {
-	deltaTime = pDeltaTime;
 	SDL_Rect alienPos = player.get_component<TransformComponent>().get_rect();
 	manager->update();
 

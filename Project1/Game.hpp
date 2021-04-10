@@ -16,7 +16,7 @@ public:
 	Game(std::string title, int x, int y, int w, int h, bool fullscreen);
 	~Game();
 	void handle_events();
-	void update(double pDeltaTime);
+	void update();
 	void render();
 
 	static void add_tile(int x, int y, int id);
@@ -26,7 +26,6 @@ public:
 	static inline unique_SDL_Window window = nullptr;
 	static inline std::vector<std::shared_ptr<ColliderComponent>> colliders = {};
 	static inline SDL_Event event;
-	static inline double deltaTime;
 	static inline bool isRunning;
 private:
 };

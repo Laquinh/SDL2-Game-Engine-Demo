@@ -1,5 +1,5 @@
 #include "TransformComponent.hpp"
-#include "Game.hpp"
+#include "TimeManager.hpp"
 
 TransformComponent::TransformComponent() :
     //position({0, 0})
@@ -28,19 +28,16 @@ TransformComponent::~TransformComponent()
 
 TransformComponent& TransformComponent::update()
 {
-    Vector2D product = (velocity * (speed * Game::deltaTime));
+    Vector2D product = (velocity * (speed * TimeManager::get_deltaTime()));
 
     rect.x += round(product.x);
     rect.y += round(product.y);
-
-    //std::cout << velocity << " " << Game::deltaTime << " " << product << "\n";
 
     return *this;
 }
 
 TransformComponent& TransformComponent::set_position(int x, int y)
 {
-    //position = { static_cast<float>(x), static_cast<float>(y) };
     rect.x = x;
     rect.y = y;
 

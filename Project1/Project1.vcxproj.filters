@@ -81,6 +81,12 @@
     <ClInclude Include="Engine.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="constants.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\scientist.png">
@@ -164,6 +170,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

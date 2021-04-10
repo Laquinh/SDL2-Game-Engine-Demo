@@ -170,6 +170,7 @@
     <ClInclude Include="Collision.hpp" />
     <ClInclude Include="Component.hpp" />
     <ClInclude Include="ComponentManager.hpp" />
+    <ClInclude Include="constants.hpp" />
     <ClInclude Include="ECS.hpp" />
     <ClInclude Include="destroyers.hpp" />
     <ClInclude Include="EnablePolymorphicShared.hpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="KeyboardController.hpp" />
     <ClInclude Include="Map.hpp" />
     <ClInclude Include="TileComponent.hpp" />
+    <ClInclude Include="TimeManager.hpp" />
     <ClInclude Include="TransformComponent.hpp" />
     <ClInclude Include="SpriteComponent.hpp" />
     <ClInclude Include="TextureManager.hpp" />
@@ -215,6 +217,7 @@
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="TileComponent.cpp" />
+    <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="VisibleComponent.cpp" />
