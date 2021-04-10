@@ -23,6 +23,11 @@ void Entity::draw()
 	for (auto& c : components) c->draw();
 }
 
+void Entity::handle_events()
+{
+	for (auto& c : components) c->handle_events();
+}
+
 bool Entity::is_active() const
 {
 	return active;

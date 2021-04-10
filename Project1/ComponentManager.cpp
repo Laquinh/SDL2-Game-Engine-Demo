@@ -1,4 +1,6 @@
 #include "ComponentManager.hpp"
+#include "SDL.h"
+#include "Game.hpp"
 
 ComponentManager::ComponentManager() {
 }
@@ -19,11 +21,18 @@ void ComponentManager::draw()
 	for (auto& e : entities) e->draw();
 }
 
+void ComponentManager::handle_events()
+{
+	while (SDL_PollEvent(&Game::event)) {
+		for (auto& e : entities) e->handle_events();
+	}
+}
+
 void ComponentManager::refresh()
 {
 	for (int i = 0; i < maxGroups; ++i)
 	{
-		EntityVector& v(groupedEntities[i]);
+		auto& v(groupedEntities[i]);
 		v.erase(std::remove_if(std::begin(v), std::end(v),
 			[i](const std::shared_ptr<Entity>& e)
 			{
@@ -52,14 +61,14 @@ void ComponentManager::add_to_group(const std::shared_ptr<Entity>& e, Group g)
 	groupedEntities[g].emplace_back(e);
 }
 
-EntityVector& ComponentManager::get_group(Group g)
+std::vector<std::shared_ptr<Entity>>& ComponentManager::get_group(Group g)
 {
 	return groupedEntities[g];
 }
 
 void ComponentManager::draw_group(Group g)
 {
-	EntityVector& v = get_group(g);
+	auto& v = get_group(g);
 	for (auto& e : v)
 	{
 		e->draw();

@@ -3,6 +3,7 @@
 
 #include "Component.hpp"
 #include "ComponentManager.hpp"
+#include "constants.hpp"
 
 #include <iostream>
 #include <memory>
@@ -13,19 +14,6 @@
 class Component;
 class ComponentManager;
 
-constexpr size_t maxComponents = 32;
-#ifndef DEFINED_maxGroups
-constexpr size_t maxGroups = 32;
-#define DEFINED_maxGroups
-#endif
-
-using ComponentBitset = std::bitset<maxComponents>;
-using ComponentArray = std::array<std::weak_ptr<Component>, maxComponents>;
-using ComponentVector = std::vector<std::shared_ptr<Component>>;
-
-using Group = size_t;
-using GroupBitset = std::bitset<maxGroups>;
-
 class Entity : public std::enable_shared_from_this<Entity>
 {
 public:
@@ -34,6 +22,7 @@ public:
 
 	void update();
 	void draw();
+	void handle_events();
 	bool is_active() const;
 	void destroy();
 	
@@ -49,15 +38,16 @@ public:
 	bool has_group(Group group);
 	void add_group(Group group);
 	void remove_group(Group group);
+
 private:
 	std::weak_ptr<ComponentManager> manager;
 	bool active = true;
 
-	ComponentVector components;
-	ComponentArray componentArray;
-	ComponentBitset componentBitset;
+	std::vector<std::shared_ptr<Component>> components;
+	std::array<std::weak_ptr<Component>, maxComponents> componentArray;
+	std::bitset<maxComponents> componentBitset;
 
-	GroupBitset groupBitset;
+	std::bitset<maxGroups> groupBitset;
 };
 
 #include "Entity.tcc"

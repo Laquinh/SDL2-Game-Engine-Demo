@@ -26,7 +26,7 @@ void Engine::run()
 		game.handle_events();
 		game.update(frameTime / 1000);
 
-		//for(int i = 0; i < 750; ++i) std::cout << frameTime << "\n";
+		//for(int i = 0; i < 1500; ++i) std::cout << frameTime << "\n";
 
 		if (dt > frameTime)
 		{

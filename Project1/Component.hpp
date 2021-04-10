@@ -19,6 +19,7 @@ public:
 	virtual Component& init();
 	virtual Component& update();
 	virtual Component& draw();
+	virtual Component& handle_events();
 };
 
 #endif

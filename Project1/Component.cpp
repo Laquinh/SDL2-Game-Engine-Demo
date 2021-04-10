@@ -18,6 +18,11 @@ Component& Component::draw()
 	return *this;
 }
 
+Component& Component::handle_events()
+{
+	return *this;
+}
+
 Component::~Component()
 {
 }

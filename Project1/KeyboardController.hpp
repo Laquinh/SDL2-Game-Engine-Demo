@@ -10,7 +10,7 @@ class KeyboardController : public Component
 {
 public:
 	KeyboardController& init() override;
-	KeyboardController& handle();
+	KeyboardController& handle_events() override;
 private:
 	std::shared_ptr<TransformComponent> transform;
 	std::shared_ptr<VisibleComponent> visible;

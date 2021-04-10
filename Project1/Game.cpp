@@ -92,7 +92,7 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 
 void Game::handle_events()
 {
-	player.get_component<KeyboardController>().handle();
+	manager->handle_events();
 }
 
 void Game::update(double pDeltaTime)
