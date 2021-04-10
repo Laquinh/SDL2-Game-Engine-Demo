@@ -13,7 +13,6 @@ Engine::~Engine()
 void Engine::run()
 {
 	const int fps = 60;
-	const double dt = 1000.0 / fps;
 
 	TimeManager::init();
 
@@ -25,6 +24,6 @@ void Engine::run()
 		game.update();
 		game.render();
 
-		TimeManager::limit_fps(dt);
+		TimeManager::limit_fps(fps);
 	}
 }

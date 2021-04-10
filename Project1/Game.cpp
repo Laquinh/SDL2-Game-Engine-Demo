@@ -43,29 +43,15 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 	int flags = 0;
 	if (fullscreen)
 	{
-		flags = SDL_WINDOW_FULLSCREEN;
+		flags |= SDL_WINDOW_FULLSCREEN;
 	}
 
-	if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
+	if (!SDL_Init(SDL_INIT_EVERYTHING))
 	{
-		std::cout << "Subsystem initialised...\n";
-
 		window = (unique_SDL_Window)SDL_CreateWindow(title.c_str(), x, y, w, h, flags);
-		if (window)
-		{
-			std::cout << "Window created\n";
-		}
-
 		renderer = (unique_SDL_Renderer)SDL_CreateRenderer(window.get(), -1, 0);
-		if (renderer)
-		{
-			SDL_SetRenderDrawColor(renderer.get(), 255, 0, 0, 255);
-			std::cout << "Renderer created\n";
-		}
 
 		player.add_component<TransformComponent>(SDL_Rect{ 50, 50, 96, 96 });
-		//camera.add_component<CameraComponent>(player);
-		//TextureManager::init(camera.get_component<CameraComponent>().shared_from_this());
 		camera.add_component<CameraComponent>(player.get_component<TransformComponent>().shared_from_this(), SDL_Rect{ 0,0,w,h });
 		TextureManager::init(camera.get_component<CameraComponent>().shared_from_this());
 
@@ -113,8 +99,6 @@ void Game::update()
 void Game::render()
 {
 	SDL_RenderClear(renderer.get());
-	/*manager.draw();
-	scientist.draw();*/
 	manager->draw_group(groupMap);
 	manager->draw_group(groupPlayers);
 	manager->draw_group(groupEnemies);
@@ -124,8 +108,6 @@ void Game::render()
 Game::~Game()
 {
 	SDL_Quit();
-
-	std::cout << "Game cleaned\n";
 }
 
 void Game::add_tile(int row, int column, int id)

@@ -22,8 +22,9 @@ double TimeManager::get_deltaTime()
 
 void TimeManager::limit_fps(double target)
 {
-	if (target > deltaTime)
+	double dt = 1000.0 / target;
+	if (dt > deltaTime)
 	{
-		SDL_Delay(target - deltaTime);
+		SDL_Delay(dt - deltaTime);
 	}
 }
