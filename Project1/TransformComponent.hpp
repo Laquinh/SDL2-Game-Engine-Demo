@@ -28,7 +28,7 @@ public:
 
 	SDL_Rect rect;
 	Vector2D velocity;
-	const double speed = 230;
+	double speed = 230;
 	float scale = 1;
 };
 

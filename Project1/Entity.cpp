@@ -8,7 +8,6 @@ Entity::Entity(const std::weak_ptr<ComponentManager>& manager) :
 
 Entity::~Entity()
 {
-	std::cout << "entity destroyed";
 }
 
 void Entity::update()

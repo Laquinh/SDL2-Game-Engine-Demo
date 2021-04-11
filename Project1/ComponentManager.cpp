@@ -16,21 +16,40 @@ void ComponentManager::update()
 {
 	for (int i = 0; i < Game::colliders.size(); ++i)
 	{
-		for (int j = i; j < Game::colliders.size(); ++j)
+		for (int j = i+1; j < Game::colliders.size(); ++j)
 		{
-			if (Collision::AABB(*Game::colliders[i], *Game::colliders[j]) && i != j)
+			if (Collision::AABB(*Game::colliders[i], *Game::colliders[j]))
 			{
 				int first = Game::colliders.size();
+				std::weak_ptr<ColliderComponent> col1 = Game::colliders[i];
+
 				Game::colliders[i]->entity.lock()->onCollision(*Game::colliders[j]->entity.lock());
-				if (first != Game::colliders.size())
+				if (first != Game::colliders.size()) //if some collider was destroyed
 				{
-					--j;
-					continue;
+					if (auto p = col1.lock()) //if [i] still exists
+					{
+						--j; //Then [j] was destroyed
+						continue;
+					}
+					else //if [i] no longer exists
+					{
+						--i; //Then [i] was destroyed
+						break;
+					}
 				}
 				Game::colliders[j]->entity.lock()->onCollision(*Game::colliders[i]->entity.lock());
-				if (first != Game::colliders.size())
+				if (first != Game::colliders.size()) //if some collider was destroyed
 				{
-					--i;
+					if (auto p = col1.lock()) //if [i] still exists
+					{
+						--j; //Then [j] was destroyed
+						continue;
+					}
+					else //if [i] no longer exists
+					{
+						--i; //Then [i] was destroyed
+						break;
+					}
 				}
 			}
 		}

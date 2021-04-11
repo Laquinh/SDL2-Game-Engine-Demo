@@ -12,6 +12,7 @@
 #include "Collision.hpp"
 #include "TileComponent.hpp"
 #include "AnimationComponent.hpp"
+#include "Coin.hpp"
 
 #include <iostream>
 #include <memory>
@@ -25,6 +26,9 @@ std::shared_ptr<ComponentManager> manager = std::make_shared<ComponentManager>()
 auto& player(manager->add_entity("alien"));
 auto& sign(manager->add_entity());
 auto& camera(manager->add_entity());
+auto& coin(manager->add_entity("coin"));
+auto& coin2(manager->add_entity("coin"));
+auto& coin3(manager->add_entity("coin"));
 std::unique_ptr<Map> map;
 
 enum GroupLabels : std::size_t
@@ -65,6 +69,30 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 
 		sign.add_component<TileComponent>(13, 5, 64, 64, 23);
 		sign.add_group(groupMap);
+
+		coin.add_component<Coin>();
+		coin.add_component<TransformComponent>(SDL_Rect{ 150,150,32,32 });
+		coin.add_component<AnimationComponent>("assets/coin-anim.png", SDL_Rect{ 0, 0, 8, 8 })
+			.add_animation("turn", { 0, 4, 225 })
+			.play("turn");
+		coin.add_component<ColliderComponent>();
+		coin.add_group(groupMap);
+
+		coin2.add_component<Coin>();
+		coin2.add_component<TransformComponent>(SDL_Rect{ 190,150,32,32 });
+		coin2.add_component<AnimationComponent>("assets/coin-anim.png", SDL_Rect{ 0, 0, 8, 8 })
+			.add_animation("turn", { 0, 4, 225 })
+			.play("turn");
+		coin2.add_component<ColliderComponent>();
+		coin2.add_group(groupMap);
+
+		coin3.add_component<Coin>();
+		coin3.add_component<TransformComponent>(SDL_Rect{ 230,150,32,32 });
+		coin3.add_component<AnimationComponent>("assets/coin-anim.png", SDL_Rect{ 0, 0, 8, 8 })
+			.add_animation("turn", { 0, 4, 225 })
+			.play("turn");
+		coin3.add_component<ColliderComponent>();
+		coin3.add_group(groupMap);
 
 		isRunning = true;
 	}
