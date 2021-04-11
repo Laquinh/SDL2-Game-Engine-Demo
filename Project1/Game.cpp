@@ -13,6 +13,7 @@
 #include "TileComponent.hpp"
 #include "AnimationComponent.hpp"
 #include "Coin.hpp"
+#include "Player.hpp"
 
 #include <iostream>
 #include <memory>
@@ -44,27 +45,15 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 
 	if (!SDL_Init(SDL_INIT_EVERYTHING))
 	{
-		auto& player = manager->add_entity("alien");
-		auto& sign = manager->add_entity("sign");
-		auto& camera = manager->add_entity("camera");
-
 		window = (unique_SDL_Window)SDL_CreateWindow(title.c_str(), x, y, w, h, flags);
 		renderer = (unique_SDL_Renderer)SDL_CreateRenderer(window.get(), -1, 0);
 
-		player.add_component<TransformComponent>(SDL_Rect{ 50, 150, 96, 96 });
-		player.add_component<AnimationComponent>("assets/alien-anim.png", SDL_Rect{ 0, 0, 24, 24 })
-			.add_animation("idle", { 0, 4, 225 })
-			.add_animation("walk", { 1, 4, 100 })
-			.play("idle");
-		player.add_component<KeyboardController>();
-		player.add_component<ColliderComponent>();
-		player.add_group(groupPlayers);
-
-		camera.add_component<CameraComponent>(player.get_component<TransformComponent>().shared_from_this(), SDL_Rect{ 0,0,w,h });
-		TextureManager::init(camera.get_component<CameraComponent>().shared_from_this());
-
 		Map::load_map("assets/level1.map", 20, 20);
 
+		auto& player = Player::create(*manager);
+		CameraComponent::create(*manager, w, h, player);
+
+		auto& sign = manager->add_entity("sign");
 		sign.add_component<TileComponent>(13, 5, 64, 64, 23);
 		sign.add_group(groupMap);
 
