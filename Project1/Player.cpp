@@ -1,53 +1,59 @@
 #include "Player.hpp"
 #include "SDL.h"
-#include "Game.hpp"
 #include "KeyboardController.hpp"
+#include "Coin.hpp"
 
 Player& Player::init()
 {
 	transform = entity.lock()->get_component<TransformComponent>().shared_from_this();
-	visible = entity.lock()->get_component<AnimationComponent>().shared_from_this();
+	animation = entity.lock()->get_component<AnimationComponent>().shared_from_this();
 
 	return *this;
 }
 
-Player& Player::handle_events()
+Player& Player::handle_events(const SDL_Event& event)
 {
-	if (Game::event.type == SDL_KEYDOWN)
+	if (event.type == SDL_KEYDOWN)
 	{
-		switch (Game::event.key.keysym.sym)
+		switch (event.key.keysym.sym)
 		{
 		case SDLK_w:
 			transform->velocity.y = -1;
-			visible->play("walk");
+			animation->play("walk");
 			break;
 		case SDLK_a:
 			transform->velocity.x = -1;
-			visible->play("walk");
+			animation->play("walk");
 			break;
 		case SDLK_s:
 			transform->velocity.y = 1;
-			visible->play("walk");
+			animation->play("walk");
 			break;
 		case SDLK_d:
 			transform->velocity.x = 1;
-			visible->play("walk");
+			animation->play("walk");
 			break;
+		case SDLK_SPACE:
+			if (money > 0)
+			{
+				Coin::create(*entity.lock()->manager.lock(), SDL_Rect{ transform->rect.x + 100, transform->rect.y, 32, 32 });
+				--money;
+			}
 		}
 	}
-	else if (Game::event.type == SDL_KEYUP)
+	else if (event.type == SDL_KEYUP)
 	{
-		switch (Game::event.key.keysym.sym)
+		switch (event.key.keysym.sym)
 		{
 		case SDLK_w:
 		case SDLK_s:
 			transform->velocity.y = 0;
-			visible->play("idle");
+			animation->play("idle");
 			break;
 		case SDLK_a:
 		case SDLK_d:
 			transform->velocity.x = 0;
-			visible->play("idle");
+			animation->play("idle");
 			break;
 		}
 	}

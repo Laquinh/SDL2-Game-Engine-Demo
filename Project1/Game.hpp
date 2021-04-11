@@ -27,6 +27,8 @@ public:
 	static inline std::vector<std::shared_ptr<ColliderComponent>> colliders = {};
 	static inline SDL_Event event;
 	static inline bool isRunning;
+
+	static inline std::shared_ptr<ComponentManager> manager = std::make_shared<ComponentManager>();
 private:
 };
 

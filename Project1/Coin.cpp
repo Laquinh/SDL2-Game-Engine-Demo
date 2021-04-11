@@ -3,11 +3,13 @@
 #include "ComponentManager.hpp"
 #include "AnimationComponent.hpp"
 #include "ColliderComponent.hpp"
+#include "Player.hpp"
 
 Coin& Coin::onCollision(Entity& e)
 {
     if (e.tag == "alien")
     {
+		++e.get_component<Player>().money;
         entity.lock()->destroy();
     }
 

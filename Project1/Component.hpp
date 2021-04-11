@@ -2,6 +2,7 @@
 #define COMPONENT_HPP
 
 #include "Entity.hpp"
+#include "SDL.h"
 
 #include <iostream>
 #include <memory>
@@ -19,7 +20,7 @@ public:
 	virtual Component& init();
 	virtual Component& update();
 	virtual Component& draw();
-	virtual Component& handle_events();
+	virtual Component& handle_events(const SDL_Event& event);
 	virtual Component& destroy();
 	virtual Component& onCollision(Entity& e);
 };

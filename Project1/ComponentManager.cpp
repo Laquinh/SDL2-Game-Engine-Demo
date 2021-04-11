@@ -65,7 +65,7 @@ void ComponentManager::draw()
 void ComponentManager::handle_events()
 {
 	while (SDL_PollEvent(&Game::event)) {
-		for (auto& e : entities) e->handle_events();
+		for (auto& e : entities) e->handle_events(Game::event);
 	}
 }
 

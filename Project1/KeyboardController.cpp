@@ -10,9 +10,9 @@ KeyboardController& KeyboardController::init()
 	return *this;
 }
 
-KeyboardController& KeyboardController::handle_events()
+KeyboardController& KeyboardController::handle_events(const SDL_Event& event)
 {
-	if (Game::event.type == SDL_QUIT)
+	if (event.type == SDL_QUIT)
 	{
 		Game::isRunning = false;
 	}

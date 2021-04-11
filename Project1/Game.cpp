@@ -22,8 +22,6 @@
 unique_SDL_Window Game::window = nullptr;
 SDL_Event Game::event;
 std::vector<std::shared_ptr<ColliderComponent>> Game::colliders = {};*/
-
-std::shared_ptr<ComponentManager> manager = std::make_shared<ComponentManager>();
 std::unique_ptr<Map> map;
 
 enum GroupLabels : std::size_t

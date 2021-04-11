@@ -23,9 +23,9 @@ void Entity::draw()
 	for (auto& c : components) c->draw();
 }
 
-void Entity::handle_events()
+void Entity::handle_events(const SDL_Event& event)
 {
-	for (auto& c : components) c->handle_events();
+	for (auto& c : components) c->handle_events(event);
 }
 
 bool Entity::is_active() const

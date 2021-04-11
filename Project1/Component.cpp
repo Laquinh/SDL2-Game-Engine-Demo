@@ -18,7 +18,7 @@ Component& Component::draw()
 	return *this;
 }
 
-Component& Component::handle_events()
+Component& Component::handle_events(const SDL_Event& event)
 {
 	return *this;
 }

@@ -4,6 +4,7 @@
 #include "Component.hpp"
 #include "ComponentManager.hpp"
 #include "constants.hpp"
+#include "SDL.h"
 
 #include <iostream>
 #include <memory>
@@ -22,7 +23,7 @@ public:
 
 	void update();
 	void draw();
-	void handle_events();
+	void handle_events(const SDL_Event& event);
 	bool is_active() const;
 	void destroy();
 	void onCollision(Entity& e);
