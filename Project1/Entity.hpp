@@ -42,8 +42,8 @@ public:
 
 	std::string tag = "";
 
-private:
 	std::weak_ptr<ComponentManager> manager;
+private:
 	bool active = true;
 
 	std::vector<std::shared_ptr<Component>> components;

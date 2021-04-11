@@ -1,5 +1,7 @@
 #include "KeyboardController.hpp"
 #include "AnimationComponent.hpp"
+#include "Coin.hpp"
+#include "Game.hpp"
 
 KeyboardController& KeyboardController::init()
 {
@@ -29,6 +31,9 @@ KeyboardController& KeyboardController::handle_events()
 		case SDLK_d:
 			transform->velocity.x = 1;
 			visible->play("walk");
+			break;
+		case SDLK_SPACE:
+			Coin::create(*entity.lock()->manager.lock(), SDL_Rect{ 500,500,32,32 });
 			break;
 		}
 	}
