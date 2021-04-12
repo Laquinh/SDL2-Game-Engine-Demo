@@ -62,11 +62,15 @@ TransformComponent& TransformComponent::set_y(int y)
 TransformComponent& TransformComponent::add_x(int x)
 {
     set_position(rect.x + x, rect.y);
+
+    return *this;
 }
 
 TransformComponent& TransformComponent::add_y(int y)
 {
     set_position(rect.x, rect.y + y);
+
+    return *this;
 }
 
 int TransformComponent::get_x()
