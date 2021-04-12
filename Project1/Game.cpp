@@ -65,14 +65,14 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 	}
 }
 
-void Game::handle_events()
-{
-	scene->handle_events();
-}
-
 void Game::update()
 {
 	scene->update();
+}
+
+void Game::handle_events()
+{
+	scene->handle_events();
 }
 
 void Game::render()

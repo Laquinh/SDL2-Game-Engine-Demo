@@ -11,7 +11,6 @@ struct TypeDestroyer
 	template <class T>
 	void operator()(T* ptr)
 	{
-		std::cout << ptr << " destroyed\n";
 		delete_function(ptr);
 	}
 };

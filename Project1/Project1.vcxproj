@@ -165,6 +165,7 @@
   <ItemGroup>
     <ClInclude Include="Animation.hpp" />
     <ClInclude Include="AnimationComponent.hpp" />
+    <ClInclude Include="Bullet.hpp" />
     <ClInclude Include="CameraComponent.hpp" />
     <ClInclude Include="Coin.hpp" />
     <ClInclude Include="ColliderComponent.hpp" />
@@ -204,6 +205,7 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AnimationComponent.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="CameraComponent.cpp" />
     <ClCompile Include="Coin.cpp" />
     <ClCompile Include="ColliderComponent.cpp" />

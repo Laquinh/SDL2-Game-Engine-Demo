@@ -54,7 +54,16 @@ void Scene::update()
 			}
 		}
 	}
-	for (auto& e : entities) e->update();
+	for (int i = 0; i < entities.size(); ++i)
+	{
+		auto first = entities.size();
+		entities[i]->update();
+		if (first != entities.size()) //if some collider was destroyed
+		{
+			--i; //Then [i] was destroyed
+			break;
+		}
+	}
 }
 
 void Scene::draw()
@@ -65,7 +74,10 @@ void Scene::draw()
 void Scene::handle_events()
 {
 	while (SDL_PollEvent(&Game::event)) {
-		for (auto& e : entities) e->handle_events(Game::event);
+		for (int i = 0; i < entities.size(); ++i)
+		{
+			entities[i]->handle_events(Game::event);
+		}
 	}
 }
 

@@ -3,6 +3,7 @@
 #include "KeyboardController.hpp"
 #include "Coin.hpp"
 #include "TimeManager.hpp"
+#include "Bullet.hpp"
 
 Player& Player::init()
 {
@@ -44,12 +45,16 @@ Player& Player::handle_events(const SDL_Event& event)
 			velocity.x = 1;
 			animation->play("walk");
 			break;
-		case SDLK_SPACE:
+		case SDLK_LSHIFT:
 			if (money > 0)
 			{
-				Coin::create(*entity.lock()->scene.lock(), SDL_Rect{ transform->get_x() + 100, transform->get_y(), 32, 32 });
+				Coin::create(*entity.lock()->scene.lock(), SDL_Rect{ transform->get_x() + 150, transform->get_y(), 32, 32 });
 				--money;
 			}
+			break;
+		case SDLK_SPACE:
+			Bullet::create(*entity.lock()->scene.lock(), SDL_Rect { transform->get_x() + 150, transform->get_y(), 32, 32 });
+			break;
 		}
 	}
 	else if (event.type == SDL_KEYUP)

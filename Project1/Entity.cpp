@@ -37,9 +37,9 @@ void Entity::destroy()
 {
 	active = false;
 	for (auto& c : components) c->destroy();
-	if (auto m = scene.lock())
+	if (auto s = scene.lock())
 	{
-		m->refresh();
+		s->refresh();
 	}
 }
 
