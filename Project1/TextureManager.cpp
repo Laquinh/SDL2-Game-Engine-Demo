@@ -9,32 +9,34 @@
 #include <memory>
 #include <map>
 
-void TextureManager::init(const std::shared_ptr<CameraComponent>& pCamera)
+namespace TextureManager
 {
-    camera = pCamera;
-}
-
-std::shared_ptr<SDL_Texture> TextureManager::load_texture(std::string file)
-{
-    const auto& it = textures.find(file);
-    if (it == textures.end())
+    void init(const std::shared_ptr<CameraComponent>& pCamera)
     {
-        unique_SDL_Surface tempSurface(IMG_Load(file.c_str()));
-        std::shared_ptr<SDL_Texture> tex(SDL_CreateTextureFromSurface(Game::renderer.get(), tempSurface.get()), SDL_DestroyTexture);
-
-        textures.insert(std::pair<std::string, std::shared_ptr<SDL_Texture>>(file, tex));
-
-        return tex;
+        camera = pCamera;
     }
-    else
+
+    std::shared_ptr<SDL_Texture> load_texture(std::string file)
     {
-        return it->second;
+        const auto& it = textures.find(file);
+        if (it == textures.end())
+        {
+            unique_SDL_Surface tempSurface(IMG_Load(file.c_str()));
+            std::shared_ptr<SDL_Texture> tex(SDL_CreateTextureFromSurface(Game::renderer.get(), tempSurface.get()), SDL_DestroyTexture);
+
+            textures.insert(std::pair<std::string, std::shared_ptr<SDL_Texture>>(file, tex));
+
+            return tex;
+        }
+        else
+        {
+            return it->second;
+        }
+    }
+
+    void draw(SDL_Texture& tex, const SDL_Rect& src, const SDL_Rect& dest)
+    {
+        SDL_Rect destination = { dest.x - camera->rect.x, dest.y - camera->rect.y, dest.w, dest.h };
+        SDL_RenderCopy(Game::renderer.get(), &tex, &src, &destination);
     }
 }
-
-void TextureManager::draw(SDL_Texture& tex, const SDL_Rect& src, const SDL_Rect& dest)
-{
-    SDL_Rect destination = {dest.x-camera->rect.x, dest.y-camera->rect.y, dest.w, dest.h};
-    SDL_RenderCopy(Game::renderer.get(), &tex, &src, &destination);
-}
-

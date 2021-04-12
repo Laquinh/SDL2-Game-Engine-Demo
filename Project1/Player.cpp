@@ -78,7 +78,7 @@ Player& Player::handle_events(const SDL_Event& event)
 
 Entity& Player::create(Scene& scene)
 {
-	auto& player = scene.add_entity("alien");
+	auto& player = scene.add_entity("player");
 
 	player.add_component<TransformComponent>(SDL_Rect{ 50, 150, 96, 96 });
 	player.add_component<AnimationComponent>("assets/alien-anim.png", SDL_Rect{ 0, 0, 24, 24 })

@@ -16,12 +16,6 @@
 #include <iostream>
 #include <memory>
 
-/*unique_SDL_Renderer Game::renderer = nullptr;
-unique_SDL_Window Game::window = nullptr;
-SDL_Event Game::event;
-std::vector<std::shared_ptr<ColliderComponent>> Game::colliders = {};*/
-std::unique_ptr<Map> map;
-
 enum GroupLabels : std::size_t
 {
 	groupMap,
@@ -44,10 +38,10 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 		window = (unique_SDL_Window)SDL_CreateWindow(title.c_str(), x, y, w, h, flags);
 		renderer = (unique_SDL_Renderer)SDL_CreateRenderer(window.get(), -1, 0);
 
-		Map::load_map("assets/level1.map", 20, 20);
+		Map::load_map(*scene, "assets/level1.map", 20, 20);
 
 		auto& player = Player::create(*scene);
-		auto& sign = add_tile(13, 5, 23);
+		Map::add_tile(*scene, 13, 5, 23);
 
 		Coin::create(*scene, SDL_Rect{ 150,150,32,32 });
 		Coin::create(*scene, SDL_Rect{ 190,150,32,32 });
@@ -85,15 +79,6 @@ void Game::render()
 Game::~Game()
 {
 	SDL_Quit();
-}
-
-Entity& Game::add_tile(int row, int column, int id)
-{
-	auto& tile(scene->add_entity());
-	tile.add_component<TileComponent>(row, column, 64, 64, id);
-	tile.add_group(groupMap);
-
-	return tile;
 }
 
 bool Game::is_running()

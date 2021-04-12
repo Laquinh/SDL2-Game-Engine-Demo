@@ -3,33 +3,15 @@
 
 #include "SDL.h"
 #include "destroyers.hpp"
+#include "Entity.hpp"
 
+#include <string>
 #include <array>
 
-class Map
+namespace Map
 {
-public:
-	Map();
-	~Map();
-
-	static void load_map(const std::string& file, int sizeX, int sizeY);
-
-	//void draw_map();
-
-private:
-	/*enum Type {
-		GRASS,
-		DIRT,
-		WATER
-	};
-	SDL_Rect srcRect;
-	SDL_Rect destRect;
-	
-	unique_SDL_Texture grass; 
-	unique_SDL_Texture dirt; 
-	unique_SDL_Texture water;
-
-	std::array<std::array<int, 25>, 20> map;*/
-};
+	void load_map(Scene& scene, const std::string& file, int sizeX, int sizeY);
+	Entity& add_tile(Scene& scene, int row, int column, int id);
+}
 
 #endif

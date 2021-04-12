@@ -7,7 +7,7 @@
 Bullet& Bullet::init()
 {
 	transform = entity.lock()->get_component<TransformComponent>();
-	player = Game::scene->get_entity_with_tag("alien")->get_component<Player>();
+	player = Game::scene->get_entity_with_tag("player")->get_component<Player>();
 
 	speed = 250;
 

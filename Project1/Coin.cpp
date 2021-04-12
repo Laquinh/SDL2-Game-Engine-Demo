@@ -6,7 +6,7 @@
 
 Coin& Coin::onCollision(Entity& e)
 {
-    if (e.tag == "alien")
+    if (e.tag == "player")
     {
 		++e.get_component<Player>()->money;
         entity.lock()->destroy();
