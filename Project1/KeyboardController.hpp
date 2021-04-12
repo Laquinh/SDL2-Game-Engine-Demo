@@ -3,7 +3,6 @@
 
 #include "Game.hpp"
 #include "Component.hpp"
-#include "ECS.hpp"
 #include "VisibleComponent.hpp"
 
 class KeyboardController : public Component

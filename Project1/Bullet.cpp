@@ -8,6 +8,9 @@ Bullet& Bullet::init()
 {
 	transform = entity.lock()->get_component<TransformComponent>();
 	player = Game::scene->get_entity_with_tag("alien")->get_component<Player>();
+
+	speed = 250;
+
 	return *this;
 }
 
@@ -15,7 +18,7 @@ Bullet& Bullet::update()
 {
 	if (transform->get_x() < 1300)
 	{
-		transform->add_x(150 * TimeManager::get_deltaTime());
+		transform->add_x(speed * TimeManager::get_deltaTime());
 	}
 	else
 	{

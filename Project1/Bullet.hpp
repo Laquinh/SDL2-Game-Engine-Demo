@@ -12,4 +12,5 @@ public:
 private:
 	std::shared_ptr<TransformComponent> transform;
 	std::weak_ptr<Player> player;
+	int speed;
 };

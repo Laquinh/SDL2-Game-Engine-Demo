@@ -26,8 +26,6 @@ bool Entity::has_component() const
 template<typename T, typename ...TArgs>
 std::shared_ptr<T> Entity::add_component(TArgs&& ...mArgs)
 {
-	//T* c = new T(std::forward<TArgs>(mArgs)...);
-
 	std::shared_ptr<T> c(std::make_shared<T>(std::forward<TArgs>(mArgs)...));
 	c->entity = weak_from_this();
 	componentArray[get_component_type_ID<T>()] = c;

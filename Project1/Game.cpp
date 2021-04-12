@@ -4,11 +4,9 @@
 #include "SDL_image.h"
 
 #include "TextureManager.hpp"
-#include "GameObject.hpp"
 #include "Map.hpp"
 #include "ColliderComponent.hpp"
 
-#include "ECS.hpp"
 #include "Collision.hpp"
 #include "TileComponent.hpp"
 #include "AnimationComponent.hpp"
