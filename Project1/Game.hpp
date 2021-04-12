@@ -20,7 +20,7 @@ public:
 	void update();
 	void render();
 
-	static void add_tile(int x, int y, int id);
+	static Entity& add_tile(int x, int y, int id);
 	bool is_running();
 
 	static inline unique_SDL_Renderer renderer = nullptr;

@@ -9,7 +9,7 @@
 
 class TransformComponent : public Component, public std::enable_shared_from_this<TransformComponent>
 {
-	friend class SpriteComponent;
+	friend class VisibleComponent;
 	friend class KeyboardController;
 	friend struct ColliderComponent;
 public:
@@ -18,17 +18,21 @@ public:
 	TransformComponent(const SDL_Rect&);
 	~TransformComponent();
 
-	TransformComponent& update() override;
 	TransformComponent& set_position(int, int);
+	TransformComponent& set_x(int x);
+	TransformComponent& set_y(int y);
+	TransformComponent& add_x(int x);
+	TransformComponent& add_y(int y);
+	int get_x();
+	int get_y();
 	TransformComponent& set_rect(const SDL_Rect&);
 	TransformComponent& reset_scale(float s = 1);
 	Vector2D get_position();
 	SDL_Rect get_rect();
 	TransformComponent& set_scale(float);
 
+private:
 	SDL_Rect rect;
-	Vector2D velocity;
-	double speed = 230;
 	float scale = 1;
 };
 

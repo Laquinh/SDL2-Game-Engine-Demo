@@ -24,7 +24,7 @@ SpriteComponent& SpriteComponent::set_srcRect(const SDL_Rect& rect)
 
 SpriteComponent& SpriteComponent::update()
 {
-	destRect = transform->rect;
+	destRect = transform->get_rect();
 
 	return *this;
 }

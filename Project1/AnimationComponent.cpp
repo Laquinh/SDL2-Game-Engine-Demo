@@ -12,7 +12,7 @@ AnimationComponent& AnimationComponent::update()
 	srcRect.x = srcRect.w * static_cast<int>((SDL_GetTicks() / speed) % frames);
 	srcRect.y = animationIndex * srcRect.h;
 
-	destRect = transform->rect;
+	destRect = transform->get_rect();
 
 	return *this;
 }

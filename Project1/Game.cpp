@@ -49,15 +49,13 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 		Map::load_map("assets/level1.map", 20, 20);
 
 		auto& player = Player::create(*scene);
-		CameraComponent::create(*scene, w, h, player);
-
-		auto& sign = scene->add_entity("sign");
-		sign.add_component<TileComponent>(13, 5, 64, 64, 23);
-		sign.add_group(groupMap);
+		auto& sign = add_tile(13, 5, 23);
 
 		Coin::create(*scene, SDL_Rect{ 150,150,32,32 });
 		Coin::create(*scene, SDL_Rect{ 190,150,32,32 });
 		Coin::create(*scene, SDL_Rect{ 230,150,32,32 });
+
+		CameraComponent::create(*scene, w, h, player);
 
 		isRunning = true;
 	}
@@ -91,11 +89,13 @@ Game::~Game()
 	SDL_Quit();
 }
 
-void Game::add_tile(int row, int column, int id)
+Entity& Game::add_tile(int row, int column, int id)
 {
 	auto& tile(scene->add_entity());
 	tile.add_component<TileComponent>(row, column, 64, 64, id);
 	tile.add_group(groupMap);
+
+	return tile;
 }
 
 bool Game::is_running()

@@ -2,11 +2,22 @@
 #include "SDL.h"
 #include "KeyboardController.hpp"
 #include "Coin.hpp"
+#include "TimeManager.hpp"
 
 Player& Player::init()
 {
 	transform = entity.lock()->get_component<TransformComponent>().shared_from_this();
 	animation = entity.lock()->get_component<AnimationComponent>().shared_from_this();
+
+	speed = 350;
+
+	return *this;
+}
+
+Player& Player::update()
+{
+	transform->add_x(speed * TimeManager::get_deltaTime() * velocity.x);
+	transform->add_y(speed * TimeManager::get_deltaTime() * velocity.y);
 
 	return *this;
 }
@@ -18,25 +29,25 @@ Player& Player::handle_events(const SDL_Event& event)
 		switch (event.key.keysym.sym)
 		{
 		case SDLK_w:
-			transform->velocity.y = -1;
+			velocity.y = -1;
 			animation->play("walk");
 			break;
 		case SDLK_a:
-			transform->velocity.x = -1;
+			velocity.x = -1;
 			animation->play("walk");
 			break;
 		case SDLK_s:
-			transform->velocity.y = 1;
+			velocity.y = 1;
 			animation->play("walk");
 			break;
 		case SDLK_d:
-			transform->velocity.x = 1;
+			velocity.x = 1;
 			animation->play("walk");
 			break;
 		case SDLK_SPACE:
 			if (money > 0)
 			{
-				Coin::create(*entity.lock()->scene.lock(), SDL_Rect{ transform->rect.x + 100, transform->rect.y, 32, 32 });
+				Coin::create(*entity.lock()->scene.lock(), SDL_Rect{ transform->get_x() + 100, transform->get_y(), 32, 32 });
 				--money;
 			}
 		}
@@ -47,17 +58,16 @@ Player& Player::handle_events(const SDL_Event& event)
 		{
 		case SDLK_w:
 		case SDLK_s:
-			transform->velocity.y = 0;
+			velocity.y = 0;
 			animation->play("idle");
 			break;
 		case SDLK_a:
 		case SDLK_d:
-			transform->velocity.x = 0;
+			velocity.x = 0;
 			animation->play("idle");
 			break;
 		}
 	}
-	
     return *this;
 }
 
@@ -71,7 +81,8 @@ Entity& Player::create(Scene& scene)
 		.add_animation("walk", { 1, 4, 100 })
 		.play("idle");
 	player.add_component<KeyboardController>();
-	player.add_component<ColliderComponent>();
+	player.add_component<ColliderComponent>()
+		.isRigid = true;
 	player.add_component<Player>();
 	player.add_group(1);
 

@@ -5,22 +5,19 @@
 
 TransformComponent::TransformComponent() :
     //position({0, 0})
-    rect({ 0, 0, 32, 32 }),
-    velocity({ 0, 0 })
+    rect({ 0, 0, 32, 32 })
 {
 }
 
 TransformComponent::TransformComponent(int x, int y):
     //position({ static_cast<float>(x), static_cast<float>(y) })
-    rect({x, y, 32, 32}),
-    velocity({ 0, 0 })
+    rect({x, y, 32, 32})
 {
 }
 
 TransformComponent::TransformComponent(const SDL_Rect& rect) :
     //position({ static_cast<float>(x), static_cast<float>(y) })
-    rect(rect),
-    velocity({ 0, 0 })
+    rect(rect)
 {
 }
 
@@ -28,28 +25,58 @@ TransformComponent::~TransformComponent()
 {
 }
 
-TransformComponent& TransformComponent::update()
+TransformComponent& TransformComponent::set_position(int x, int y)
 {
-    Vector2D product = (velocity * (speed * TimeManager::get_deltaTime()));
-    for (auto& c : Game::colliders)
+    if (auto p = entity.lock())
     {
-        if (c->isRigid && Collision::AABB(c->collider, {rect.x+static_cast<int>(product.x), rect.y+ static_cast<int>(product.y), rect.w, rect.h}))
+        if (p->has_component<ColliderComponent>() && p->get_component<ColliderComponent>().isRigid)
         {
-            product = { 0,0 };
+            for (auto& c : Game::colliders)
+            {
+                if (c->entity.lock().get() != p.get() && c->isRigid && Collision::AABB(c->collider, { x , y , rect.w, rect.h }))
+                {
+                    return *this;
+                }
+            }
         }
+        rect.x = x;
+        rect.y = y;
     }
-    rect.x += round(product.x);
-    rect.y += round(product.y);
+    return *this;
+}
+
+TransformComponent& TransformComponent::set_x(int x)
+{
+    set_position(x, rect.y);
 
     return *this;
 }
 
-TransformComponent& TransformComponent::set_position(int x, int y)
+TransformComponent& TransformComponent::set_y(int y)
 {
-    rect.x = x;
-    rect.y = y;
+    set_position(rect.x, y);
 
     return *this;
+}
+
+TransformComponent& TransformComponent::add_x(int x)
+{
+    set_position(rect.x + x, rect.y);
+}
+
+TransformComponent& TransformComponent::add_y(int y)
+{
+    set_position(rect.x, rect.y + y);
+}
+
+int TransformComponent::get_x()
+{
+    return rect.x;
+}
+
+int TransformComponent::get_y()
+{
+    return rect.y;
 }
 
 TransformComponent& TransformComponent::set_rect(const SDL_Rect& rect)

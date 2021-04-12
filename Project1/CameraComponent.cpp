@@ -23,8 +23,8 @@ CameraComponent& CameraComponent::init()
 
 CameraComponent& CameraComponent::update()
 {
-	rect.x = target->rect.x - rect.w / 2 + 48;
-	rect.y = target->rect.y - rect.h / 2 + 48;
+	rect.x = target->get_x() - rect.w / 2 + 48;
+	rect.y = target->get_y() - rect.h / 2 + 48;
 
 	if (rect.x < 0)
 	{
