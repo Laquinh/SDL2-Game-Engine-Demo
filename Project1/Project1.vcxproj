@@ -173,13 +173,10 @@
     <ClInclude Include="Component.hpp" />
     <ClInclude Include="Scene.hpp" />
     <ClInclude Include="constants.hpp" />
-    <ClInclude Include="ECS.hpp" />
     <ClInclude Include="destroyers.hpp" />
-    <ClInclude Include="EnablePolymorphicShared.hpp" />
     <ClInclude Include="Engine.hpp" />
     <ClInclude Include="Entity.hpp" />
     <ClInclude Include="Game.hpp" />
-    <ClInclude Include="GameObject.hpp" />
     <ClInclude Include="KeyboardController.hpp" />
     <ClInclude Include="Map.hpp" />
     <ClInclude Include="Player.hpp" />
@@ -215,7 +212,6 @@
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="KeyboardController.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />

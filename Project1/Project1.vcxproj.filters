@@ -24,9 +24,6 @@
     <ClInclude Include="destroyers.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameObject.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Map.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -51,9 +48,6 @@
     <ClInclude Include="KeyboardController.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ECS.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ColliderComponent.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -61,9 +55,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TileComponent.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EnablePolymorphicShared.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Animation.hpp">
@@ -137,9 +128,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="KeyboardController.cpp">
