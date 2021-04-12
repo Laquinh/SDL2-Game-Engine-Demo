@@ -36,7 +36,7 @@ Player& Player::handle_events(const SDL_Event& event)
 		case SDLK_SPACE:
 			if (money > 0)
 			{
-				Coin::create(*entity.lock()->manager.lock(), SDL_Rect{ transform->rect.x + 100, transform->rect.y, 32, 32 });
+				Coin::create(*entity.lock()->scene.lock(), SDL_Rect{ transform->rect.x + 100, transform->rect.y, 32, 32 });
 				--money;
 			}
 		}
@@ -61,9 +61,9 @@ Player& Player::handle_events(const SDL_Event& event)
     return *this;
 }
 
-Entity& Player::create(ComponentManager& manager)
+Entity& Player::create(Scene& scene)
 {
-	auto& player = manager.add_entity("alien");
+	auto& player = scene.add_entity("alien");
 
 	player.add_component<TransformComponent>(SDL_Rect{ 50, 150, 96, 96 });
 	player.add_component<AnimationComponent>("assets/alien-anim.png", SDL_Rect{ 0, 0, 24, 24 })

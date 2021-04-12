@@ -1,8 +1,8 @@
 #include "Entity.hpp"
 #include <memory>
 
-Entity::Entity(const std::weak_ptr<ComponentManager>& manager) :
-	manager(manager)
+Entity::Entity(const std::weak_ptr<Scene>& scene) :
+	scene(scene)
 {
 }
 
@@ -37,7 +37,7 @@ void Entity::destroy()
 {
 	active = false;
 	for (auto& c : components) c->destroy();
-	if (auto m = manager.lock())
+	if (auto m = scene.lock())
 	{
 		m->refresh();
 	}
@@ -56,7 +56,7 @@ bool Entity::has_group(Group group)
 void Entity::add_group(Group group)
 {
 	groupBitset[group] = true;
-	manager.lock()->add_to_group(shared_from_this(), group);
+	scene.lock()->add_to_group(shared_from_this(), group);
 }
 
 void Entity::remove_group(Group group)

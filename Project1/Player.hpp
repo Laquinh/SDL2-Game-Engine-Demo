@@ -10,7 +10,7 @@ public:
 	Player& init() override;
 	Player& handle_events(const SDL_Event& event) override;
 
-	static Entity& create(ComponentManager& manager);
+	static Entity& create(Scene& scene);
 
 	int money = 0;
 private:

@@ -48,16 +48,16 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 
 		Map::load_map("assets/level1.map", 20, 20);
 
-		auto& player = Player::create(*manager);
-		CameraComponent::create(*manager, w, h, player);
+		auto& player = Player::create(*scene);
+		CameraComponent::create(*scene, w, h, player);
 
-		auto& sign = manager->add_entity("sign");
+		auto& sign = scene->add_entity("sign");
 		sign.add_component<TileComponent>(13, 5, 64, 64, 23);
 		sign.add_group(groupMap);
 
-		Coin::create(*manager, SDL_Rect{ 150,150,32,32 });
-		Coin::create(*manager, SDL_Rect{ 190,150,32,32 });
-		Coin::create(*manager, SDL_Rect{ 230,150,32,32 });
+		Coin::create(*scene, SDL_Rect{ 150,150,32,32 });
+		Coin::create(*scene, SDL_Rect{ 190,150,32,32 });
+		Coin::create(*scene, SDL_Rect{ 230,150,32,32 });
 
 		isRunning = true;
 	}
@@ -69,20 +69,20 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 
 void Game::handle_events()
 {
-	manager->handle_events();
+	scene->handle_events();
 }
 
 void Game::update()
 {
-	manager->update();
+	scene->update();
 }
 
 void Game::render()
 {
 	SDL_RenderClear(renderer.get());
-	manager->draw_group(groupMap);
-	manager->draw_group(groupPlayers);
-	manager->draw_group(groupEnemies);
+	scene->draw_group(groupMap);
+	scene->draw_group(groupPlayers);
+	scene->draw_group(groupEnemies);
 	SDL_RenderPresent(renderer.get());
 }
 
@@ -93,7 +93,7 @@ Game::~Game()
 
 void Game::add_tile(int row, int column, int id)
 {
-	auto& tile(manager->add_entity());
+	auto& tile(scene->add_entity());
 	tile.add_component<TileComponent>(row, column, 64, 64, id);
 	tile.add_group(groupMap);
 }

@@ -12,11 +12,11 @@
 
 class Entity;
 
-class ComponentManager : public std::enable_shared_from_this<ComponentManager>
+class Scene : public std::enable_shared_from_this<Scene>
 {
 public:
-	ComponentManager();
-	~ComponentManager();
+	Scene();
+	~Scene();
 	void update();
 	void draw();
 	void handle_events();

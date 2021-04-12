@@ -6,6 +6,7 @@
 #include "destroyers.hpp"
 
 #include "ColliderComponent.hpp"
+#include "Scene.hpp"
 
 #include <iostream>
 #include <memory>
@@ -28,7 +29,7 @@ public:
 	static inline SDL_Event event;
 	static inline bool isRunning;
 
-	static inline std::shared_ptr<ComponentManager> manager = std::make_shared<ComponentManager>();
+	static inline std::shared_ptr<Scene> scene = std::make_shared<Scene>();
 private:
 };
 

@@ -3,13 +3,13 @@
 
 #include "SDL.h"
 #include "Component.hpp"
-#include "ComponentManager.hpp"
+#include "Scene.hpp"
 
 class Coin : public Component
 {
 public:
 	Coin& onCollision(Entity& e);
-	static Entity& create(ComponentManager& manager, const SDL_Rect& destRect);
+	static Entity& create(Scene& scene, const SDL_Rect& destRect);
 };
 
 #endif

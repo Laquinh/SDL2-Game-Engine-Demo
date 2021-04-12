@@ -18,7 +18,7 @@ public:
 	CameraComponent& init() override;
 	CameraComponent& update() override;
 
-	static Entity& create(ComponentManager& manager, int width, int height, const Entity& target);
+	static Entity& create(Scene& scene, int width, int height, const Entity& target);
 
 	SDL_Rect rect;
 	int wi = 1280;

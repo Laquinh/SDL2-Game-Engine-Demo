@@ -46,9 +46,9 @@ CameraComponent& CameraComponent::update()
 	return *this;
 }
 
-Entity& CameraComponent::create(ComponentManager& manager, int width, int height, const Entity& target)
+Entity& CameraComponent::create(Scene& scene, int width, int height, const Entity& target)
 {
-	auto& camera = manager.add_entity("camera");
+	auto& camera = scene.add_entity("camera");
 
 	camera.add_component<CameraComponent>(target.get_component<TransformComponent>().shared_from_this(), SDL_Rect{ 0,0,width,height });
 	TextureManager::init(camera.get_component<CameraComponent>().shared_from_this());

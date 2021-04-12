@@ -2,7 +2,7 @@
 #define ENTITY_HPP
 
 #include "Component.hpp"
-#include "ComponentManager.hpp"
+#include "Scene.hpp"
 #include "constants.hpp"
 #include "SDL.h"
 
@@ -13,12 +13,12 @@
 #include <vector>
 
 class Component;
-class ComponentManager;
+class Scene;
 
 class Entity : public std::enable_shared_from_this<Entity>
 {
 public:
-	Entity(const std::weak_ptr<ComponentManager>& manager);
+	Entity(const std::weak_ptr<Scene>& scene);
 	~Entity();
 
 	void update();
@@ -43,7 +43,7 @@ public:
 
 	std::string tag = "";
 
-	std::weak_ptr<ComponentManager> manager;
+	std::weak_ptr<Scene> scene;
 private:
 	bool active = true;
 
