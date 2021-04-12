@@ -123,6 +123,18 @@ Entity& Scene::add_entity(const std::string& tag)
 	return *entities.back();
 }
 
+std::shared_ptr<Entity> Scene::get_entity_with_tag(const std::string& tag)
+{
+	for (auto& e : entities)
+	{
+		if (e->tag == tag)
+		{
+			return e;
+		}
+	}
+	return std::shared_ptr<Entity>();
+}
+
 void Scene::add_to_group(const std::shared_ptr<Entity>& e, Group g)
 {
 	groupedEntities[g].emplace_back(e);

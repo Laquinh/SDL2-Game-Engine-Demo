@@ -29,7 +29,7 @@ TransformComponent& TransformComponent::set_position(int x, int y)
 {
     if (auto p = entity.lock())
     {
-        if (p->has_component<ColliderComponent>() && p->get_component<ColliderComponent>().isRigid)
+        if (p->has_component<ColliderComponent>() && p->get_component<ColliderComponent>()->isRigid)
         {
             for (auto& c : Game::colliders)
             {

@@ -22,6 +22,7 @@ public:
 	void handle_events();
 	void refresh();
 	Entity& add_entity(const std::string& tag = "");
+	std::shared_ptr<Entity> get_entity_with_tag(const std::string& tag);
 
 	void add_to_group(const std::shared_ptr<Entity>& e, Group g);
 	std::vector<std::shared_ptr<Entity>>& get_group(Group g);

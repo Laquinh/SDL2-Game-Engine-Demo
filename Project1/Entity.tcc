@@ -24,7 +24,7 @@ bool Entity::has_component() const
 }
 
 template<typename T, typename ...TArgs>
-T& Entity::add_component(TArgs&& ...mArgs)
+std::shared_ptr<T> Entity::add_component(TArgs&& ...mArgs)
 {
 	//T* c = new T(std::forward<TArgs>(mArgs)...);
 
@@ -37,13 +37,20 @@ T& Entity::add_component(TArgs&& ...mArgs)
 
 	components.emplace_back(std::move(c));
 
-	return dynamic_cast<T&>(*(components.back()));
+	return std::dynamic_pointer_cast<T>(components.back());
 }
 
 template<typename T>
-T& Entity::get_component() const
+std::shared_ptr<T> Entity::get_component() const
 {
-	return dynamic_cast<T&>(*(componentArray[get_component_type_ID<T>()].lock()));
+	if (auto p = componentArray[get_component_type_ID<T>()].lock())
+	{
+		return std::dynamic_pointer_cast<T>(p);
+	}
+	else
+	{
+		return std::shared_ptr<T>();
+	}
 }
 
 #endif

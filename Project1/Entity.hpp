@@ -32,10 +32,10 @@ public:
 	bool has_component() const;
 
 	template <typename T, typename ...TArgs>
-	T& add_component(TArgs&& ...mArgs);
+	std::shared_ptr<T> add_component(TArgs&& ...mArgs);
 
 	template <typename T>
-	T& get_component() const;
+	std::shared_ptr<T> get_component() const;
 
 	bool has_group(Group group);
 	void add_group(Group group);

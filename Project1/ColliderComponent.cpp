@@ -14,7 +14,7 @@ ColliderComponent::~ColliderComponent()
 
 ColliderComponent& ColliderComponent::init()
 {
-	transform = entity.lock()->get_component<TransformComponent>().shared_from_this();
+	transform = entity.lock()->get_component<TransformComponent>();
 	collider = transform->rect;
 
 	Game::colliders.emplace_back(shared_from_this());

@@ -7,8 +7,8 @@
 
 Player& Player::init()
 {
-	transform = entity.lock()->get_component<TransformComponent>().shared_from_this();
-	animation = entity.lock()->get_component<AnimationComponent>().shared_from_this();
+	transform = entity.lock()->get_component<TransformComponent>();
+	animation = entity.lock()->get_component<AnimationComponent>();
 
 	speed = 350;
 
@@ -82,12 +82,12 @@ Entity& Player::create(Scene& scene)
 
 	player.add_component<TransformComponent>(SDL_Rect{ 50, 150, 96, 96 });
 	player.add_component<AnimationComponent>("assets/alien-anim.png", SDL_Rect{ 0, 0, 24, 24 })
-		.add_animation("idle", { 0, 4, 225 })
+		->add_animation("idle", { 0, 4, 225 })
 		.add_animation("walk", { 1, 4, 100 })
 		.play("idle");
 	player.add_component<KeyboardController>();
 	player.add_component<ColliderComponent>()
-		.isRigid = true;
+		->isRigid = true;
 	player.add_component<Player>();
 	player.add_group(1);
 

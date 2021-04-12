@@ -38,16 +38,16 @@ TileComponent& TileComponent::init()
 {
 	if (auto e = entity.lock())
 	{
-		transform = (e->add_component<TransformComponent>(destRect)).shared_from_this();
-		visible = (e->add_component<SpriteComponent>(file, srcRect)).shared_from_this();
+		transform = (e->add_component<TransformComponent>(destRect));
+		visible = (e->add_component<SpriteComponent>(file, srcRect));
 		if (id == 16)
 		{
 			e->tag = "water";
-			e->add_component<ColliderComponent>().isRigid = true;
+			e->add_component<ColliderComponent>()->isRigid = true;
 		}
 		else if (id == 21)
 		{
-			e->add_component<ColliderComponent>().isRigid = true;
+			e->add_component<ColliderComponent>()->isRigid = true;
 			e->tag = "wall";
 		}
 		else

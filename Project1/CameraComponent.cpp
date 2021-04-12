@@ -10,7 +10,7 @@ CameraComponent::CameraComponent(const std::shared_ptr<TransformComponent>& targ
 }
 
 CameraComponent::CameraComponent(const Entity& entity, const SDL_Rect& rect):
-	target(entity.get_component<TransformComponent>().shared_from_this()),
+	target(entity.get_component<TransformComponent>()),
 	rect(rect)
 {
 }
@@ -50,8 +50,8 @@ Entity& CameraComponent::create(Scene& scene, int width, int height, const Entit
 {
 	auto& camera = scene.add_entity("camera");
 
-	camera.add_component<CameraComponent>(target.get_component<TransformComponent>().shared_from_this(), SDL_Rect{ 0,0,width,height });
-	TextureManager::init(camera.get_component<CameraComponent>().shared_from_this());
+	camera.add_component<CameraComponent>(target.get_component<TransformComponent>(), SDL_Rect{ 0,0,width,height });
+	TextureManager::init(camera.get_component<CameraComponent>());
 
 	return camera;
 }

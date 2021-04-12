@@ -5,8 +5,8 @@
 
 KeyboardController& KeyboardController::init()
 {
-	transform = entity.lock()->get_component<TransformComponent>().shared_from_this();
-	visible = entity.lock()->get_component<AnimationComponent>().shared_from_this();
+	transform = entity.lock()->get_component<TransformComponent>();
+	visible = entity.lock()->get_component<AnimationComponent>();
 	return *this;
 }
 

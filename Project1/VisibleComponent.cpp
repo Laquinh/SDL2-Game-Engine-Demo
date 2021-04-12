@@ -3,7 +3,7 @@
 
 VisibleComponent& VisibleComponent::init()
 {
-	transform = entity.lock()->get_component<TransformComponent>().shared_from_this();
+	transform = entity.lock()->get_component<TransformComponent>();
 
 	return *this;
 }
