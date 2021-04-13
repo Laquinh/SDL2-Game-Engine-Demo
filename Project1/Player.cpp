@@ -48,12 +48,12 @@ Player& Player::handle_events(const SDL_Event& event)
 		case SDLK_LSHIFT:
 			if (money > 0)
 			{
-				Coin::create(*entity.lock()->scene.lock(), SDL_Rect{ transform->get_x() + 150, transform->get_y(), 32, 32 });
+				Coin::create(*entity.lock()->scene.lock(), Rectangle( transform->get_x() + 150, transform->get_y(), 32, 32 ));
 				--money;
 			}
 			break;
 		case SDLK_SPACE:
-			Bullet::create(*entity.lock()->scene.lock(), SDL_Rect { transform->get_x() + 150, transform->get_y(), 32, 32 });
+			Bullet::create(*entity.lock()->scene.lock(), Rectangle( transform->get_x() + 150, transform->get_y(), 32, 32));
 			break;
 		}
 	}
@@ -80,8 +80,8 @@ Entity& Player::create(Scene& scene)
 {
 	auto& player = scene.add_entity("player");
 
-	player.add_component<TransformComponent>(SDL_Rect{ 50, 150, 96, 96 });
-	player.add_component<AnimationComponent>("assets/alien-anim.png", SDL_Rect{ 0, 0, 24, 24 })
+	player.add_component<TransformComponent>(Rectangle( 50, 150, 96, 96 ));
+	player.add_component<AnimationComponent>("assets/alien-anim.png", Rectangle(0, 0, 24, 24))
 		->add_animation("idle", { 0, 4, 225 })
 		.add_animation("walk", { 1, 4, 100 })
 		.play("idle");

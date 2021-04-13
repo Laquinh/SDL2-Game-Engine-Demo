@@ -34,9 +34,11 @@ namespace TextureManager
         }
     }
 
-    void draw(SDL_Texture& tex, const SDL_Rect& src, const SDL_Rect& dest)
+    void draw(SDL_Texture& tex, const Rectangle& src, Rectangle dest)
     {
-        SDL_Rect destination = { dest.x - camera->rect.x, dest.y - camera->rect.y, dest.w, dest.h };
-        SDL_RenderCopy(Game::renderer.get(), &tex, &src, &destination);
+        dest.set_position(dest.x - camera->rect.x, dest.y - camera->rect.y);
+        SDL_Rect s = src.get_SDL_Rect();
+        SDL_Rect d = dest.get_SDL_Rect();
+        SDL_RenderCopy(Game::renderer.get(), &tex, &s, &d);
     }
 }

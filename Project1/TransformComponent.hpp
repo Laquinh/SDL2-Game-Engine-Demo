@@ -6,6 +6,7 @@
 #include "SDL.h"
 #include "Component.hpp"
 #include "Vector2D.hpp"
+#include "Rectangle.hpp"
 
 class TransformComponent : public Component, public std::enable_shared_from_this<TransformComponent>
 {
@@ -15,7 +16,7 @@ class TransformComponent : public Component, public std::enable_shared_from_this
 public:
 	TransformComponent();
 	TransformComponent(int, int);
-	TransformComponent(const SDL_Rect&);
+	TransformComponent(const Rectangle&);
 	~TransformComponent();
 
 	TransformComponent& set_position(int, int);
@@ -25,14 +26,14 @@ public:
 	TransformComponent& add_y(int y);
 	int get_x();
 	int get_y();
-	TransformComponent& set_rect(const SDL_Rect&);
+	TransformComponent& set_rect(const Rectangle&);
 	TransformComponent& reset_scale(float s = 1);
 	Vector2D get_position();
-	SDL_Rect get_rect();
+	Rectangle get_rect();
 	TransformComponent& set_scale(float);
 
 private:
-	SDL_Rect rect;
+	Rectangle rect;
 	float scale = 1;
 };
 

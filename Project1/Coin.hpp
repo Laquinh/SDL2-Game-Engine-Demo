@@ -4,12 +4,13 @@
 #include "SDL.h"
 #include "Component.hpp"
 #include "Scene.hpp"
+#include "Rectangle.hpp"
 
 class Coin : public Component
 {
 public:
 	Coin& onCollision(Entity& e);
-	static Entity& create(Scene& scene, const SDL_Rect& destRect);
+	static Entity& create(Scene& scene, const Rectangle& destRect);
 };
 
 #endif

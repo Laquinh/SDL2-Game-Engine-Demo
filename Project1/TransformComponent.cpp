@@ -4,20 +4,17 @@
 #include "Collision.hpp"
 
 TransformComponent::TransformComponent() :
-    //position({0, 0})
     rect({ 0, 0, 32, 32 })
 {
 }
 
 TransformComponent::TransformComponent(int x, int y):
-    //position({ static_cast<float>(x), static_cast<float>(y) })
     rect({x, y, 32, 32})
 {
 }
 
-TransformComponent::TransformComponent(const SDL_Rect& rect) :
-    //position({ static_cast<float>(x), static_cast<float>(y) })
-    rect(rect)
+TransformComponent::TransformComponent(const Rectangle& rect) :
+    rect(rect.x, rect.y, rect.width, rect.height)
 {
 }
 
@@ -33,7 +30,7 @@ TransformComponent& TransformComponent::set_position(int x, int y)
         {
             for (auto& c : Game::colliders)
             {
-                if (c->entity.lock().get() != p.get() && c->isRigid && Collision::AABB(c->collider, { x , y , rect.w, rect.h }))
+                if (c->entity.lock().get() != p.get() && c->isRigid && Collision::AABB(c->collider, Rectangle(x , y , rect.width, rect.height )))
                 {
                     return *this;
                 }
@@ -83,7 +80,7 @@ int TransformComponent::get_y()
     return rect.y;
 }
 
-TransformComponent& TransformComponent::set_rect(const SDL_Rect& rect)
+TransformComponent& TransformComponent::set_rect(const Rectangle& rect)
 {
     this->rect = rect;
 
@@ -102,15 +99,15 @@ Vector2D TransformComponent::get_position()
     return Vector2D(static_cast<float>(rect.x), static_cast<float>(rect.y));
 }
 
-SDL_Rect TransformComponent::get_rect()
+Rectangle TransformComponent::get_rect()
 {
     return rect;
 }
 
 TransformComponent& TransformComponent::set_scale(float scale)
 {
-    rect.w *= static_cast<int>(scale/this->scale);
-    rect.h *= static_cast<int>(scale/this->scale);
+    rect.width *= static_cast<int>(scale/this->scale);
+    rect.height *= static_cast<int>(scale/this->scale);
     this->scale = scale;
 
     return *this;

@@ -171,6 +171,7 @@
     <ClInclude Include="ColliderComponent.hpp" />
     <ClInclude Include="Collision.hpp" />
     <ClInclude Include="Component.hpp" />
+    <ClInclude Include="Rectangle.hpp" />
     <ClInclude Include="Scene.hpp" />
     <ClInclude Include="constants.hpp" />
     <ClInclude Include="destroyers.hpp" />
@@ -208,6 +209,7 @@
     <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Entity.cpp" />

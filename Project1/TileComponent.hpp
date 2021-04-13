@@ -7,12 +7,13 @@
 #include "TransformComponent.hpp"
 #include "SpriteComponent.hpp"
 #include "VisibleComponent.hpp"
+#include "Rectangle.hpp"
 
 class TileComponent : public Component
 {
 public:
 	TileComponent() = default;
-	TileComponent(const SDL_Rect& rect, int id);
+	TileComponent(const Rectangle& rect, int id);
 	TileComponent(int row, int column, int width, int height, int id);
 	TileComponent& init() override;
 
@@ -28,7 +29,7 @@ private:
 	std::shared_ptr<TransformComponent> transform;
 	std::shared_ptr<VisibleComponent> visible;
 	
-	SDL_Rect srcRect, destRect;
+	Rectangle srcRect, destRect;
 	int id;
 	std::string file;
 };

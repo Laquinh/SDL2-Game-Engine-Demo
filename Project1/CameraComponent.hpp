@@ -4,14 +4,15 @@
 #include "SDL.h"
 #include "Component.hpp"
 #include "TransformComponent.hpp"
+#include "Rectangle.hpp"
 #include <memory>
 
 class CameraComponent : public Component, public std::enable_shared_from_this<CameraComponent>
 {
 public:
 	CameraComponent() = default;
-	CameraComponent(const std::shared_ptr<TransformComponent>& target, const SDL_Rect& rect);
-	CameraComponent(const Entity& entity, const SDL_Rect& rect);
+	CameraComponent(const std::shared_ptr<TransformComponent>& target, const Rectangle& rect);
+	CameraComponent(const Entity& entity, const Rectangle& rect);
 	CameraComponent(const CameraComponent&) = default;
 	~CameraComponent() = default;
 
@@ -20,7 +21,7 @@ public:
 
 	static Entity& create(Scene& scene, int width, int height, const Entity& target);
 
-	SDL_Rect rect;
+	Rectangle rect;
 	int wi = 1280;
 private:
 	std::shared_ptr<TransformComponent> target;

@@ -9,7 +9,7 @@
 
 struct ColliderComponent : public Component, public std::enable_shared_from_this<ColliderComponent>
 {
-	SDL_Rect collider;
+	Rectangle collider;
 
 	std::shared_ptr<TransformComponent> transform;
 

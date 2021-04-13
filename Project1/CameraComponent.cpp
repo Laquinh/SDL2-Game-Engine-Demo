@@ -1,15 +1,16 @@
 #include "CameraComponent.hpp"
 #include "Game.hpp"
 #include "TextureManager.hpp"
+#include "Rectangle.hpp"
 #include <iostream>
 
-CameraComponent::CameraComponent(const std::shared_ptr<TransformComponent>& target, const SDL_Rect& rect):
+CameraComponent::CameraComponent(const std::shared_ptr<TransformComponent>& target, const Rectangle& rect):
 	target(target),
 	rect(rect)
 {
 }
 
-CameraComponent::CameraComponent(const Entity& entity, const SDL_Rect& rect):
+CameraComponent::CameraComponent(const Entity& entity, const Rectangle& rect):
 	target(entity.get_component<TransformComponent>()),
 	rect(rect)
 {
@@ -23,24 +24,24 @@ CameraComponent& CameraComponent::init()
 
 CameraComponent& CameraComponent::update()
 {
-	rect.x = target->get_x() - rect.w / 2 + 48;
-	rect.y = target->get_y() - rect.h / 2 + 48;
+	rect.x = target->get_x() - rect.width / 2 + 48;
+	rect.y = target->get_y() - rect.height / 2 + 48;
 
 	if (rect.x < 0)
 	{
 		rect.x = 0;
 	}
-	else if (rect.x + rect.w > wi)
+	else if (rect.x + rect.width > wi)
 	{
-		rect.x = wi - rect.w;
+		rect.x = wi - rect.width;
 	}
 	if (rect.y < 0)
 	{
 		rect.y = 0;
 	}
-	else if (rect.y + rect.h > wi)
+	else if (rect.y + rect.height > wi)
 	{
-		rect.y = wi - rect.h;
+		rect.y = wi - rect.height;
 	}
 
 	return *this;
@@ -50,7 +51,7 @@ Entity& CameraComponent::create(Scene& scene, int width, int height, const Entit
 {
 	auto& camera = scene.add_entity("camera");
 
-	camera.add_component<CameraComponent>(target.get_component<TransformComponent>(), SDL_Rect{ 0,0,width,height });
+	camera.add_component<CameraComponent>(target.get_component<TransformComponent>(), Rectangle{ 0, 0, width, height });
 	TextureManager::init(camera.get_component<CameraComponent>());
 
 	return camera;

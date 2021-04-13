@@ -10,10 +10,10 @@ class SpriteComponent : public VisibleComponent, public std::enable_shared_from_
 {
 public:
 	SpriteComponent() = default;
-	SpriteComponent(const std::string&, const SDL_Rect&);
+	SpriteComponent(const std::string&, const Rectangle&);
 
 	SpriteComponent& set_texture(const std::string&);
-	SpriteComponent& set_srcRect(const SDL_Rect& rect);
+	SpriteComponent& set_srcRect(const Rectangle& rect);
 
 	SpriteComponent& update() override;
 };

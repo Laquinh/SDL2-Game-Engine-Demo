@@ -1,7 +1,7 @@
 #include "TileComponent.hpp"
 #include "ColliderComponent.hpp"
 
-TileComponent::TileComponent(const SDL_Rect& rect, int id):
+TileComponent::TileComponent(const Rectangle& rect, int id):
 	destRect(rect),
 	id(id-1)
 {

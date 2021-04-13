@@ -5,11 +5,11 @@
 
 struct Vector2D
 {
-	float x;
-	float y;
+	int x;
+	int y;
 
 	Vector2D();
-	Vector2D(float, float);
+	Vector2D(int, int);
 	~Vector2D();
 
 	Vector2D& add(const Vector2D&);

@@ -7,7 +7,7 @@
 class Collision
 {
 public:
-	static int AABB(const SDL_Rect& a, const SDL_Rect& b);
+	static int AABB(const Rectangle& a, const Rectangle& b);
 	static int AABB(const ColliderComponent& a, const ColliderComponent& b);
 };
 

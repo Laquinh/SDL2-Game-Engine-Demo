@@ -2,10 +2,10 @@
 #include "TextureManager.hpp"
 #include <iostream>
 
-SpriteComponent::SpriteComponent(const std::string& file, const SDL_Rect& pSrcRect = SDL_Rect{0,0,16,16})
+SpriteComponent::SpriteComponent(const std::string& file, const Rectangle& srcRect = Rectangle(0,0,16,16))
 {
 	texture = TextureManager::load_texture(file);
-	srcRect = pSrcRect;
+	this->srcRect = srcRect;
 }
 
 SpriteComponent& SpriteComponent::set_texture(const std::string& file)
@@ -15,7 +15,7 @@ SpriteComponent& SpriteComponent::set_texture(const std::string& file)
 	return *this;
 }
 
-SpriteComponent& SpriteComponent::set_srcRect(const SDL_Rect& rect)
+SpriteComponent& SpriteComponent::set_srcRect(const Rectangle& rect)
 {
 	srcRect = rect;
 

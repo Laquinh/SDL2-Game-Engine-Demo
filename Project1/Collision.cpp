@@ -1,6 +1,6 @@
 #include "Collision.hpp"
 
-int Collision::AABB(const SDL_Rect& a, const SDL_Rect& b)
+int Collision::AABB(const Rectangle& a, const Rectangle& b)
 {
     /*if (a.x + a.w > b.x)
     {
@@ -19,10 +19,10 @@ int Collision::AABB(const SDL_Rect& a, const SDL_Rect& b)
         return 4;
     }*/
 
-    if (a.x + a.w > b.x &&
-        b.x + b.w > a.x &&
-        a.y + a.h > b.y &&
-        b.y + b.h > a.y)
+    if (a.x + a.width > b.x &&
+        b.x + b.width > a.x &&
+        a.y + a.height > b.y &&
+        b.y + b.height > a.y)
     {
         return true;
     }

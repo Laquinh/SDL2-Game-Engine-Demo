@@ -1,16 +1,16 @@
 #include "AnimationComponent.hpp"
 #include "TextureManager.hpp"
 
-AnimationComponent::AnimationComponent(const std::string& path, const SDL_Rect& pSrcRect = SDL_Rect{ 0,0,16,16 })
+AnimationComponent::AnimationComponent(const std::string& path, const Rectangle& srcRect = Rectangle(0, 0, 16, 16))
 {
 	texture = TextureManager::load_texture(path);
-	srcRect = pSrcRect;
+	this->srcRect = srcRect;
 }
 
 AnimationComponent& AnimationComponent::update()
 {
-	srcRect.x = srcRect.w * static_cast<int>((SDL_GetTicks() / speed) % frames);
-	srcRect.y = animationIndex * srcRect.h;
+	srcRect.x = srcRect.width * static_cast<int>((SDL_GetTicks() / speed) % frames);
+	srcRect.y = animationIndex * srcRect.height;
 
 	destRect = transform->get_rect();
 

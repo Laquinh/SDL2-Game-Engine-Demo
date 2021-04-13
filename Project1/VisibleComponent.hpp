@@ -15,7 +15,7 @@ public:
 protected:
 	std::shared_ptr<TransformComponent> transform;
 	std::shared_ptr<SDL_Texture> texture;
-	SDL_Rect srcRect, destRect;
+	Rectangle srcRect, destRect;
 };
 
 #endif

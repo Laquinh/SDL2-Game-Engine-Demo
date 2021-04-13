@@ -43,9 +43,9 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 		auto& player = Player::create(*scene);
 		Map::add_tile(*scene, 13, 5, 23);
 
-		Coin::create(*scene, SDL_Rect{ 150,150,32,32 });
-		Coin::create(*scene, SDL_Rect{ 190,150,32,32 });
-		Coin::create(*scene, SDL_Rect{ 230,150,32,32 });
+		Coin::create(*scene, Rectangle( 150,150,32,32 ));
+		Coin::create(*scene, Rectangle( 190,150,32,32 ));
+		Coin::create(*scene, Rectangle( 230,150,32,32 ));
 
 		CameraComponent::create(*scene, w, h, player);
 

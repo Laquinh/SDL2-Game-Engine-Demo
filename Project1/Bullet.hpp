@@ -8,7 +8,7 @@ public:
 	Bullet& init() override;
 	Bullet& update() override;
 	Bullet& onCollision(Entity& e) override;
-	static Entity& create(Scene& scene, const SDL_Rect& destRect);
+	static Entity& create(Scene& scene, const Rectangle& destRect);
 private:
 	std::shared_ptr<TransformComponent> transform;
 	std::weak_ptr<Player> player;
