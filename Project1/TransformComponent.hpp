@@ -14,12 +14,21 @@ class TransformComponent : public Component, public std::enable_shared_from_this
 	friend class KeyboardController;
 	friend struct ColliderComponent;
 public:
+	enum Orientation
+	{
+		NORTH,
+		WEST,
+		SOUTH,
+		EAST
+	};
+
 	TransformComponent();
 	TransformComponent(int, int);
 	TransformComponent(const Rectangle&);
 	~TransformComponent();
 
 	TransformComponent& set_position(int, int);
+	TransformComponent& set_orientation(Orientation orient);
 	TransformComponent& set_x(int x);
 	TransformComponent& set_y(int y);
 	TransformComponent& add_x(int x);
@@ -35,6 +44,7 @@ public:
 private:
 	Rectangle rect;
 	float scale = 1;
+	Orientation orientation = NORTH;
 };
 
 #endif

@@ -42,6 +42,13 @@ TransformComponent& TransformComponent::set_position(int x, int y)
     return *this;
 }
 
+TransformComponent& TransformComponent::set_orientation(Orientation orient)
+{
+    orientation = orient;
+
+    return *this;
+}
+
 TransformComponent& TransformComponent::set_x(int x)
 {
     set_position(x, rect.y);

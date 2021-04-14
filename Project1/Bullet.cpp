@@ -16,9 +16,9 @@ Bullet& Bullet::init()
 
 Bullet& Bullet::update()
 {
-	if (transform->get_x() < 1300)
+	if (transform->get_y() < 1300)
 	{
-		transform->add_x(speed * TimeManager::get_deltaTime());
+		transform->add_y(speed * TimeManager::get_deltaTime());
 	}
 	else
 	{
@@ -42,10 +42,11 @@ Bullet& Bullet::onCollision(Entity& e)
 	return *this;
 }
 
-Entity& Bullet::create(Scene& scene, const Rectangle& destRect)
+Entity& Bullet::create(Scene& scene, const Rectangle& destRect, TransformComponent::Orientation orientation)
 {
 	auto& bullet = scene.add_entity("bullet");
-	bullet.add_component<TransformComponent>(destRect);
+	bullet.add_component<TransformComponent>(destRect)
+		->set_orientation(orientation);
 	bullet.add_component<AnimationComponent>("assets/bullet-anim.png", Rectangle( 0, 0, 8, 8 ))
 		->add_animation("move", { 0, 4, 175 })
 		.play("move");

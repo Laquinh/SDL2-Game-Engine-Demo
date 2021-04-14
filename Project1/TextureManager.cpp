@@ -34,11 +34,15 @@ namespace TextureManager
         }
     }
 
-    void draw(SDL_Texture& tex, const Rectangle& src, Rectangle dest)
+    void draw(SDL_Texture& tex, const Rectangle& src, Rectangle dest, TransformComponent::Orientation orientation)
     {
+        SDL_Point point = { src.width / 2, src.height / 2 };
+        SDL_RendererFlip flip = SDL_FLIP_NONE;
+        int angle = orientation * 90;
+
         dest.set_position(dest.x - camera->rect.x, dest.y - camera->rect.y);
         SDL_Rect s = src.get_SDL_Rect();
         SDL_Rect d = dest.get_SDL_Rect();
-        SDL_RenderCopy(Game::renderer.get(), &tex, &s, &d);
+        SDL_RenderCopyEx(Game::renderer.get(), &tex, &s, &d, angle, &point, flip);
     }
 }

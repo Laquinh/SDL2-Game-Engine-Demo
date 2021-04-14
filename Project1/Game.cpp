@@ -12,6 +12,7 @@
 #include "AnimationComponent.hpp"
 #include "Coin.hpp"
 #include "Player.hpp"
+#include "BulletSpawner.hpp"
 
 #include <iostream>
 #include <memory>
@@ -48,6 +49,8 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 		Coin::create(*scene, Rectangle( 230,150,32,32 ));
 
 		CameraComponent::create(*scene, w, h, player);
+
+		BulletSpawner::create(*scene);
 
 		isRunning = true;
 	}

@@ -12,7 +12,7 @@ namespace TextureManager
 {
 	void init(const std::shared_ptr<CameraComponent>& pCamera);
 	std::shared_ptr<SDL_Texture> load_texture(std::string file);
-	void draw(SDL_Texture&, const Rectangle& src, Rectangle dest);
+	void draw(SDL_Texture&, const Rectangle& src, Rectangle dest, TransformComponent::Orientation orientation);
 
 	inline std::map<std::string, std::shared_ptr<SDL_Texture>> textures;
 	inline std::shared_ptr<CameraComponent> camera;

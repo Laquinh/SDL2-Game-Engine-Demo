@@ -11,7 +11,7 @@ Player& Player::init()
 	animation = entity.lock()->get_component<AnimationComponent>();
 
 	speed = 350;
-	startTime = std::chrono::steady_clock::now();
+	//startTime = std::chrono::steady_clock::now();
 
 	return *this;
 }
@@ -52,15 +52,16 @@ Player& Player::handle_events(const SDL_Event& event)
 				Coin::create(*entity.lock()->scene.lock(), Rectangle( transform->get_x() + 150, transform->get_y(), 32, 32 ));
 				--money;
 			}
-			b = true;
+			//b = true;
 			break;
 		case SDLK_SPACE:
 			//std::cout << std::chrono::steady_clock::now() >= startTime + std::chrono::seconds(5);
-			if (std::chrono::steady_clock::now() >= startTime + std::chrono::seconds(5))
+			/*if (std::chrono::steady_clock::now() >= startTime + std::chrono::seconds(5))
 			{
 				std::thread t(&Player::spawn_bullets, this);
 				t.detach();
-			}
+			}*/
+			if(auto p = entity.lock()->scene.lock()->get_entity_with_tag("spawner")) p->destroy();
 			break;
 		}
 	}
@@ -83,7 +84,7 @@ Player& Player::handle_events(const SDL_Event& event)
     return *this;
 }
 
-Player& Player::spawn_bullets()
+/*Player& Player::spawn_bullets()
 {
 	using namespace std;
 	using namespace std::chrono;
@@ -104,7 +105,7 @@ Player& Player::spawn_bullets()
 		m.unlock();
 	}
 	return *this;
-}
+}*/
 
 Entity& Player::create(Scene& scene)
 {

@@ -16,6 +16,7 @@ protected:
 	std::shared_ptr<TransformComponent> transform;
 	std::shared_ptr<SDL_Texture> texture;
 	Rectangle srcRect, destRect;
+	TransformComponent::Orientation orientation;
 };
 
 #endif
