@@ -4,21 +4,21 @@
 #include "SpriteComponent.hpp"
 #include "ColliderComponent.hpp"
 
-BulletSpawner::BulletSpawner():
-	destroyed(false)
+BulletSpawner::BulletSpawner()
 {
+	lastShot = std::chrono::steady_clock::now();
 }
 
 BulletSpawner::~BulletSpawner()
 {
-	destroyed = true;
 }
 
-BulletSpawner& BulletSpawner::init()
+BulletSpawner& BulletSpawner::update()
 {
-	std::thread t(&BulletSpawner::spawn_bullet, this);
-	t.detach();
-
+	if (std::chrono::steady_clock::now() >= lastShot + std::chrono::seconds(3))
+	{
+		spawn_bullet();
+	}
 	return *this;
 }
 
@@ -38,17 +38,14 @@ Entity& BulletSpawner::create(Scene& scene)
 
 BulletSpawner& BulletSpawner::spawn_bullet()
 {
-	while (!destroyed)
+	if (auto p = entity.lock())
 	{
-		if (auto p = entity.lock())
+		if (auto s = p->scene.lock())
 		{
-			if (auto s = p->scene.lock())
-			{
-				Bullet::create(*s, Rectangle(34, 345, 32, 32), TransformComponent::Orientation::WEST);
-			}
+			Bullet::create(*s, Rectangle(34, 345, 32, 32), TransformComponent::Orientation::WEST);
 		}
-		std::this_thread::sleep_for(std::chrono::seconds(3));
 	}
-
+	lastShot = std::chrono::steady_clock::now();
+	
 	return *this;
 }
