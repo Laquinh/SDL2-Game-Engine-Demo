@@ -11,6 +11,7 @@ Player& Player::init()
 	animation = entity.lock()->get_component<AnimationComponent>();
 
 	speed = 350;
+	startTime = std::chrono::steady_clock::now();
 
 	return *this;
 }
@@ -51,9 +52,15 @@ Player& Player::handle_events(const SDL_Event& event)
 				Coin::create(*entity.lock()->scene.lock(), Rectangle( transform->get_x() + 150, transform->get_y(), 32, 32 ));
 				--money;
 			}
+			b = true;
 			break;
 		case SDLK_SPACE:
-			Bullet::create(*entity.lock()->scene.lock(), Rectangle( transform->get_x() + 150, transform->get_y(), 32, 32));
+			//std::cout << std::chrono::steady_clock::now() >= startTime + std::chrono::seconds(5);
+			if (std::chrono::steady_clock::now() >= startTime + std::chrono::seconds(5))
+			{
+				std::thread t(&Player::spawn_bullets, this);
+				t.detach();
+			}
 			break;
 		}
 	}
@@ -74,6 +81,29 @@ Player& Player::handle_events(const SDL_Event& event)
 		}
 	}
     return *this;
+}
+
+Player& Player::spawn_bullets()
+{
+	using namespace std;
+	using namespace std::chrono;
+	std::cout << std::hex << this_thread::get_id() << '\n';
+	if (m.try_lock())
+	{
+		startTime = std::chrono::steady_clock::now();
+		while (auto p = entity.lock()->scene.lock())
+		{
+			Bullet::create(*entity.lock()->scene.lock(), Rectangle(transform->get_x() + 150, transform->get_y(), 32, 32));
+			this_thread::sleep_for(milliseconds(100));
+
+			if (steady_clock::now() >= startTime + seconds(1))
+			{
+				break;
+			}
+		}
+		m.unlock();
+	}
+	return *this;
 }
 
 Entity& Player::create(Scene& scene)
