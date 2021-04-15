@@ -1,4 +1,6 @@
 #include "Entity.hpp"
+#include "Component.hpp"
+#include "Scene.hpp"
 #include <memory>
 
 Entity::Entity(const std::weak_ptr<Scene>& scene) :

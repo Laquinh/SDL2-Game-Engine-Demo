@@ -2,12 +2,12 @@
 #define TILECOMPONENT_HPP
 
 #include <string>
-#include "SDL.h"
 #include "Component.hpp"
-#include "TransformComponent.hpp"
-#include "SpriteComponent.hpp"
-#include "VisibleComponent.hpp"
 #include "Rectangle.hpp"
+
+class Entity;
+class TransformComponent;
+class VisibleComponent;
 
 class TileComponent : public Component
 {
@@ -17,7 +17,7 @@ public:
 	TileComponent(int row, int column, int width, int height, int id);
 	TileComponent& init() override;
 
-	static enum Type {
+	enum class Type {
 		GRASS,
 		DIRT,
 		WATER,

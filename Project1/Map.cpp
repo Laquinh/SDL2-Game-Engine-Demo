@@ -3,6 +3,7 @@
 #include "Game.hpp"
 #include "Entity.hpp"
 #include "TileComponent.hpp"
+#include "Scene.hpp"
 
 #include <fstream>
 #include <array>

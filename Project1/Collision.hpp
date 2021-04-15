@@ -1,14 +1,13 @@
 #ifndef COLLISION_HPP
 #define COLLISION_HPP
 
-#include "SDL.h"
-#include "ColliderComponent.hpp"
+struct Rectangle;
+class ColliderComponent;
 
-class Collision
+namespace Collision
 {
-public:
-	static int AABB(const Rectangle& a, const Rectangle& b);
-	static int AABB(const ColliderComponent& a, const ColliderComponent& b);
-};
+	int AABB(const Rectangle& a, const Rectangle& b);
+	int AABB(const ColliderComponent& a, const ColliderComponent& b);
+}
 
 #endif COLLISION_HPP

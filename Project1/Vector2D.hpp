@@ -1,7 +1,7 @@
 #ifndef VECTOR2D_HPP
 #define VECTOR2D_HPP
 
-#include <iostream>
+#include <iosfwd>
 
 struct Vector2D
 {

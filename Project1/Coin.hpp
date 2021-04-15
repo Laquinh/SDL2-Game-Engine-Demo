@@ -1,10 +1,11 @@
+#pragma once
 #ifndef COIN_HPP
 #define COIN_HPP
 
-#include "SDL.h"
 #include "Component.hpp"
-#include "Scene.hpp"
-#include "Rectangle.hpp"
+
+class Scene;
+struct Rectangle;
 
 class Coin : public Component
 {

@@ -1,9 +1,11 @@
 #ifndef KEYBOARDCONTROLLER_HPP
 #define KEYBOARDCONTROLLER_HPP
 
-#include "Game.hpp"
 #include "Component.hpp"
-#include "VisibleComponent.hpp"
+
+class Entity;
+class TransformComponent;
+class VisibleComponent;
 
 class KeyboardController : public Component
 {

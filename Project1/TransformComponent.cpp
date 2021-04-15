@@ -2,6 +2,9 @@
 #include "TimeManager.hpp"
 #include "Game.hpp"
 #include "Collision.hpp"
+#include "Entity.hpp"
+#include "ColliderComponent.hpp"
+#include "Vector2D.hpp"
 
 TransformComponent::TransformComponent() :
     rect({ 0, 0, 32, 32 })
@@ -103,7 +106,7 @@ TransformComponent& TransformComponent::reset_scale(float s)
 
 Vector2D TransformComponent::get_position()
 {
-    return Vector2D(static_cast<float>(rect.x), static_cast<float>(rect.y));
+    return Vector2D(rect.x, rect.y);
 }
 
 Rectangle TransformComponent::get_rect()

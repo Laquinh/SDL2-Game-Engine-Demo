@@ -1,4 +1,6 @@
 #include "Rectangle.hpp"
+#include "Vector2D.hpp"
+#include "SDL.h"
 
 Rectangle::Rectangle(const SDL_Rect& rect):
 	x(rect.x),

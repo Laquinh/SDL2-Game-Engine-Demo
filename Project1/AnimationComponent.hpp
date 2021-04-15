@@ -3,17 +3,25 @@
 
 #include <string>
 #include <map>
-
-#include "SDL.h"
-
-#include "VisibleComponent.hpp"
-#include "Animation.hpp"
 #include <memory>
 #include <string>
-#include "Rectangle.hpp"
+
+#include "VisibleComponent.hpp"
+
+struct Rectangle;
 
 class AnimationComponent : public VisibleComponent, public std::enable_shared_from_this<AnimationComponent>
 {
+	struct Animation
+	{
+		int index;
+		int frames;
+		int speed;
+
+		Animation() = default;
+		Animation(int index, int frames, int speed);
+	};
+
 public:
 	AnimationComponent() = default;
 	AnimationComponent(const std::string& path, const Rectangle& srcRect);
@@ -23,6 +31,7 @@ public:
 	AnimationComponent& add_animation(const std::string& str, const Animation& anim);
 
 private:
+
 	int animationIndex;
 	int speed;
 	int frames;

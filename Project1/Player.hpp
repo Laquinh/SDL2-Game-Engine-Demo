@@ -2,14 +2,17 @@
 #define PLAYER_HPP
 
 #include "Component.hpp"
-#include "AnimationComponent.hpp"
-#include <thread>
-#include <mutex>
-#include <algorithm>
+#include "Vector2D.hpp"
+
+class Scene;
+class TransformComponent;
+class AnimationComponent;
+union SDL_Event;
 
 class Player : public Component
 {
 public:
+	Player();
 	Player& init() override;
 	Player& update() override;
 	Player& handle_events(const SDL_Event& event) override;
@@ -19,7 +22,7 @@ public:
 
 	int money = 0;
 	int speed = 500;
-	Vector2D velocity = { 0, 0 };
+	Vector2D velocity;
 private:
 	/*std::mutex m;
 	std::chrono::steady_clock::time_point startTime;

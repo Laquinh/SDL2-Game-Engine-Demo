@@ -1,11 +1,13 @@
 #ifndef CAMERACOMPONENT_HPP
 #define CAMERACOMPONENT_HPP
 
-#include "SDL.h"
 #include "Component.hpp"
-#include "TransformComponent.hpp"
 #include "Rectangle.hpp"
 #include <memory>
+
+class Entity;
+class Scene;
+class TransformComponent;
 
 class CameraComponent : public Component, public std::enable_shared_from_this<CameraComponent>
 {

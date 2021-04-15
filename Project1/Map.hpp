@@ -1,12 +1,13 @@
 #ifndef MAP_HPP
 #define MAP_HPP
 
-#include "SDL.h"
 #include "destroyers.hpp"
-#include "Entity.hpp"
 
 #include <string>
 #include <array>
+
+class Scene;
+class Entity;
 
 namespace Map
 {

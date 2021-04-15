@@ -1,4 +1,5 @@
 #include "Vector2D.hpp"
+#include <iostream>
 
 Vector2D::Vector2D():
 	x(0),

@@ -1,4 +1,6 @@
 #include "Component.hpp"
+#include "SDL.h"
+#include "Entity.hpp"
 
 Component::Component() {
 }

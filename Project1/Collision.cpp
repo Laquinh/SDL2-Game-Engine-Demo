@@ -1,38 +1,19 @@
 #include "Collision.hpp"
+#include "Rectangle.hpp"
+#include "ColliderComponent.hpp"
 
-int Collision::AABB(const Rectangle& a, const Rectangle& b)
+namespace Collision
 {
-    /*if (a.x + a.w > b.x)
+    int AABB(const Rectangle& a, const Rectangle& b)
     {
-        return 1;
+        return (a.x + a.width > b.x &&
+                b.x + b.width > a.x &&
+                a.y + a.height > b.y &&
+                b.y + b.height > a.y);
     }
-    if(b.x + b.w > a.x)
-    {
-        return 2;
-    }
-    if (a.y + a.h > b.y)
-    {
-        return 3;
-    }
-    if (b.y + b.h > a.y)
-    {
-        return 4;
-    }*/
 
-    if (a.x + a.width > b.x &&
-        b.x + b.width > a.x &&
-        a.y + a.height > b.y &&
-        b.y + b.height > a.y)
+    int AABB(const ColliderComponent& a, const ColliderComponent& b)
     {
-        return true;
+        return AABB(a.collider, b.collider);
     }
-    else
-    {
-        return 0;
-    }
-}
-
-int Collision::AABB(const ColliderComponent& a, const ColliderComponent& b)
-{
-    return AABB(a.collider, b.collider);
 }

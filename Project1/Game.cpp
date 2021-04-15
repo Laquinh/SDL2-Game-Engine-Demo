@@ -13,6 +13,8 @@
 #include "Coin.hpp"
 #include "Player.hpp"
 #include "BulletSpawner.hpp"
+#include "Scene.hpp"
+#include "CameraComponent.hpp"
 
 #include <iostream>
 #include <memory>
@@ -28,6 +30,8 @@ enum GroupLabels : std::size_t
 
 Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 {
+	scene = std::make_shared<Scene>();
+
 	int flags = 0;
 	if (fullscreen)
 	{

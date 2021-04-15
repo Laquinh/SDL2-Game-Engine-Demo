@@ -1,8 +1,6 @@
 #ifndef ENTITY_HPP
 #define ENTITY_HPP
 
-#include "Component.hpp"
-#include "Scene.hpp"
 #include "constants.hpp"
 #include "SDL.h"
 

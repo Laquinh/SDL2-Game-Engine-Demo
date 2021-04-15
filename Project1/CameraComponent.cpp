@@ -3,6 +3,10 @@
 #include "TextureManager.hpp"
 #include "Rectangle.hpp"
 #include <iostream>
+#include "Entity.hpp"
+#include "Rectangle.hpp"
+#include "Scene.hpp"
+#include "TransformComponent.hpp"
 
 CameraComponent::CameraComponent(const std::shared_ptr<TransformComponent>& target, const Rectangle& rect):
 	target(target),

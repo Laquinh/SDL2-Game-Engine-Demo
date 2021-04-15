@@ -1,10 +1,11 @@
 #ifndef VISIBLECOMPONENT_HPP
 #define VISIBLECOMPONENT_HPP
 
-#include "SDL.h"
 #include "Component.hpp"
 #include "TransformComponent.hpp"
 #include <string>
+
+struct SDL_Texture;
 
 class VisibleComponent : public Component
 {

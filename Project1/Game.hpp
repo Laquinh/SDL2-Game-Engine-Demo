@@ -5,11 +5,12 @@
 #include "SDL_image.h"
 #include "destroyers.hpp"
 
-#include "ColliderComponent.hpp"
-#include "Scene.hpp"
-
 #include <iostream>
+#include <vector>
 #include <memory>
+
+class ColliderComponent;
+class Scene;
 
 class Game
 {
@@ -28,7 +29,7 @@ public:
 	static inline SDL_Event event;
 	static inline bool isRunning;
 
-	static inline std::shared_ptr<Scene> scene = std::make_shared<Scene>();
+	static inline std::shared_ptr<Scene> scene;
 private:
 };
 

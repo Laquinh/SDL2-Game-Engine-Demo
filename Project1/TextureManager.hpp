@@ -3,10 +3,14 @@
 
 #include "SDL.h"
 #include "destroyers.hpp"
-#include "CameraComponent.hpp"
+#include "TransformComponent.hpp"
+
 #include <map>
 #include <memory>
 #include <string>
+
+class CameraComponent;
+class Rectangle;
 
 namespace TextureManager
 {

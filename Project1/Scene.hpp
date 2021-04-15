@@ -1,8 +1,6 @@
 #ifndef COMPONENTMANAGER_HPP
 #define COMPONENTMANAGER_HPP
 
-#include "Entity.hpp"
-#include "Component.hpp"
 #include "constants.hpp"
 
 #include <array>

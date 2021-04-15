@@ -2,6 +2,8 @@
 #include "SDL.h"
 #include "Game.hpp"
 #include "Collision.hpp"
+#include "Entity.hpp"
+#include "ColliderComponent.hpp"
 
 Scene::Scene() {
 }
@@ -20,7 +22,7 @@ void Scene::update()
 		{
 			if (Collision::AABB(*Game::colliders[i], *Game::colliders[j]))
 			{
-				int first = Game::colliders.size();
+				auto first = Game::colliders.size();
 				std::weak_ptr<ColliderComponent> col1 = Game::colliders[i];
 
 				Game::colliders[i]->entity.lock()->onCollision(*Game::colliders[j]->entity.lock());

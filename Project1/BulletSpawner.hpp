@@ -2,8 +2,10 @@
 #define BULLETSPAWNER_HPP
 
 #include "Component.hpp"
-#include "Entity.hpp"
 #include <chrono>
+
+class Entity;
+class Scene;
 
 class BulletSpawner : public Component
 {

@@ -1,8 +1,8 @@
 #ifndef RECTANGLE_HPP
 #define RECTANGLE_HPP
 
-#include "SDL.h"
-#include "Vector2D.hpp"
+struct Vector2D;
+struct SDL_Rect;
 
 struct Rectangle
 {

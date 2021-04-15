@@ -4,6 +4,17 @@
 #include "Coin.hpp"
 #include "TimeManager.hpp"
 #include "Bullet.hpp"
+#include "Scene.hpp"
+#include "AnimationComponent.hpp"
+#include "SDL.h"
+#include "Entity.hpp"
+#include "ColliderComponent.hpp"
+
+Player::Player() :
+	velocity({ 0, 0 })
+{
+
+}
 
 Player& Player::init()
 {
@@ -11,13 +22,43 @@ Player& Player::init()
 	animation = entity.lock()->get_component<AnimationComponent>();
 
 	speed = 350;
-	//startTime = std::chrono::steady_clock::now();
+
+	animation->play("idle");
 
 	return *this;
 }
 
 Player& Player::update()
 {
+	const uint8_t* keyStates = SDL_GetKeyboardState(NULL);
+
+	if (keyStates[SDL_SCANCODE_W])
+	{
+		velocity.y = -1;
+		velocity.x = 0;
+	}
+	else if (keyStates[SDL_SCANCODE_S])
+	{
+		velocity.y = 1;
+		velocity.x = 0;
+	}
+	
+	else if (keyStates[SDL_SCANCODE_A])
+	{
+		velocity.y = 0;
+		velocity.x = -1;
+	}
+	else if (keyStates[SDL_SCANCODE_D])
+	{
+		velocity.y = 0;
+		velocity.x = 1;
+	}
+	else
+	{
+		velocity.x = 0;
+		velocity.y = 0;
+	}
+
 	transform->add_x(speed * TimeManager::get_deltaTime() * velocity.x);
 	transform->add_y(speed * TimeManager::get_deltaTime() * velocity.y);
 
@@ -30,91 +71,29 @@ Player& Player::handle_events(const SDL_Event& event)
 	{
 		switch (event.key.keysym.sym)
 		{
-		case SDLK_w:
-			velocity.y = -1;
-			animation->play("walk");
-			break;
-		case SDLK_a:
-			velocity.x = -1;
-			animation->play("walk");
-			break;
-		case SDLK_s:
-			velocity.y = 1;
-			animation->play("walk");
-			break;
-		case SDLK_d:
-			velocity.x = 1;
-			animation->play("walk");
-			break;
 		case SDLK_LSHIFT:
 			if (money > 0)
 			{
 				Coin::create(*entity.lock()->scene.lock(), Rectangle( transform->get_x() + 150, transform->get_y(), 32, 32 ));
 				--money;
 			}
-			//b = true;
 			break;
 		case SDLK_SPACE:
-			//std::cout << std::chrono::steady_clock::now() >= startTime + std::chrono::seconds(5);
-			/*if (std::chrono::steady_clock::now() >= startTime + std::chrono::seconds(5))
-			{
-				std::thread t(&Player::spawn_bullets, this);
-				t.detach();
-			}*/
 			if(auto p = entity.lock()->scene.lock()->get_entity_with_tag("spawner")) p->destroy();
-			break;
-		}
-	}
-	else if (event.type == SDL_KEYUP)
-	{
-		switch (event.key.keysym.sym)
-		{
-		case SDLK_w:
-		case SDLK_s:
-			velocity.y = 0;
-			animation->play("idle");
-			break;
-		case SDLK_a:
-		case SDLK_d:
-			velocity.x = 0;
-			animation->play("idle");
+			std::cout << "space";
 			break;
 		}
 	}
     return *this;
 }
 
-/*Player& Player::spawn_bullets()
-{
-	using namespace std;
-	using namespace std::chrono;
-	std::cout << std::hex << this_thread::get_id() << '\n';
-	if (m.try_lock())
-	{
-		startTime = std::chrono::steady_clock::now();
-		while (auto p = entity.lock()->scene.lock())
-		{
-			Bullet::create(*entity.lock()->scene.lock(), Rectangle(transform->get_x() + 150, transform->get_y(), 32, 32));
-			this_thread::sleep_for(milliseconds(100));
-
-			if (steady_clock::now() >= startTime + seconds(1))
-			{
-				break;
-			}
-		}
-		m.unlock();
-	}
-	return *this;
-}*/
-
 Entity& Player::create(Scene& scene)
 {
 	auto& player = scene.add_entity("player");
 
 	player.add_component<TransformComponent>(Rectangle( 50, 150, 96, 96 ));
-	player.add_component<AnimationComponent>("assets/alien-anim.png", Rectangle(0, 0, 24, 24))
+	player.add_component<AnimationComponent>("assets/wizard2-anim.png", Rectangle(0, 0, 32, 32))
 		->add_animation("idle", { 0, 4, 225 })
-		.add_animation("walk", { 1, 4, 100 })
 		.play("idle");
 	player.add_component<KeyboardController>();
 	player.add_component<ColliderComponent>()

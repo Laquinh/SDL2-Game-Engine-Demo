@@ -3,6 +3,8 @@
 #include "Bullet.hpp"
 #include "SpriteComponent.hpp"
 #include "ColliderComponent.hpp"
+#include "Entity.hpp"
+#include "Scene.hpp"
 
 BulletSpawner::BulletSpawner()
 {
@@ -42,7 +44,7 @@ BulletSpawner& BulletSpawner::spawn_bullet()
 	{
 		if (auto s = p->scene.lock())
 		{
-			Bullet::create(*s, Rectangle(34, 345, 32, 32), TransformComponent::Orientation::WEST);
+			Bullet::create(*s, Rectangle(0, 345, 64, 64), TransformComponent::Orientation::NORTH);
 		}
 	}
 	lastShot = std::chrono::steady_clock::now();

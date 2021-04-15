@@ -1,13 +1,11 @@
 #ifndef COMPONENT_HPP
 #define COMPONENT_HPP
 
-#include "Entity.hpp"
-#include "SDL.h"
-
 #include <iostream>
 #include <memory>
 
 class Entity;
+union SDL_Event;
 
 class Component
 {

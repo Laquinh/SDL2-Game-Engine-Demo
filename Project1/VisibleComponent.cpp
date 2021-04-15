@@ -1,5 +1,8 @@
 #include "VisibleComponent.hpp"
 #include "TextureManager.hpp"
+#include "Entity.hpp"
+#include "TransformComponent.hpp"
+#include <string>
 
 VisibleComponent& VisibleComponent::init()
 {

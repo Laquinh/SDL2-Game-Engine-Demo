@@ -5,16 +5,17 @@
 
 #include "SDL.h"
 #include "Component.hpp"
-#include "Vector2D.hpp"
 #include "Rectangle.hpp"
+
+struct Vector2D;
 
 class TransformComponent : public Component, public std::enable_shared_from_this<TransformComponent>
 {
 	friend class VisibleComponent;
 	friend class KeyboardController;
-	friend struct ColliderComponent;
+	friend class ColliderComponent;
 public:
-	enum Orientation
+	enum class Orientation
 	{
 		NORTH,
 		WEST,
@@ -44,7 +45,7 @@ public:
 private:
 	Rectangle rect;
 	float scale = 1;
-	Orientation orientation = NORTH;
+	Orientation orientation = Orientation::NORTH;
 };
 
 #endif

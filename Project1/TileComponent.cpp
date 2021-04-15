@@ -1,5 +1,9 @@
 #include "TileComponent.hpp"
 #include "ColliderComponent.hpp"
+#include "Entity.hpp"
+#include "VisibleComponent.hpp"
+#include "SpriteComponent.hpp"
+#include "TransformComponent.hpp"
 
 TileComponent::TileComponent(const Rectangle& rect, int id):
 	destRect(rect),

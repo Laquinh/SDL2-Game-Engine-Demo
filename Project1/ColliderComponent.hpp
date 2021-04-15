@@ -2,13 +2,15 @@
 #define COLLIDERCOMPONENT_HPP
 
 #include "Component.hpp"
-#include "TransformComponent.hpp"
-
+#include "Rectangle.hpp"
 #include <iostream>
 #include <memory>
 
-struct ColliderComponent : public Component, public std::enable_shared_from_this<ColliderComponent>
+class TransformComponent;
+
+class ColliderComponent : public Component, public std::enable_shared_from_this<ColliderComponent>
 {
+public:
 	Rectangle collider;
 
 	std::shared_ptr<TransformComponent> transform;

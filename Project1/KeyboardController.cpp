@@ -2,6 +2,9 @@
 #include "AnimationComponent.hpp"
 #include "Coin.hpp"
 #include "Game.hpp"
+#include "Entity.hpp"
+#include "TransformComponent.hpp"
+#include "VisibleComponent.hpp"
 
 KeyboardController& KeyboardController::init()
 {

@@ -1,10 +1,15 @@
 #include "Component.hpp"
 #include "TransformComponent.hpp"
-#include "Player.hpp"
+
+class Player;
+class Scene;
+class Entity;
+struct Rectangle;
 
 class Bullet : public Component
 {
 public:
+	Bullet();
 	Bullet& init() override;
 	Bullet& update() override;
 	Bullet& onCollision(Entity& e) override;

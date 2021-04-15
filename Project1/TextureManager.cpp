@@ -4,6 +4,7 @@
 #include "SDL_image.h"
 #include "Game.hpp"
 #include "destroyers.hpp"
+#include "CameraComponent.hpp"
 
 #include <iostream>
 #include <memory>
@@ -38,7 +39,7 @@ namespace TextureManager
     {
         SDL_Point point = { src.width / 2, src.height / 2 };
         SDL_RendererFlip flip = SDL_FLIP_NONE;
-        int angle = orientation * 90;
+        int angle = static_cast<int>(orientation) * 90;
 
         dest.set_position(dest.x - camera->rect.x, dest.y - camera->rect.y);
         SDL_Rect s = src.get_SDL_Rect();
