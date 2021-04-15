@@ -12,7 +12,7 @@ Engine::~Engine()
 
 void Engine::run()
 {
-	const int fps = 60;
+	const int fps = 144;
 
 	TimeManager::init();
 

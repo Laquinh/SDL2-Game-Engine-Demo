@@ -17,7 +17,7 @@ BulletSpawner::~BulletSpawner()
 
 BulletSpawner& BulletSpawner::update()
 {
-	if (std::chrono::steady_clock::now() >= lastShot + std::chrono::seconds(3))
+	if (std::chrono::steady_clock::now() >= lastShot + std::chrono::seconds(1))
 	{
 		spawn_bullet();
 	}

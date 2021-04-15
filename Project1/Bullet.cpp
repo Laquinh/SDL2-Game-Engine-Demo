@@ -9,7 +9,7 @@
 #include "Rectangle.hpp"
 
 Bullet::Bullet() :
-	speed(600)
+	speed(64 * 10)
 {
 }
 
@@ -17,8 +17,6 @@ Bullet& Bullet::init()
 {
 	transform = entity.lock()->get_component<TransformComponent>();
 	player = Game::scene->get_entity_with_tag("player")->get_component<Player>();
-
-	speed = 600;
 
 	return *this;
 }

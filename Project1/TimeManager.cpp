@@ -1,33 +1,43 @@
 #include "TimeManager.hpp"
-#include "SDL.h"
+#include <chrono>
+#include <thread>
+#include <iostream>
 
 namespace TimeManager
 {
 	void init()
 	{
-		currentTime = SDL_GetTicks();
+		currentTime = Clock::now();
 	}
 
 	void update_deltaTime()
 	{
-		double newTime = SDL_GetTicks();
-		double frameTime = newTime - currentTime;
+		auto newTime = Clock::now();
+		deltaTime = duration_cast<microseconds>(newTime - currentTime);
 		currentTime = newTime;
-
-		deltaTime = frameTime / 1000;
 	}
+
+	/*Clock::duration get_deltaTime()
+	{
+		return deltaTime;
+	}*/
 
 	double get_deltaTime()
 	{
-		return deltaTime;
+		return deltaTime.count() / 1000000.0;
 	}
 
 	void limit_fps(double target)
 	{
-		double dt = 1000.0 / target;
+		duration dt = duration<double, std::ratio<1>>(1.0 / target);
 		if (dt > deltaTime)
 		{
-			SDL_Delay(dt - deltaTime);
+			std::this_thread::sleep_for(dt - deltaTime);
 		}
+	}
+
+	Clock::time_point get_time()
+	{
+		return Clock::now();
 	}
 }

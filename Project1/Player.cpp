@@ -21,7 +21,7 @@ Player& Player::init()
 	transform = entity.lock()->get_component<TransformComponent>();
 	animation = entity.lock()->get_component<AnimationComponent>();
 
-	speed = 350;
+	speed = 64*5;
 
 	animation->play("idle");
 
