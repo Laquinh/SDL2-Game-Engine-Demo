@@ -92,7 +92,7 @@ Entity& Player::create(Scene& scene)
 	auto& player = scene.add_entity("player");
 
 	player.add_component<TransformComponent>(Rectangle( 50, 150, 96, 96 ));
-	player.add_component<AnimationComponent>("assets/wizard2-anim.png", Rectangle(0, 0, 32, 32))
+	player.add_component<AnimationComponent>("assets/wizard3-anim.png", Rectangle(0, 0, 24, 24))
 		->add_animation("idle", { 0, 4, 225 })
 		.play("idle");
 	player.add_component<KeyboardController>();
