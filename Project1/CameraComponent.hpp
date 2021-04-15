@@ -25,6 +25,7 @@ public:
 
 	Rectangle rect;
 	int wi = 1280;
+
 private:
 	std::shared_ptr<TransformComponent> target;
 };
