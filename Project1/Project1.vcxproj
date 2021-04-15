@@ -134,6 +134,7 @@
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>E:\Desktop\Ander-Laquinf\Dev\Programming\C-C++\SDL2-2.0.14\include;E:\Desktop\Ander-Laquinf\Dev\Programming\C-C++\SDL2_image-2.0.5\include;C:\Users\ander\Desktop\Dev\C++\SDL\SDL2_image-devel-2.0.5-VC\SDL2_image-2.0.5\include;C:\Users\ander\Desktop\Dev\C++\SDL\SDL2-2.0.14\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -163,7 +164,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Animation.hpp" />
     <ClInclude Include="AnimationComponent.hpp" />
     <ClInclude Include="Bullet.hpp" />
     <ClInclude Include="BulletSpawner.hpp" />
@@ -202,7 +202,6 @@
     <None Include="Entity.tcc" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="AnimationComponent.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletSpawner.cpp" />
