@@ -2,10 +2,14 @@
 
 #include "SDL.h"
 #include "SDL_image.h"
+#include "SDL_ttf.h"
 
 #include "AssetManager.hpp"
 #include "Map.hpp"
 #include "ColliderComponent.hpp"
+#include "Label.hpp"
+
+#include "Entity.hpp"
 
 #include "Collision.hpp"
 #include "TileComponent.hpp"
@@ -43,6 +47,11 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 		window = (unique_SDL_Window)SDL_CreateWindow(title.c_str(), x, y, w, h, flags);
 		renderer = (unique_SDL_Renderer)SDL_CreateRenderer(window.get(), -1, 0);
 
+		if (TTF_Init() == -1)
+		{
+			std::cout << "Error";
+		}
+
 		Map::load_map(*scene, "assets/level1.map", 20, 20);
 
 		auto& player = Player::create(*scene);
@@ -55,6 +64,10 @@ Game::Game(std::string title, int x, int y, int w, int h, bool fullscreen)
 		CameraComponent::create(*scene, w, h, player);
 
 		BulletSpawner::create(*scene);
+
+		auto& label = scene->add_entity("label");
+		label.add_component<Label>(Vector2D(10, 10), "hello", "assets/arial.ttf", SDL_Color{ 255, 255, 255, 255 });
+		label.add_group(1);
 
 		isRunning = true;
 	}
@@ -80,6 +93,7 @@ void Game::render()
 	scene->draw_group(groupMap);
 	scene->draw_group(groupPlayers);
 	scene->draw_group(groupEnemies);
+	
 	SDL_RenderPresent(renderer.get());
 }
 

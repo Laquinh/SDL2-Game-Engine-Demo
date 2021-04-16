@@ -17,6 +17,26 @@ namespace AssetManager
         camera = pCamera;
     }
 
+    void draw(SDL_Texture& tex, const Rectangle& src, Rectangle dest, double angle)
+    {
+        SDL_Point point = { dest.width / 2, dest.height / 2 };
+        SDL_RendererFlip flip = SDL_FLIP_NONE;
+
+        dest.set_position(dest.x - camera->rect.x, dest.y - camera->rect.y);
+        SDL_Rect s = src.get_SDL_Rect();
+        SDL_Rect d = dest.get_SDL_Rect();
+        SDL_RenderCopyEx(Game::renderer.get(), &tex, &s, &d, angle, &point, flip);
+    }
+
+    void draw(SDL_Texture& tex, Rectangle dest, double angle)
+    {
+        SDL_RendererFlip flip = SDL_FLIP_NONE;
+
+        dest.set_position(dest.x - camera->rect.x, dest.y - camera->rect.y);
+        SDL_Rect d = dest.get_SDL_Rect();
+        SDL_RenderCopyEx(Game::renderer.get(), &tex, nullptr, &d, angle, nullptr, flip);
+    }
+
     std::shared_ptr<SDL_Texture> load_texture(std::string file)
     {
         const auto& it = textures.find(file);
@@ -35,15 +55,20 @@ namespace AssetManager
         }
     }
 
-    void draw(SDL_Texture& tex, const Rectangle& src, Rectangle dest, TransformComponent::Orientation orientation)
+    std::shared_ptr<TTF_Font> load_font(std::string file, int fontSize)
     {
-        SDL_Point point = { src.width / 2, src.height / 2 };
-        SDL_RendererFlip flip = SDL_FLIP_NONE;
-        int angle = static_cast<int>(orientation) * 90;
+        const auto& it = fonts.find(file);
+        if (it == fonts.end())
+        {
+            std::shared_ptr<TTF_Font> font(TTF_OpenFont(file.c_str(), fontSize), TTF_CloseFont);
 
-        dest.set_position(dest.x - camera->rect.x, dest.y - camera->rect.y);
-        SDL_Rect s = src.get_SDL_Rect();
-        SDL_Rect d = dest.get_SDL_Rect();
-        SDL_RenderCopyEx(Game::renderer.get(), &tex, &s, &d, angle, &point, flip);
+            fonts.insert(std::pair<std::string, std::shared_ptr<TTF_Font>>(file, font));
+
+            return font;
+        }
+        else
+        {
+            return it->second;
+        }
     }
 }

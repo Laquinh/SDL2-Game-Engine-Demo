@@ -14,7 +14,7 @@ VisibleComponent& VisibleComponent::init()
 
 VisibleComponent& VisibleComponent::draw()
 {
-	AssetManager::draw(*texture, srcRect, destRect, orientation);
+	AssetManager::draw(*texture, srcRect, destRect, 0);
 
 	return *this;
 }

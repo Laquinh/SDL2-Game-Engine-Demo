@@ -2,6 +2,7 @@
 #define TEXTUREMANAGER_HPP
 
 #include "SDL.h"
+#include "SDL_ttf.h"
 #include "destroyers.hpp"
 #include "TransformComponent.hpp"
 
@@ -10,15 +11,19 @@
 #include <string>
 
 class CameraComponent;
-class Rectangle;
+struct Rectangle;
 
 namespace AssetManager
 {
 	void init(const std::shared_ptr<CameraComponent>& pCamera);
+	void draw(SDL_Texture&, const Rectangle& src, Rectangle dest, double angle);
+	void draw(SDL_Texture&, Rectangle dest, double angle);
+
 	std::shared_ptr<SDL_Texture> load_texture(std::string file);
-	void draw(SDL_Texture&, const Rectangle& src, Rectangle dest, TransformComponent::Orientation orientation);
+	std::shared_ptr<TTF_Font> load_font(std::string file, int fontSize);
 
 	inline std::map<std::string, std::shared_ptr<SDL_Texture>> textures;
+	inline std::map<std::string, std::shared_ptr<TTF_Font>> fonts;
 	inline std::shared_ptr<CameraComponent> camera;
 }
 
