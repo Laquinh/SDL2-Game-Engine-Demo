@@ -6,6 +6,7 @@
 class Entity;
 class TransformComponent;
 class VisibleComponent;
+union SDL_Event;
 
 class KeyboardController : public Component
 {

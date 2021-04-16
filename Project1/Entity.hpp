@@ -2,7 +2,6 @@
 #define ENTITY_HPP
 
 #include "constants.hpp"
-#include "SDL.h"
 
 #include <iostream>
 #include <memory>
@@ -12,6 +11,7 @@
 
 class Component;
 class Scene;
+union SDL_Event;
 
 class Entity : public std::enable_shared_from_this<Entity>
 {
