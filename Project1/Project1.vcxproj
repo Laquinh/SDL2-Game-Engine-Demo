@@ -133,15 +133,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\Desktop\Ander-Laquinf\Dev\Programming\C-C++\SDL2-2.0.14\include;E:\Desktop\Ander-Laquinf\Dev\Programming\C-C++\SDL2_image-2.0.5\include;C:\Users\ander\Desktop\Dev\C++\SDL\SDL2_image-devel-2.0.5-VC\SDL2_image-2.0.5\include;C:\Users\ander\Desktop\Dev\C++\SDL\SDL2-2.0.14\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\Desktop\Ander-Laquinf\Dev\Programming\C-C++\SDL2_ttf-2.0.15\include;E:\Desktop\Ander-Laquinf\Dev\Programming\C-C++\SDL2-2.0.14\include;E:\Desktop\Ander-Laquinf\Dev\Programming\C-C++\SDL2_image-2.0.5\include;C:\Users\ander\Desktop\Dev\C++\SDL\SDL2_image-devel-2.0.5-VC\SDL2_image-2.0.5\include;C:\Users\ander\Desktop\Dev\C++\SDL\SDL2-2.0.14\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>E:\Desktop\Ander-Laquinf\Dev\Programming\C-C++\SDL2_image-2.0.5\lib\x64;E:\Desktop\Ander-Laquinf\Dev\Programming\C-C++\SDL2-2.0.14\lib\x64;C:\Users\ander\Desktop\Dev\C++\SDL\SDL2_image-devel-2.0.5-VC\SDL2_image-2.0.5\lib\x64;C:\Users\ander\Desktop\Dev\C++\SDL\SDL2-2.0.14\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>E:\Desktop\Ander-Laquinf\Dev\Programming\C-C++\SDL2_ttf-2.0.15\lib\x64;E:\Desktop\Ander-Laquinf\Dev\Programming\C-C++\SDL2_image-2.0.5\lib\x64;E:\Desktop\Ander-Laquinf\Dev\Programming\C-C++\SDL2-2.0.14\lib\x64;C:\Users\ander\Desktop\Dev\C++\SDL\SDL2_image-devel-2.0.5-VC\SDL2_image-2.0.5\lib\x64;C:\Users\ander\Desktop\Dev\C++\SDL\SDL2-2.0.14\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -187,7 +187,7 @@
     <ClInclude Include="TimeManager.hpp" />
     <ClInclude Include="TransformComponent.hpp" />
     <ClInclude Include="SpriteComponent.hpp" />
-    <ClInclude Include="TextureManager.hpp" />
+    <ClInclude Include="AssetManager.hpp" />
     <ClInclude Include="Vector2D.hpp" />
     <ClInclude Include="VisibleComponent.hpp" />
   </ItemGroup>
@@ -221,7 +221,7 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
-    <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="TileComponent.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="TransformComponent.cpp" />

@@ -1,16 +1,16 @@
 #include "SpriteComponent.hpp"
-#include "TextureManager.hpp"
+#include "AssetManager.hpp"
 #include <iostream>
 
 SpriteComponent::SpriteComponent(const std::string& file, const Rectangle& srcRect = Rectangle(0,0,16,16))
 {
-	texture = TextureManager::load_texture(file);
+	texture = AssetManager::load_texture(file);
 	this->srcRect = srcRect;
 }
 
 SpriteComponent& SpriteComponent::set_texture(const std::string& file)
 {
-	texture = TextureManager::load_texture(file);
+	texture = AssetManager::load_texture(file);
 
 	return *this;
 }

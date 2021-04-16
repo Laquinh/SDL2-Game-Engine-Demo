@@ -1,5 +1,5 @@
 #include "VisibleComponent.hpp"
-#include "TextureManager.hpp"
+#include "AssetManager.hpp"
 #include "Entity.hpp"
 #include "TransformComponent.hpp"
 #include <string>
@@ -14,7 +14,7 @@ VisibleComponent& VisibleComponent::init()
 
 VisibleComponent& VisibleComponent::draw()
 {
-	TextureManager::draw(*texture, srcRect, destRect, orientation);
+	AssetManager::draw(*texture, srcRect, destRect, orientation);
 
 	return *this;
 }

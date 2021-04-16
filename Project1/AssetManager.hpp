@@ -12,7 +12,7 @@
 class CameraComponent;
 class Rectangle;
 
-namespace TextureManager
+namespace AssetManager
 {
 	void init(const std::shared_ptr<CameraComponent>& pCamera);
 	std::shared_ptr<SDL_Texture> load_texture(std::string file);

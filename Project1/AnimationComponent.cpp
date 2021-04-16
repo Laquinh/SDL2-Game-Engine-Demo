@@ -1,5 +1,5 @@
 #include "AnimationComponent.hpp"
-#include "TextureManager.hpp"
+#include "AssetManager.hpp"
 #include "Rectangle.hpp"
 
 AnimationComponent::Animation::Animation(int index, int frames, int speed) :
@@ -11,7 +11,7 @@ AnimationComponent::Animation::Animation(int index, int frames, int speed) :
 
 AnimationComponent::AnimationComponent(const std::string& path, const Rectangle& srcRect = Rectangle(0, 0, 16, 16))
 {
-	texture = TextureManager::load_texture(path);
+	texture = AssetManager::load_texture(path);
 	this->srcRect = srcRect;
 }
 

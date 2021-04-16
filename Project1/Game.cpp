@@ -3,7 +3,7 @@
 #include "SDL.h"
 #include "SDL_image.h"
 
-#include "TextureManager.hpp"
+#include "AssetManager.hpp"
 #include "Map.hpp"
 #include "ColliderComponent.hpp"
 

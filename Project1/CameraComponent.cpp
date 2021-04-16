@@ -1,6 +1,6 @@
 #include "CameraComponent.hpp"
 #include "Game.hpp"
-#include "TextureManager.hpp"
+#include "AssetManager.hpp"
 #include "Rectangle.hpp"
 #include <iostream>
 #include "Entity.hpp"
@@ -56,7 +56,7 @@ Entity& CameraComponent::create(Scene& scene, int width, int height, const Entit
 	auto& camera = scene.add_entity("camera");
 
 	camera.add_component<CameraComponent>(target.get_component<TransformComponent>(), Rectangle{ 0, 0, width, height });
-	TextureManager::init(camera.get_component<CameraComponent>());
+	AssetManager::init(camera.get_component<CameraComponent>());
 
 	return camera;
 }

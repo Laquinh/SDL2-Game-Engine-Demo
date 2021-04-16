@@ -1,4 +1,4 @@
-#include "TextureManager.hpp"
+#include "AssetManager.hpp"
 
 #include "SDL.h"
 #include "SDL_image.h"
@@ -10,7 +10,7 @@
 #include <memory>
 #include <map>
 
-namespace TextureManager
+namespace AssetManager
 {
     void init(const std::shared_ptr<CameraComponent>& pCamera)
     {
