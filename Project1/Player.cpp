@@ -9,11 +9,11 @@
 #include "SDL.h"
 #include "Entity.hpp"
 #include "ColliderComponent.hpp"
+#include "BulletSpawner.hpp"
 
 Player::Player() :
 	velocity({ 0, 0 })
 {
-
 }
 
 Player& Player::init()
@@ -36,27 +36,32 @@ Player& Player::update()
 	{
 		velocity.y = -1;
 		velocity.x = 0;
+		animation->play("walk");
 	}
 	else if (keyStates[SDL_SCANCODE_S])
 	{
 		velocity.y = 1;
 		velocity.x = 0;
+		animation->play("walk");
 	}
 	
 	else if (keyStates[SDL_SCANCODE_A])
 	{
 		velocity.y = 0;
 		velocity.x = -1;
+		animation->play("walk");
 	}
 	else if (keyStates[SDL_SCANCODE_D])
 	{
 		velocity.y = 0;
 		velocity.x = 1;
+		animation->play("walk");
 	}
 	else
 	{
 		velocity.x = 0;
 		velocity.y = 0;
+		animation->play("idle");
 	}
 
 	transform->add_x(speed * TimeManager::get_deltaTime() * velocity.x);
@@ -74,13 +79,15 @@ Player& Player::handle_events(const SDL_Event& event)
 		case SDLK_LSHIFT:
 			if (money > 0)
 			{
-				Coin::create(*entity.lock()->scene.lock(), Rectangle( transform->get_x() + 150, transform->get_y(), 32, 32 ));
+				Coin::create(*entity.lock()->scene.lock(), Rectangle(transform->get_x() + 150, transform->get_y(), 32, 32));
 				--money;
 			}
 			break;
 		case SDLK_SPACE:
-			if(auto p = entity.lock()->scene.lock()->get_entity_with_tag("spawner")) p->destroy();
-			std::cout << "space";
+			if (auto p = entity.lock()->scene.lock()->get_entity_with_tag("spawner")) p->destroy();
+			break;
+		case SDLK_RSHIFT:
+			auto& s = BulletSpawner::create(*entity.lock()->scene.lock());
 			break;
 		}
 	}
@@ -92,8 +99,9 @@ Entity& Player::create(Scene& scene)
 	auto& player = scene.add_entity("player");
 
 	player.add_component<TransformComponent>(Rectangle( 50, 150, 96, 96 ));
-	player.add_component<AnimationComponent>("assets/wizard3-anim.png", Rectangle(0, 0, 24, 24))
+	player.add_component<AnimationComponent>("assets/brendan-anim.png", Rectangle(0, 0, 24, 24))
 		->add_animation("idle", { 0, 4, 225 })
+		.add_animation("walk", { 1, 4, 220 })
 		.play("idle");
 	player.add_component<KeyboardController>();
 	player.add_component<ColliderComponent>()
