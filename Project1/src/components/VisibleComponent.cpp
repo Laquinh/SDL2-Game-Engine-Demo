@@ -1,6 +1,6 @@
 #include "VisibleComponent.hpp"
-#include "AssetManager.hpp"
-#include "Entity.hpp"
+#include "../interfaces/AssetManager.hpp"
+#include "../Entity.hpp"
 #include "TransformComponent.hpp"
 #include <string>
 

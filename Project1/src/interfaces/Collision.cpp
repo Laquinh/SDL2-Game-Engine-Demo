@@ -1,6 +1,6 @@
 #include "Collision.hpp"
-#include "Rectangle.hpp"
-#include "ColliderComponent.hpp"
+#include "../Rectangle.hpp"
+#include "../components/ColliderComponent.hpp"
 
 namespace Collision
 {

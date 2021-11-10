@@ -2,7 +2,7 @@
 #ifndef COIN_HPP
 #define COIN_HPP
 
-#include "Component.hpp"
+#include "../Component.hpp"
 
 class Scene;
 struct Rectangle;

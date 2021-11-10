@@ -1,7 +1,7 @@
 #ifndef KEYBOARDCONTROLLER_HPP
 #define KEYBOARDCONTROLLER_HPP
 
-#include "Component.hpp"
+#include "../Component.hpp"
 
 class Entity;
 class TransformComponent;

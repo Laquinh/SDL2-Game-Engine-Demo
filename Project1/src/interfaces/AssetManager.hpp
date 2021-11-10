@@ -3,8 +3,8 @@
 
 #include "SDL.h"
 #include "SDL_ttf.h"
-#include "destroyers.hpp"
-#include "TransformComponent.hpp"
+#include "../destroyers.hpp"
+#include "../components/TransformComponent.hpp"
 
 #include <map>
 #include <memory>

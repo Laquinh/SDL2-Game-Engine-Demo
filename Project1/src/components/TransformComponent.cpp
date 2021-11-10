@@ -1,10 +1,10 @@
 #include "TransformComponent.hpp"
-#include "TimeManager.hpp"
-#include "Game.hpp"
-#include "Collision.hpp"
-#include "Entity.hpp"
+#include "../interfaces/TimeManager.hpp"
+#include "../Game.hpp"
+#include "../interfaces/Collision.hpp"
+#include "../Entity.hpp"
 #include "ColliderComponent.hpp"
-#include "Vector2D.hpp"
+#include "../Vector2D.hpp"
 
 TransformComponent::TransformComponent() :
     rect({ 0, 0, 32, 32 })

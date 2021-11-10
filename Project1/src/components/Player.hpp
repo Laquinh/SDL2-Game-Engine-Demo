@@ -1,8 +1,8 @@
 #ifndef PLAYER_HPP
 #define PLAYER_HPP
 
-#include "Component.hpp"
-#include "Vector2D.hpp"
+#include "../Component.hpp"
+#include "../Vector2D.hpp"
 
 class Scene;
 class TransformComponent;

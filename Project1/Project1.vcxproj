@@ -165,32 +165,32 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AnimationComponent.hpp" />
-    <ClInclude Include="Bullet.hpp" />
-    <ClInclude Include="BulletSpawner.hpp" />
-    <ClInclude Include="CameraComponent.hpp" />
-    <ClInclude Include="Coin.hpp" />
-    <ClInclude Include="ColliderComponent.hpp" />
-    <ClInclude Include="Collision.hpp" />
-    <ClInclude Include="Component.hpp" />
-    <ClInclude Include="Label.hpp" />
-    <ClInclude Include="Rectangle.hpp" />
-    <ClInclude Include="Scene.hpp" />
-    <ClInclude Include="constants.hpp" />
-    <ClInclude Include="destroyers.hpp" />
-    <ClInclude Include="Engine.hpp" />
-    <ClInclude Include="Entity.hpp" />
-    <ClInclude Include="Game.hpp" />
-    <ClInclude Include="KeyboardController.hpp" />
-    <ClInclude Include="Map.hpp" />
-    <ClInclude Include="Player.hpp" />
-    <ClInclude Include="TileComponent.hpp" />
-    <ClInclude Include="TimeManager.hpp" />
-    <ClInclude Include="TransformComponent.hpp" />
-    <ClInclude Include="SpriteComponent.hpp" />
-    <ClInclude Include="AssetManager.hpp" />
-    <ClInclude Include="Vector2D.hpp" />
-    <ClInclude Include="VisibleComponent.hpp" />
+    <ClInclude Include="src\components\AnimationComponent.hpp" />
+    <ClInclude Include="src\components\Bullet.hpp" />
+    <ClInclude Include="src\components\BulletSpawner.hpp" />
+    <ClInclude Include="src\components\CameraComponent.hpp" />
+    <ClInclude Include="src\components\Coin.hpp" />
+    <ClInclude Include="src\components\ColliderComponent.hpp" />
+    <ClInclude Include="src\interfaces\Collision.hpp" />
+    <ClInclude Include="src\Component.hpp" />
+    <ClInclude Include="src\components\Label.hpp" />
+    <ClInclude Include="src\Rectangle.hpp" />
+    <ClInclude Include="src\Scene.hpp" />
+    <ClInclude Include="src\constants.hpp" />
+    <ClInclude Include="src\destroyers.hpp" />
+    <ClInclude Include="src\Engine.hpp" />
+    <ClInclude Include="src\Entity.hpp" />
+    <ClInclude Include="src\Game.hpp" />
+    <ClInclude Include="src\components\KeyboardController.hpp" />
+    <ClInclude Include="src\interfaces\Map.hpp" />
+    <ClInclude Include="src\components\Player.hpp" />
+    <ClInclude Include="src\components\TileComponent.hpp" />
+    <ClInclude Include="src\interfaces\TimeManager.hpp" />
+    <ClInclude Include="src\components\TransformComponent.hpp" />
+    <ClInclude Include="src\components\SpriteComponent.hpp" />
+    <ClInclude Include="src\interfaces\AssetManager.hpp" />
+    <ClInclude Include="src\Vector2D.hpp" />
+    <ClInclude Include="src\components\VisibleComponent.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\dirt.png" />
@@ -201,34 +201,34 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
-    <None Include="Entity.tcc" />
+    <None Include="src\Entity.tcc" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AnimationComponent.cpp" />
-    <ClCompile Include="Bullet.cpp" />
-    <ClCompile Include="BulletSpawner.cpp" />
-    <ClCompile Include="CameraComponent.cpp" />
-    <ClCompile Include="Coin.cpp" />
-    <ClCompile Include="ColliderComponent.cpp" />
-    <ClCompile Include="Collision.cpp" />
-    <ClCompile Include="Component.cpp" />
-    <ClCompile Include="Label.cpp" />
-    <ClCompile Include="Rectangle.cpp" />
-    <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="Engine.cpp" />
-    <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="KeyboardController.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Map.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="SpriteComponent.cpp" />
-    <ClCompile Include="AssetManager.cpp" />
-    <ClCompile Include="TileComponent.cpp" />
-    <ClCompile Include="TimeManager.cpp" />
-    <ClCompile Include="TransformComponent.cpp" />
-    <ClCompile Include="Vector2D.cpp" />
-    <ClCompile Include="VisibleComponent.cpp" />
+    <ClCompile Include="src\components\AnimationComponent.cpp" />
+    <ClCompile Include="src\components\Bullet.cpp" />
+    <ClCompile Include="src\components\BulletSpawner.cpp" />
+    <ClCompile Include="src\components\CameraComponent.cpp" />
+    <ClCompile Include="src\components\Coin.cpp" />
+    <ClCompile Include="src\components\ColliderComponent.cpp" />
+    <ClCompile Include="src\interfaces\Collision.cpp" />
+    <ClCompile Include="src\Component.cpp" />
+    <ClCompile Include="src\components\Label.cpp" />
+    <ClCompile Include="src\Rectangle.cpp" />
+    <ClCompile Include="src\Scene.cpp" />
+    <ClCompile Include="src\Engine.cpp" />
+    <ClCompile Include="src\Entity.cpp" />
+    <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\components\KeyboardController.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\interfaces\Map.cpp" />
+    <ClCompile Include="src\components\Player.cpp" />
+    <ClCompile Include="src\components\SpriteComponent.cpp" />
+    <ClCompile Include="src\interfaces\AssetManager.cpp" />
+    <ClCompile Include="src\components\TileComponent.cpp" />
+    <ClCompile Include="src\interfaces\TimeManager.cpp" />
+    <ClCompile Include="src\components\TransformComponent.cpp" />
+    <ClCompile Include="src\Vector2D.cpp" />
+    <ClCompile Include="src\components\VisibleComponent.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,7 +1,7 @@
 #ifndef BULLETSPAWNER_HPP
 #define BULLETSPAWNER_HPP
 
-#include "Component.hpp"
+#include "../Component.hpp"
 #include <chrono>
 
 class Entity;

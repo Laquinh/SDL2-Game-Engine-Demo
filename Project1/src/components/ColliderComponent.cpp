@@ -1,8 +1,8 @@
 #include "ColliderComponent.hpp"
-#include "Game.hpp"
-#include "Entity.hpp"
+#include "../Game.hpp"
+#include "../Entity.hpp"
 #include "TransformComponent.hpp"
-#include "Rectangle.hpp"
+#include "../Rectangle.hpp"
 
 #include <algorithm>
 

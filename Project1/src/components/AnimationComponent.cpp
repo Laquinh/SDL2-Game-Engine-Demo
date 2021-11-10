@@ -1,6 +1,6 @@
 #include "AnimationComponent.hpp"
-#include "AssetManager.hpp"
-#include "Rectangle.hpp"
+#include "../interfaces/AssetManager.hpp"
+#include "../Rectangle.hpp"
 
 AnimationComponent::Animation::Animation(int index, int frames, int speed) :
 	index(index),

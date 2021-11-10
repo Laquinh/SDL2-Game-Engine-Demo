@@ -1,11 +1,11 @@
 #include "CameraComponent.hpp"
-#include "Game.hpp"
-#include "AssetManager.hpp"
-#include "Rectangle.hpp"
+#include "../Game.hpp"
+#include "../interfaces/AssetManager.hpp"
+#include "../Rectangle.hpp"
 #include <iostream>
-#include "Entity.hpp"
-#include "Rectangle.hpp"
-#include "Scene.hpp"
+#include "../Entity.hpp"
+#include "../Rectangle.hpp"
+#include "../Scene.hpp"
 #include "TransformComponent.hpp"
 
 CameraComponent::CameraComponent(const std::shared_ptr<TransformComponent>& target, const Rectangle& rect):

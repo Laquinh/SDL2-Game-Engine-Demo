@@ -1,12 +1,12 @@
 #include "Bullet.hpp"
-#include "TimeManager.hpp"
+#include "../interfaces/TimeManager.hpp"
 #include "AnimationComponent.hpp"
 #include "ColliderComponent.hpp"
-#include "Game.hpp"
+#include "../Game.hpp"
 #include "Player.hpp"
-#include "Entity.hpp"
-#include "Scene.hpp"
-#include "Rectangle.hpp"
+#include "../Entity.hpp"
+#include "../Scene.hpp"
+#include "../Rectangle.hpp"
 
 Bullet::Bullet() :
 	speed(64 * 10)

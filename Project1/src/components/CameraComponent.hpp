@@ -1,8 +1,8 @@
 #ifndef CAMERACOMPONENT_HPP
 #define CAMERACOMPONENT_HPP
 
-#include "Component.hpp"
-#include "Rectangle.hpp"
+#include "../Component.hpp"
+#include "../Rectangle.hpp"
 #include <memory>
 
 class Entity;

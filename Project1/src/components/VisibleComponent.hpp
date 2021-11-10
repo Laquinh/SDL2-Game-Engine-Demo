@@ -1,7 +1,7 @@
 #ifndef VISIBLECOMPONENT_HPP
 #define VISIBLECOMPONENT_HPP
 
-#include "Component.hpp"
+#include "../Component.hpp"
 #include "TransformComponent.hpp"
 #include <string>
 

@@ -2,9 +2,9 @@
 
 #include "SDL.h"
 #include "SDL_image.h"
-#include "Game.hpp"
-#include "destroyers.hpp"
-#include "CameraComponent.hpp"
+#include "../Game.hpp"
+#include "../destroyers.hpp"
+#include "../components/CameraComponent.hpp"
 
 #include <iostream>
 #include <memory>

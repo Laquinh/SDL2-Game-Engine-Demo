@@ -3,8 +3,8 @@
 #include "Bullet.hpp"
 #include "SpriteComponent.hpp"
 #include "ColliderComponent.hpp"
-#include "Entity.hpp"
-#include "Scene.hpp"
+#include "../Entity.hpp"
+#include "../Scene.hpp"
 
 BulletSpawner::BulletSpawner()
 {

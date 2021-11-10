@@ -1,8 +1,8 @@
 #ifndef COLLIDERCOMPONENT_HPP
 #define COLLIDERCOMPONENT_HPP
 
-#include "Component.hpp"
-#include "Rectangle.hpp"
+#include "../Component.hpp"
+#include "../Rectangle.hpp"
 #include <iostream>
 #include <memory>
 

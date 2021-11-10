@@ -1,5 +1,5 @@
 #include "SpriteComponent.hpp"
-#include "AssetManager.hpp"
+#include "../interfaces/AssetManager.hpp"
 #include <iostream>
 
 SpriteComponent::SpriteComponent(const std::string& file, const Rectangle& srcRect = Rectangle(0,0,16,16))

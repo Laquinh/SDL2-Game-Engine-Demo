@@ -4,8 +4,8 @@
 #include <memory>
 
 #include "SDL.h"
-#include "Component.hpp"
-#include "Rectangle.hpp"
+#include "../Component.hpp"
+#include "../Rectangle.hpp"
 
 struct Vector2D;
 

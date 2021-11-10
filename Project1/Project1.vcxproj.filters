@@ -13,85 +13,88 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Components">
+      <UniqueIdentifier>{c1aa76dd-7fa4-49b3-aa3a-c5fe3117fce1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.hpp">
+    <ClInclude Include="src\Game.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AssetManager.hpp">
+    <ClInclude Include="src\interfaces\AssetManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="destroyers.hpp">
+    <ClInclude Include="src\destroyers.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Map.hpp">
+    <ClInclude Include="src\interfaces\Map.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Component.hpp">
+    <ClInclude Include="src\Component.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.hpp">
+    <ClInclude Include="src\Entity.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.hpp">
+    <ClInclude Include="src\Scene.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SpriteComponent.hpp">
+    <ClInclude Include="src\Vector2D.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Vector2D.hpp">
+    <ClInclude Include="src\Engine.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TransformComponent.hpp">
+    <ClInclude Include="src\constants.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="KeyboardController.hpp">
+    <ClInclude Include="src\interfaces\TimeManager.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ColliderComponent.hpp">
+    <ClInclude Include="src\Rectangle.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Collision.hpp">
+    <ClInclude Include="src\components\Label.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TileComponent.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\components\AnimationComponent.hpp">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="CameraComponent.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\components\Bullet.hpp">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="AnimationComponent.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\components\BulletSpawner.hpp">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="VisibleComponent.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\components\CameraComponent.hpp">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Engine.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\components\Coin.hpp">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="constants.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\components\ColliderComponent.hpp">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="TimeManager.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\interfaces\Collision.hpp">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Coin.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\components\KeyboardController.hpp">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Bullet.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\components\Player.hpp">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Rectangle.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\components\SpriteComponent.hpp">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Player.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\components\TileComponent.hpp">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="BulletSpawner.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\components\TransformComponent.hpp">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="Label.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\components\VisibleComponent.hpp">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -113,84 +116,84 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
-    <None Include="Entity.tcc">
+    <None Include="src\Entity.tcc">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ColliderComponent.cpp">
+    <ClCompile Include="src\components\ColliderComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Collision.cpp">
+    <ClCompile Include="src\interfaces\Collision.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Component.cpp">
+    <ClCompile Include="src\Component.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Scene.cpp">
+    <ClCompile Include="src\Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity.cpp">
+    <ClCompile Include="src\Entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
+    <ClCompile Include="src\Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="KeyboardController.cpp">
+    <ClCompile Include="src\components\KeyboardController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Map.cpp">
+    <ClCompile Include="src\interfaces\Map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteComponent.cpp">
+    <ClCompile Include="src\components\SpriteComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AssetManager.cpp">
+    <ClCompile Include="src\interfaces\AssetManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TileComponent.cpp">
+    <ClCompile Include="src\components\TileComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TransformComponent.cpp">
+    <ClCompile Include="src\components\TransformComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Vector2D.cpp">
+    <ClCompile Include="src\Vector2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CameraComponent.cpp">
+    <ClCompile Include="src\components\CameraComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AnimationComponent.cpp">
+    <ClCompile Include="src\components\AnimationComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="VisibleComponent.cpp">
+    <ClCompile Include="src\components\VisibleComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Engine.cpp">
+    <ClCompile Include="src\Engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TimeManager.cpp">
+    <ClCompile Include="src\interfaces\TimeManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Coin.cpp">
+    <ClCompile Include="src\components\Coin.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
+    <ClCompile Include="src\components\Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet.cpp">
+    <ClCompile Include="src\components\Bullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Rectangle.cpp">
+    <ClCompile Include="src\Rectangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BulletSpawner.cpp">
+    <ClCompile Include="src\components\BulletSpawner.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Label.cpp">
+    <ClCompile Include="src\components\Label.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
